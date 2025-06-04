@@ -1,37 +1,27 @@
-from chromadb import PersistentClient
-from chromadb.utils import embedding_functions
-import os
-DB_FOLDER = "./"
+from utils.chroma_manager import get_collection, add_documents, compute_hash
 
-embedding_func = embedding_functions.SentenceTransformerEmbeddingFunction(
-    model_name="BAAI/bge-large-en-v1.5",
-    normalize_embeddings=True
-)
+# Define your documents
+docs = [
+    "The ocean covers more than 70% of the Earth's surface.",
+    "The deepest part of the ocean is the Mariana Trench, reaching nearly 11,000 meters.",
+    "Oceans produce over half of the world's oxygen through marine plants.",
+    "The Great Barrier Reef is the largest living structure on Earth.",
+    "Over 80% of the ocean remains unexplored by humans."
+]
 
-client = PersistentClient(path=DB_FOLDER)
+metadatas = []
+ids = []
 
-collection = client.get_or_create_collection(
-    name="my_documents",
-    embedding_function=embedding_func
-)
+# Generate unique ids and metadata using hash-based deduplication
+for i, doc in enumerate(docs):
+    doc_hash = compute_hash(doc)
+    ids.append(doc_hash)
+    metadatas.append({"source": "ocean_facts", "hash": doc_hash})
 
-collection.add(
-    documents=[
-        "The ocean covers more than 70% of the Earth's surface.",
-        "The deepest part of the ocean is the Mariana Trench, reaching nearly 11,000 meters.",
-        "Oceans produce over half of the world's oxygen through marine plants.",
-        "The Great Barrier Reef is the largest living structure on Earth.",
-        "Over 80% of the ocean remains unexplored by humans."
-    ],
-    metadatas=[
-        {"source": "ocean_facts"},
-        {"source": "ocean_facts"},
-        {"source": "ocean_facts"},
-        {"source": "ocean_facts"},
-        {"source": "ocean_facts"}
-    ],
-    ids=["fact1", "fact2", "fact3", "fact4", "fact5"]
-)
+# Initialize ChromaDB collection
+collection = get_collection()
 
-print(f"ChromaDB successfully created in {DB_FOLDER} with {collection.count()} documents")
-print("Using embedding model: BAAI/bge-large-en-v1.5")
+# Add documents (Chroma will skip if hash IDs already exist)
+add_documents(collection, docs, metadatas, ids)
+
+print("Documents (deduplicated) added to ChromaDB.")

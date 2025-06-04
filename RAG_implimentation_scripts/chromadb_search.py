@@ -1,104 +1,25 @@
-from chromadb import PersistentClient
-from chromadb.utils import embedding_functions
-import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-import numpy as np
-import os
+from utils.chroma_manager import get_collection, embed_query
+from utils.llama3_inference import run_llama3
+from utils.rerank import rerank_documents
 
-DB_FOLDER = "./"
-COLLECTION_NAME = "my_documents"
-EMBEDDING_MODEL = "BAAI/bge-large-en-v1.5"
-RERANKER_MODEL = "BAAI/bge-reranker-base"
+query = input("Enter your query: ")
 
-def load_reranker():
-    tokenizer = AutoTokenizer.from_pretrained(RERANKER_MODEL)
-    model = AutoModelForSequenceClassification.from_pretrained(RERANKER_MODEL)
-    if torch.cuda.is_available():
-        model = model.cuda()
-    model.eval()
-    return tokenizer, model
+# Get collection and search
+collection = get_collection()
+query_embedding = embed_query(query)
+results = collection.query(
+    query_embeddings=[query_embedding],
+    n_results=10,
+    include=["documents", "metadatas"]
+)
 
-def rerank_documents(query, documents, tokenizer, model):
-    pairs = [[query, doc] for doc in documents]
-    with torch.no_grad():
-        inputs = tokenizer(
-            pairs,
-            padding=True,
-            truncation=True,
-            return_tensors='pt',
-            max_length=512
-        )
-        if torch.cuda.is_available():
-            inputs = {k: v.cuda() for k, v in inputs.items()}
-        scores = model(**inputs).logits.view(-1).float().cpu().numpy()
-    return scores
+# Prepare documents for re-ranking
+docs = results["documents"][0] if results["documents"] else []
+reranked_docs = rerank_documents(query, docs, top_k=5)
+context = "\n\n".join(reranked_docs)
 
-def get_database_connection():
-    try:
-        client = PersistentClient(path=DB_FOLDER)
-        embedding_func = embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name=EMBEDDING_MODEL,
-            device="cuda" if torch.cuda.is_available() else "cpu",
-            normalize_embeddings=True
-        )
-        collection = client.get_collection(
-            name=COLLECTION_NAME,
-            embedding_function=embedding_func
-        )
-        return collection
-    except Exception as e:
-        print(f"Error connecting to database: {str(e)}")
-        raise
+# Use LLaMA 3 to generate an answer
+answer = run_llama3(query, context)
 
-def query_documents(collection, query_text, tokenizer, model, n_retrieve=3, n_return=1):
-    results = collection.query(
-        query_texts=[query_text],
-        n_results=n_retrieve
-    )
-    documents = results['documents'][0]
-    metadatas = results['metadatas'][0]
-    rerank_scores = rerank_documents(query_text, documents, tokenizer, model)
-    combined = []
-    for i, (doc, meta, chroma_score, rerank_score) in enumerate(zip(
-        documents,
-        metadatas,
-        results['distances'][0],
-        rerank_scores
-    ), 1):
-        combined.append({
-            "content": doc,
-            "metadata": meta,
-            "chroma_score": float(1 - chroma_score),
-            "rerank_score": float(rerank_score)
-        })
-    combined.sort(key=lambda x: x["rerank_score"], reverse=True)
-    return combined[:n_return]
-
-def main():
-    try:
-        print("Loading reranker model...")
-        reranker_tokenizer, reranker_model = load_reranker()
-        collection = get_database_connection()
-        print(f"\nConnected to database with {collection.count()} documents")
-        print(f"Using embedding model: {EMBEDDING_MODEL}")
-        print(f"Using reranker model: {RERANKER_MODEL}")
-        print("Type 'exit' to quit\n")
-        while True:
-            query = input("Enter your search query: ").strip()
-            if query.lower() in ('exit', 'quit'):
-                break
-            if not query:
-                continue
-            results = query_documents(collection, query, reranker_tokenizer, reranker_model)
-            print(f"\nBest matching document for: '{query}'")
-            for result in results:
-                print(f"\n[Final Score: {result['rerank_score']:.4f}]")
-                print(f"[Initial Retrieval Score: {result['chroma_score']:.2f}]")
-                print(f"Source: {result['metadata'].get('source', 'N/A')}")
-                print(f"Content: {result['content']}")
-            print()
-    except Exception as e:
-        print(f"Fatal error: {str(e)}")
-
-if __name__ == "__main__":
-    main()
+print("\n--- Answer ---\n")
+print(answer)
