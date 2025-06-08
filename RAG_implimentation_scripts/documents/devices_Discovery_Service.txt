@@ -1,0 +1,149 @@
+# START OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/48696422/devices+Discovery+Service
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [11-Oct-23](/pages/diffpagesbyversion.action?pageId=48696422&selectedPageVersions=36&selectedPageVersions=37 "Show changes")
+
+  6 minute read
+
+Description
+-----------
+
+The API **devices** returns all the devices defined in Oceans 3.0 that meet a set of filter criteria.
+
+Devices are instruments that have one or more sensors that observe a property or phenomenon with a goal of producing an estimate of the value of a property. Devices are uniquely identified by a device code and can be deployed at multiple locations during their lifespan.
+
+The primary purpose of the devices service is to find devices that have the data you are interested in and use the deviceCode when requesting a data product using the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+
+### URL
+
+```
+https://data.oceannetworks.ca/api/devices
+```
+
+| Method | Description | Example |
+| --- | --- | --- |
+| get | Retrieve a list of all devices | `method=get` |
+
+get
+---
+
+The get method retrieves a list of devices with deviceId, deviceCode, and deviceName.
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| Required |  |  |  |
+| --- | --- | --- | --- |
+| token | string | All Web Services require a token. This can be generated at <https://data.oceannetworks.ca/Profile>. Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| Optional |  |  |  |
+| deviceCode | string | Return a single Device matching a specific **Device Code**.   * Device Code must be valid. * Specific Device Codes can be found by simply running the service without this parameter to get a list of all devices. | deviceCode=FSINXIC1622 |
+| deviceId | integer | Return a single Device matching a specific **Device ID**.   * Device ID must be valid. * Specific Device IDs can be found by simply running the service without this parameter to get a list of all devices. | deviceId=10301 |
+| deviceCategoryCode | string | Return all Devices belonging to a specific **Device Category Code**.   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCategories service](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service). | deviceCategoryCode=CTD |
+| propertyCode | string | Return all Devices that have a sensor for a specific **Property Code**.   * Property Code must be valid. * Specific Property Codes can be obtained using the [properties service](/spaces/O2A/pages/48696426/properties+Discovery+Service). | propertyCode=pressure |
+| deviceName | string | Return all of the Devices where the **Device Name** contains a keyword.   * Not case sensitive. | deviceName=meter |
+| locationCode | string | Return all Devices that are deployed at a specific **Location**.   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](/spaces/O2A/pages/49447546/locations+Discovery+Service). | locationCode=BACAX |
+| includeChildren | boolean | Return all Devices that are deployed at a specific Location and sub-tree Locations.   * Requires a valid **Location Code** * Valid values are either true or false * If not specified, the default value is false | includeChildren=true |
+| dataProductCode | string | Return all Devices that have the ability to return a specific**Data Product Code**.   * Data Product Code must be valid. * Specific Data Product Codes can be obtained from the [dataProducts service](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service). | dataProductCode=jpgfile |
+| dateFrom | datetime | Return all of the Devices that have a **Deployment** **Beginning** on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | datetime | Return all of the Devices that have a **Deployment Ending** before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+
+### Response
+
+Example for request: <https://data.oceannetworks.ca/api/devices?method=get&token=YOUR_TOKEN_HERE&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z>
+
+#### Success (HTTP 200)
+
+Returns a list of devices with values for Device Code, Device Id, Device Name and Device Link URL, ordered by Device Code
+
+|  |
+| --- |
+| `[` `{` `"cvTerm"``: {` `"device"``: [` `{` `"uri"``:``"http://vocab.nerc.ac.uk/collection/L22/current/TOOL0888/"``,` `"vocabulary"``:``"SeaVoX Device Catalogue"` `}` `]` `},` `"dataRating"``: [` `{` `"dateFrom"``:``"2010-05-27T19:27:04.000Z"``,` `"dateTo"``:``null``,` `"samplePeriod"``:10.000000,` `"sampleSize"``:1` `}` `],` `"deviceCode"``:``"BC_POD1_AD2M"``,` `"deviceId"``:11302,`  `"deviceCategoryCode:"ADCP2MHZ",` `"deviceLink"``:``"http://data.oceannetworks.ca/DeviceListing?DeviceId=11302"``,` `"deviceName"``:``"Nortek Aquadopp HR-Profiler 2965"``,` `"hasDeviceData"``:``true` `},` `{` `"cvTerm"``: {` `"device"``:[]` `},` `"dataRating"``: [` `{` `"dateFrom"``:``"2009-06-22T15:37:00.000Z"``,` `"dateTo"``:``null``,` `"samplePeriod"``:1.000000,` `"sampleSize"``:1` `}` `],` `"deviceCode"``:``"BC_POD1_JB"``,` `"deviceId"``:10011,`  `"deviceCategoryCode:"ADCP2MHZ",` `"deviceLink"``:``"http://data.oceannetworks.ca/DeviceListing?DeviceId=10011"``,` `"deviceName"``:``"OceanWorks Junction Box JB-02 (BC Pod #1 Axis)"``,` `"hasDeviceData"``:``true` `},` `{` `"cvTerm"``: {` `"device"``:[]` `},` `"dataRating"``: [` `{` `"dateFrom"``:``"2008-11-01T00:00:00.000Z"``,` `"dateTo"``:``null``,` `"samplePeriod"``:60.000000,` `"sampleSize"``:0` `}` `],` `"deviceCode"``:``"BC_POD1_PTILTVIDEO"``,` `"deviceId"``:11303,`  `"deviceCategoryCode:"VIDEOCAM",` `"deviceLink"``:``"http://data.oceannetworks.ca/DeviceListing?DeviceId=11303"``,` `"deviceName"``:``"ROS 1060 Multi SeaCam  2186-T"``,` `"hasDeviceData"``:``true` `},` `{` `"cvTerm"``: {` `"device"``:[]` `},` `"dataRating"``: [` `{` `"dateFrom"``:``"2011-01-14T00:00:00.000Z"``,` `"dateTo"``:``null``,` `"samplePeriod"``:3600.000000,` `"sampleSize"``:1` `}` `],` `"deviceCode"``:``"BC_POD1_ROTSONAR"``,` `"deviceId"``:11301,`  `"deviceCategoryCode:"IMGROTARYSONAR",` `"deviceLink"``:``"http://data.oceannetworks.ca/DeviceListing?DeviceId=11301"``,` `"deviceName"``:``"Kongsberg Mesotech Rotary Sonar 1071 (0711217)"``,` `"hasDeviceData"``:``true` `},` `{` `"cvTerm"``: {` `"device"``:[]` `},` `"dataRating"``:[],` `"deviceCode"``:``"CAMERALIGHTS58"``,` `"deviceId"``:12129,`  `"deviceCategoryCode:"PTL",` `"deviceLink"``:``"http://data.oceannetworks.ca/DeviceListing?DeviceId=12129"``,` `"deviceName"``:``"ROS Pan/Tilt with Lights 3090"``,` `"hasDeviceData"``:``true` `},` `{` `"cvTerm"``: {` `"device"``:[]` `},` `"dataRating"``:[],` `"deviceCode"``:``"NAXYS_HYD_007"``,`  `"deviceCategoryCode:"HYDROPHONE",` `"deviceId"``:11207,` `"deviceLink"``:``"http://data.oceannetworks.ca/DeviceListing?DeviceId=11207"``,` `"deviceName"``:``"Naxys Hydrophone 02345 (S/N 007)"``,` `"hasDeviceData"``:``true` `}` `]` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| deviceCode | string | Returns the device code | ``` "deviceCode":"BC_POD1_AD2M" ``` |
+| deviceId | integer | Returns the device id | ``` "deviceId":11302 ``` |
+| deviceCategoryCode | string | Returns the device category code | "deviceCategoryCode:"HYDROPHONE" |
+| deviceName | string | Returns the device name | ``` "deviceName":"Nortek Aquadopp HR-Profiler 2965" ``` |
+| deviceLink | url | Returns the a URL link to Device Listing page for the specific device | ``` "deviceLink":"https://data.oceannetworks.ca/DeviceListing?DeviceId=11302" ``` |
+| dataRating | list | Returns a list of data ratings and date from for each device–this list may be empty  Each data rating is made up of:   1. **Key** : "samplePeriod", **Value** : "sample period in seconds" 2. **Key** : "dateFrom", **Value** : "dateFrom of sample period" 3. **Key** : "dateTo", **Value** : "dateTo of sample period" 4. **Key** : "sampleSize", **Value** : "number of readings per sample period" | ``` "dataRating": [     {         "dateFrom":"2009-06-22T15:37:00.000Z",         "dateTo":null,         "samplePeriod":1.000000,         "sampleSize":1     } ] ``` |
+| cvTerm | object | The list of controlled vocabulary terms associated with the device and any device groups the device belongs to.  Each vocabulary term is made up of:   1. **Key** : "vocabulary" **Value** : "title of the vocabulary term belongs to" 2. **Key** : "uri" **Value** : "URL of the vocabulary term" | ``` "cvTerm": {     "device": [         {             "uri":"http://vocab.nerc.ac.uk/collection/L22/current/TOOL0888/",             "vocabulary":"SeaVoX Device Catalogue"         }     ] } ``` |
+| hasDeviceData | boolean | hasDeviceData flag for devices with searchable device and siteDevice | ``` "hasDeviceData":true ``` |
+
+#### Bad Request (HTTP 400)
+
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+| 23 | Invalid Time Range, Start Time is greater that End Time or start time is not provided | Occurs when the dateTo is before the dateFrom date/time.   * The name of both of the datetime filters will be included in the "parameter" property |
+| 25 | Invalid Time Range, Start Time is in the future. | Occurs when the dateFrom is in the future.   * The name of both of the datetime filters will be included in the "parameter" property |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter will be included in the "parameter" property |
+| 128 | Missing parameter | Occurs when multiple parameters are needed, but not all are present. Occurs when dateFrom is used without dateTo or vice versa   * The names of the required filter parameters will be included in the "parameter" property separated by / |
+| 129 | Invalid parameter name | Occurs when a filter parameter is in the query but is not supported.   * The name of the filter parameter will be included in the "parameter" property |
+
+### Examples
+
+* Return a list of **All** of the Devices (no filters)
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/devices?method=get)
+
+* Return the Device with a **Device Code** of 'NORTEKADCP9917'
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceCode=NORTEKADCP9917](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceCode=NORTEKADCP9917)
+
+* Return a list of all of the Devices that have a **Device Name** which contains 'JASCO'
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceName=JASCO](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceName=JASCO)
+
+* Return a list of all of the devices that have been deployed at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)')
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/devices?method=get&locationCode=BACAX)
+
+* Return a list of all of the Devices with a **Device Category** of 'ADCP2MHZ'
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceCategoryCode=ADCP2MHZ)
+
+* Return a list of all of the Devices with a **Property Code** of 'oxygen'
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=oxygen](https://data.oceannetworks.ca/apiproxy/devices?method=get&propertyCode=oxygen)
+
+* Return a list of all of the Devices with a **Device Category** of 'CTD' and **Property Code** of 'pressure'
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=CTD&propertyCode=pressure](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceCategoryCode=CTD&propertyCode=pressure)
+
+* Return a list of all of the Devices that support the **Data Product Code** of 'IBPP' ('Ice Buoy Profile Plots')
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&dataProductCode=IBPP](https://data.oceannetworks.ca/apiproxy/devices?method=get&dataProductCode=IBPP)
+
+* Return a list of all of the Devices that were **Deployed****Between** July 1st 2010 and June 30th 2012
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/devices?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z)
+
+* Return a list of all of the Devices **Deployed****Between** July 1st 2010 and June 30th 2011, at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)')
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/devices?method=get&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z)
+
+* Return a list of all of the Devices which have a **Property Code** of 'seawatertemperature',  at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)'), **Deployed****Between** July 1st 2010 and June 30th 2011
+
+[https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/devices?method=get&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature)
+
+* Return a list of all of the devices that have been deployed at a location with a **Location Code** of 'BACCC' ('Barkely Canyon Coral Cliff') and children locations
+
+<https://data.oceannetworks.ca/api/devices?method=get&token=YOUR_TOKEN_HERE&locationCode=BACCC&includeChildren=true>
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/devicesURL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behavior. In order to use the deployments endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/devices url along with a valid token.
+
+### Code Examples
+
+How-to article
+--------------
+
+Provide step-by-step guidance for completing a task.
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* No labels
+
+# END OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/48696422/devices+Discovery+Service

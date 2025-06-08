@@ -1,0 +1,143 @@
+# START OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/48696428/dataProducts+Discovery+Service
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [05-Oct-23](/pages/diffpagesbyversion.action?pageId=48696428&selectedPageVersions=19&selectedPageVersions=20 "Show changes")
+
+  5 minute read
+
+Description
+-----------
+
+The API **dataProducts** service returns all data products defined in Oceans 3.0 that meet a filter criteria.
+
+[Data Products](https://wiki.oceannetworks.ca/display/DP/Data+Products+Home) are downloadable representations of ONC observational data, provided in formats that can be easily ingested by analytical or visualization software.
+
+The primary purpose of this service is to identify which Data Products and Formats (file extensions) are available for the Locations, Devices, Device Categories or Properties of interest. Use the dataProductCode and extension when requesting a data product via the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+
+### URL
+
+```
+https://data.oceannetworks.ca/api/dataProducts
+```
+
+| Method | Description | Example |
+| --- | --- | --- |
+| get | Retrieve a list Data Products codes | `method=get` |
+
+get
+---
+
+The get method retrieves a list of Data Product codes
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| Required |  |  |  |
+| --- | --- | --- | --- |
+| token | string | ll Web Services require a token. Once logged in at <https://data.oceannetworks.ca/login>, your token can be retrieved or generated at <https://data.oceannetworks.ca/Profile> . Click on the "Web Services" tab, then click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| **Optional** |  |  |  |
+| dataProductCode | string | Return all Data Product Extensions matching a specific **Data Product Code.**   * Data Product Code must be valid. | dataProductCode=annotationfile |
+| extension | string | Return all Data Products that have a specific **File** **Extension.**   * Extension must be valid and match exactly, including case. | extension=csv |
+| dataProductName | string | Return all Data Products where the **Data Product Name** contains a keyword.   * Filter is not case sensitive, treating time, Time and TIME as the same word. * Filter will find partial words. The filter dataProductName=time returns "Time Series Scalar Data", "Time Series Scalar Profile Plot", "Nortek Time Series", "ASL Acoustic Profiler Time Series" and more. | dataProductName=time |
+| locationCode | string | Return all Data Products available for a specific **Location.**   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](/spaces/O2A/pages/49447546/locations+Discovery+Service). | locationCode=BACAX |
+| deviceCategoryCode | string | Return all Data Products available for devices belonging to a specific **Device Category.**   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCateogries service](https://internal.oceannetworks.ca/display/DS/deviceCategories+discovery). | deviceCategoryCode=ADCP2MHZ |
+| deviceCode | string | Return all Data Products available for a specific **Device.**   * Device Code must be valid. * Specific Device Codes can be obtained from the [devices service](/spaces/O2A/pages/48696422/devices+Discovery+Service). | deviceCode=AandOpt0581 |
+| propertyCode | string | Return all Data Products available for a specific **Property.**   * Property Code must be valid. * Specific Property Codes can be obtained using the [properties service](/spaces/O2A/pages/48696426/properties+Discovery+Service). | propertyCode=airdensity |
+
+### Response
+
+Example for request [https://data.oceannetworks.ca/api/dataProducts?method=get&token=](https://data.oceannetworks.ca/api/dataProducts?method=get&token=%5BYOUR_TOKEN_HERE%5D&dataProductCode=HSD&extension=png)[[YOUR\_TOKEN\_HERE]](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&deviceCategoryCode=CTD&locationCode=BACAX)[&dataProductCode=HSD&extension=png](https://data.oceannetworks.ca/api/dataProducts?method=get&token=ae8036b4-4fe4-1acf-48b3-5ad87b282353&dataProductCode=HSD&extension=png)
+
+#### Success (HTTP 200)
+
+Returns a list of data product extensions with values for Data Product Code, Data Product Name, Extension and Help Document URL, ordered alphabetically by Data Product Code
+
+|  |
+| --- |
+| [   {     "dataProductCode": "HSD",     "dataProductName": "Hydrophone Spectral Data",     "dataProductOptions": [       {         "allowableRange": null,         "allowableValues": [           "All",           "LF",           "HF"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Hydrophone+Data+Acquisition+and+Diversion+Mode>"         ],         "option": "dpo\_hydrophoneAcquisitionMode",         "suboptions": null       },       {         "allowableRange": null,         "allowableValues": [           "All",           "H1",           "H2",           "H3"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Hydrophone+Channel>"         ],         "option": "dpo\_hydrophoneChannel",         "suboptions": null       },       {         "allowableRange": null,         "allowableValues": [           "All",           "LPF",           "OD",           "HPF"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Hydrophone+Data+Acquisition+and+Diversion+Mode>"         ],         "option": "dpo\_hydrophoneDataDiversionMode",         "suboptions": null       },       {         "allowableRange": {           "lowerBound": "-160",           "onlyIntegers": false,           "unitOfMeasure": null,           "upperBound": "140"         },         "allowableValues": [           "-1000"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Spectrogram+Plot+Options>"         ],         "option": "dpo\_lowerColourLimit",         "suboptions": null       },       {         "allowableRange": null,         "allowableValues": [           "0",           "1",           "2",           "3",           "4",           "5"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Spectrogram+Plot+Options>"         ],         "option": "dpo\_spectrogramColourPalette",         "suboptions": null       },       {         "allowableRange": null,         "allowableValues": [           "Adjacent",           "Daily",           "Weekly",           "None"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Spectrogram+Concatenation>"         ],         "option": "dpo\_spectrogramConcatenation",         "suboptions": null       },       {         "allowableRange": {           "lowerBound": "100",           "onlyIntegers": true,           "unitOfMeasure": "Hz",           "upperBound": "500000"         },         "allowableValues": [           "-1",           "1000",           "10000"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Spectrogram+Plot+Options>"         ],         "option": "dpo\_spectrogramFrequencyUpperLimit",         "suboptions": null       },       {         "allowableRange": null,         "allowableValues": [           "WAVFLAC",           "FFT",           "MIX"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Spectrogram+Source>"         ],         "option": "dpo\_spectrogramSource",         "suboptions": null       },       {         "allowableRange": {           "lowerBound": "-160",           "onlyIntegers": false,           "unitOfMeasure": null,           "upperBound": "140"         },         "allowableValues": [           "-1000"         ],         "documentation": [           "<https://wiki.oceannetworks.ca/display/DP/Spectrogram+Plot+Options>"         ],         "option": "dpo\_upperColourLimit",         "suboptions": null       }     ],     "extension": "png",     "hasDeviceData": true,     "hasPropertyData": false,     "helpDocument": "<https://wiki.oceannetworks.ca/display/DP/45>"   } ] |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| dataProductCode | string | Returns the data product code. | ``` "dataProductCode":"HSD" ``` |
+| ``` dataProductName ``` | string | Returns the name of the data product. | ``` "dataProductName":"Hydrophone Spectral Data" ``` |
+| ``` extension ``` | string | Returns the file extension for the data product. | ``` "extension":"png" ``` |
+| hasDeviceData | boolean | Returns whether at least one device and/or sensor with this data product is NEPTUNE searchable | "hasDeviceData":true |
+| hasPropertyData | boolean | Returns whether at least one sensor with this data product is a NEPTUNE-searchable primary sensor | "hasPropertyData":false |
+| ``` helpDocument ``` | string | Returns a Link URL to the Oceans 3.0 Help documentation for the specific data product. | ``` "helpDocument":"https://wiki.oceannetworks.ca/display/DP/45" ``` |
+| dataProductOptions | array of objects | Array of all the data product options that can be applied to the specific data product |  |
+| dataProductOptions.AllowableRange | object | object describing the range of values for the specific data product option |  |
+| dataProductOptions.AllowableRange.lowerBound | String | The lower bound for the data product option | "lowerBound": "100" |
+| dataProductOptions.AllowableRange.onlyIntegers | boolean | false if the number can be floating point | "onlyIntegers": true |
+| dataProductOptions.AllowableRange.unitOfMeasure | String | The unit of measure for the data product option | "unitOfMeasure": "Hz" |
+| dataProductOptions.AllowableRange.upperBound | String | The upper bound for the data product option | "upperBound": "500000" |
+| dataProductOptions.allowableValues | Array of strings | The allowable values for the dataproduct option. If there is an allowable range these values are in addition to the range. | "allowableValues": ["All","LPF","OD","HPF"] |
+| dataProductOptions.documentation | Array of strings | List of all the documentation for a data product option | "documentation": ["<https://wiki.oceannetworks.ca/display/DP/Hydrophone+Data+Acquisition+and+Diversion+Mode>"] |
+| dataProductOptions.option | String | name of the data product option | "option": "dpo\_hydrophoneDataDiversionMode" |
+| dataProductOptions.suboptions | Array of DataProductOptions | some data product options have children that become required when  you select the parent, for example when you select the "resample" option you must specific the type of resample: avg, minmax, minmaxavg. | suboption\_example  "option": "dpo\_resample", "suboptions": [{         "allowableRange": null,         "allowableValues": [],         "documentation": [             "<https://wiki.oceannetworks.ca/display/DP/Resampling+(Data+Files)>"         ],         "option": "dpo\_none",         "suboptions": null     },     {         "allowableRange": null,         "allowableValues": [             "3600",             "600",             "86400",             "900",             "60"         ],         "documentation": [             "<https://wiki.oceannetworks.ca/display/DP/Resampling+(Data+Files)>"         ],         "option": "dpo\_average",         "suboptions": null     }, |
+
+#### Bad Request (HTTP 400)
+
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter is included in the "parameter" property. |
+| 129 | Invalid parameter name | Occurs when a filter parameter is in the query but is not supported.   * The name of the filter parameter is included in the "parameter" property. |
+
+### URL Examples
+
+* Return a list of **All** Data Product Extensions (no filters)
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get)
+
+* Return a list of all Data Product Extensions available for **Data Product Code** 'TSSD' (Time Series Scalar Data)
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&dataProductCode=TSSD](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&dataProductCode=TSSD)
+
+* Return a list of all Data Products Extensions available for the **Extension** 'pdf'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&extension=pdf](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&extension=pdf)
+
+* Return a list of all Data Products Extensions available for **Data Product Code** 'TSSD' (Time Series Scalar Data) and **Extension** of 'csv'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&dataProductCode=TSSD&extension=csv](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&dataProductCode=TSSD&extension=csv)
+
+* Return a list of all Data Product Extension with a **Data Product Name** containing 'scalar'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&dataProductName=scalar](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&dataProductName=scalar)
+
+* Return a list of all Data Product Extensions available for instruments at the location with **Location Code** 'BACAX'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&locationCode=BACAX)
+
+* Return a list of all Data Products with the **Extension** 'mat' that are available for instruments at the location with **Location Code** 'BACAX'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&extension=mat&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&extension=mat&locationCode=BACAX)
+
+* Return a list of all Data Product Extensions available for the device with **Device Code** 'NORTEKAQDPRO8398'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&deviceCode=NORTEKAQDPRO8398)
+
+* Return a list of all Data Product Extensions available for instruments with the **Device Category** 'ADCP2MHZ'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&deviceCategoryCode=ADCP2MHZ)
+
+* Return a list of all Data Products Extensions available for the **Property Code** 'seawatertemperature'
+
+[https://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&propertyCode=seawatertemperature)
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/dataProducts URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the dataProducts endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/dataProducts url along with a valid token.
+
+### Code Examples
+
+How-to article
+--------------
+
+Provide step-by-step guidance for completing a task.
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* No labels
+
+# END OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/48696428/dataProducts+Discovery+Service

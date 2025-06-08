@@ -1,0 +1,117 @@
+# START OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/48696426/properties+Discovery+Service
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [05-Oct-23](/pages/diffpagesbyversion.action?pageId=48696426&selectedPageVersions=21&selectedPageVersions=22 "Show changes")
+
+  4 minute read
+
+Description
+-----------
+
+The API **properties** service returns all properties defined in Oceans 3.0 that meet a filter criteria.
+
+Properties are observable phenomena (aka, variables) and are the common names given to sensor types (i.e., oxygen, pressure, temperature, etc)
+
+The primary purpose of this service, is to find the available properties of the data you want to access; the service provides the propertyCode that you can use to request a data product via the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+
+### URL
+
+```
+https://data.oceannetworks.ca/api/properties
+```
+
+| Method | Description | Example |
+| --- | --- | --- |
+| get | Retrieve a list Property codes and descriptions | `method=get` |
+
+get
+---
+
+The get method retrieves a list of property codes and descriptions
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| Required |  |  |  |
+| --- | --- | --- | --- |
+| token | string | All Web Services require a token. Once logged in at <https://data.oceannetworks.ca/login>, your token can be retrieved or generated at <https://data.oceannetworks.ca/Profile> . Click on the "Web Services" tab, then click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| Optional |  |  |  |
+| propertyCode | string | Return a single Property matching a specific **Property Code**   * Property Code must be valid. * Run the service without this parameter to get a list of all devices. | propertyCode=beamposition |
+| propertyName | string | Return all Properties where the **Property Name** contains a keyword   * Filter is not case sensitive, treating temp, Temp and TEMP as the same word. * Filter will find partial words. The filter propertyName=temp returns "Air Temperature", "Differential Temperature", "Internal Temperature", "Sea Ice Temperature", "Sea Water Temperature" and more. | propertyName=Temp |
+| description | string | Return all Properties where **Description** contains a keyword   * Filter is not case sensitive and will find partial words. (See above) | description=water |
+| locationCode | string | Return all Properties available at a specific **Location**   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](/spaces/O2A/pages/49447546/locations+Discovery+Service). | locationCode=BACAX |
+| deviceCategoryCode | string | Return all Properties that have devices belonging to a specific **Device Category**   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCateogries service](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service) | deviceCategoryCode=CTD |
+| deviceCode | string | Return all Properties associated with or measured by a specific **Device**.   * Device Code must be valid. * Specific Device Codes can be obtained from the [devices service](/spaces/O2A/pages/48696422/devices+Discovery+Service) | deviceCode=AandOpt0581 |
+
+### Response
+
+Example for request: [https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/properties?method=get&propertyCode=seawatertemperature)
+
+#### Success (HTTP 200)
+
+Returns a list of properties with values for Description, Property Code, Property Name, Units of Measure (UOM) and controlled vocabulary terms, ordered alphabetically by Property Code
+
+|  |
+| --- |
+| `[`  `{`  `"description"``:``"Time: Gregorian days since 19700101T000000Z"``,`  `"propertyCode"``:``"gregoriantime"``,`  `"propertyName"``:``"Gregorian Time"``,`  `"uom"``:``"Gregorian days since 19700101T000000Z"`  `},`  `{`  `"description"``:``"Magnetic Heading"``,`  `"propertyCode"``:``"magneticheading"``,`  `"propertyName"``:``"Magnetic Heading"``,`  `"uom"``:``"deg"``,`  `"cvTerm"``: [{``"uom"``: [{``"vocabulary"``:``"BODC data storage units"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/P06/current/UAAA/"`   `}]  }]`  `},`  `{`  `"description"``:``"Pitch"``,`  `"propertyCode"``:``"pitch"``,`  `"propertyName"``:``"Pitch"``,`  `"uom"``:``"deg"``,`  `"cvTerm"``: [{``"uom"``: [{``"vocabulary"``:``"BODC data storage units"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/P06/current/UAAA/"`   `}]  }]`  `},`  `{`  `"description"``:``"Pressure"``,`  `"propertyCode"``:``"pressure"``,`  `"propertyName"``:``"Pressure"``,`  `"uom"``:``"decibar"``,`  `"cvTerm"``: [{``"uom"``: [{``"vocabulary"``:``"BODC data storage units"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/P06/current/UPDB/"`   `}]  }]`  `},`  `{`  `"description"``:``"Roll"``,`  `"propertyCode"``:``"roll"``,`  `"propertyName"``:``"Roll"``,`  `"uom"``:``"deg"``},`  `{`  `"description"``:``"Temperature: sea water"``,`  `"propertyCode"``:``"seawatertemperature"``,`  `"propertyName"``:``"Sea Water Temperature"``,`  `"uom"``:``"C"`  `},`  `{`  `"description"``:``"Sound Speed: sound velocity sensor"``,`  `"propertyCode"``:``"soundspeed"``,`  `"propertyName"``:``"Sound Speed"``,`  `"uom"``:``"m/s"`  `},`  `{`  `"description"``:``"Voltage: voltage sensor"``,`  `"propertyCode"``:``"voltage"``,`  `"propertyName"``:``"Voltage"``,`  `"uom"``:``"V"``,`  `"cvTerm"``: [{``"uom"``: [{``"vocabulary"``:``"BODC data storage units"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/P06/current/UVLT/"`   `}]  }]`  `}`  `]` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| description | string | Returns a description of the property. | ``` "description":"Pressure" ``` |
+| hasDeviceData | string | Returns whether, among all properties that fit the query, any of them have a NEPTUNE-searchable sensor, device, and site | "hasDeviceData":"true" |
+| hasPropertyData | string | Returns whether, among all properties that fit the query, any of them have a NEPTUNE-searchable primary sensor and device | "hasPropertyData":"false" |
+| propertyCode | string | Returns the property code. | ``` "propertyCode":"pressure" ``` |
+| propertyName | string | Returns the property name. | ``` "propertyName":"Pressure" ``` |
+| uom | string | Returns the Unit Of Measure that the property measurements are in. | ``` "uom":"decibar" ``` |
+| cvTerm | List | Returns a list of controlled vocabulary terms associated with the Property and the Unit of Measure associated with the Property if one exists. The controlled vocabulary terms associated with the Property are included in the "property" list and the terms associated with the Unit of Measure are included in the "uom" list.  Each vocabulary term is composed of:   1. **Key** : "vocabulary" **Value** : "title of the vocabulary term belongs to". 2. **Key** : "uri" **Value** : "URL of the vocabulary term". | "cvTerm": [{"property" : [{ `"vocabulary"``:``"NERC-??"``,"uri": "http://vocab/..." }]`,  "uom": [{ "vocabulary" : "BODC data storage units", "uri" : "<http://vocab.nerc.ac.uk/collection/P06/current/UVLT/> " }] }] |
+
+#### Bad Request (HTTP 400)
+
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter is included in the "parameter" property |
+| 129 | Invalid parameter name | Occurs when a filter parameter is in the query but is not supported.   * The name of the filter parameter is included in the "parameter" property |
+
+### URL Examples
+
+* Return a list of **All** Properties (no filters)
+
+[https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]](https://data.oceannetworks.ca/apiproxy/properties?method=get)
+
+* Return the Property with the **Property Code** 'seawatertemperature'
+
+[https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/properties?method=get&propertyCode=seawatertemperature)
+
+* Return a list of all Properties with a **Name** containing 'pressure'
+
+[https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]&propertyName=pressure](https://data.oceannetworks.ca/apiproxy/properties?method=get&propertyName=pressure)
+
+* Return a list of all Properties available at a location with the **Location Code** 'BACAX'
+
+[https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/properties?method=get&locationCode=BACAX)
+
+* Return a list of all Properties available for a device with the **Device Code** 'NORTEKAQDPRO8398'
+
+[https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/properties?method=get&deviceCode=NORTEKAQDPRO8398)
+
+* Return a list of all Properties that available for instruments with the **Device Category** 'ADCP2MHZ'
+
+[https://data.oceannetworks.ca/api/properties?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/properties?method=get&deviceCategoryCode=ADCP2MHZ)
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/properties URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the properties endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/properties url along with a valid token.
+
+### Code Examples
+
+How-to article
+--------------
+
+Provide step-by-step guidance for completing a task.
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* No labels
+
+# END OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/48696426/properties+Discovery+Service

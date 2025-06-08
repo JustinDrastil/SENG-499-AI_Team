@@ -25,11 +25,14 @@ def load_and_split_documents(doc_folder):
             chunks = splitter.split_documents(docs)
 
             for idx, chunk in enumerate(chunks):
+                #current documents not unique, fudge for testing
+                hash_input = f"{filename}-{idx}-{chunk.page_content}"
+                #hash_input = chunk.page_content
                 chunk_data.append({
                     "text": chunk.page_content,
                     "source": filename,
                     "chunk_id": idx,
-                    "hash": compute_hash(chunk.page_content)
+                    "hash": compute_hash(hash_input) 
                 })
 
             print(f"[Embedding] {filename}: {len(chunks)} chunks.")

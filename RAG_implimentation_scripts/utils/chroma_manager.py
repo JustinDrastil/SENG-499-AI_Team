@@ -9,8 +9,17 @@ def get_collection(name="rag_docs"):
     return client.get_or_create_collection(name=name)
 
 def add_documents(collection, docs, metadatas, ids):
-    embeddings = embedding_model.encode(docs, convert_to_numpy=True).tolist()
+    total = len(docs)
+    embeddings = []
+    print("[Add] [Process Beginning]")
+    for i, doc in enumerate(docs):
+        emb = embedding_model.encode(doc, convert_to_numpy=True).tolist()
+        embeddings.append(emb)
+        if ((i + 1) % max(1, total // 10)) == 0 or ((i + 1) == total):
+            percent = int(((i+1) / total) * 100)
+            print(f"[Add] Encoding progress: {percent}% ({i + 1}/{total})")
     collection.add(documents=docs, embeddings=embeddings, metadatas=metadatas, ids=ids)
+    print("[Add] [Process Completed] All documents added to collection.")
 
 def delete_documents(collection, ids):
     for id in ids:

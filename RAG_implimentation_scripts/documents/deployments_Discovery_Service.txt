@@ -1,0 +1,134 @@
+# START OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/49449052/deployments+Discovery+Service
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [11-Oct-23](/pages/diffpagesbyversion.action?pageId=49449052&selectedPageVersions=18&selectedPageVersions=19 "Show changes")
+
+  5 minute read
+
+Description
+-----------
+
+The **deployments**discovery web service returns all deployments defined in Oceans 3.0 which meet the filter criteria, where a deployment is the installation of a device at a location. The deployments service assists in knowing when and where specific types of data are available.
+
+The primary purpose for the deployments service is to find the dates and locations of deployments and use the dateFrom and dateTo datetimes when requesting a data product using the [dataProductDelivery](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service)web service.
+
+URL
+---
+
+```
+https://data.oceannetworks.ca/api/deployments
+```
+
+| get | Retrieve a flat list deployments metadata. | `method=get` |
+| Method | Description | Example |
+| --- | --- | --- |
+
+get
+---
+
+The get method retrieves a list of deployments including location code, device code, deployment begin and end dates and spatial information.
+
+### Parameters
+
+| Required |  |  |  |
+| --- | --- | --- | --- |
+| token | string | All Web Services require a token. Once logged in at <https://data.oceannetworks.ca/login>, your token can be retrieved or generated at <https://data.oceannetworks.ca/Profile>. Click on the "Web Services" tab, then click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| Optional |  |  |  |
+| locationCode | string | Return all Deployments at a specific **Location Code**.   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](https://wiki.oceannetworks.ca/display/O2A/locations+Discovery+Service). | locationCode=BACAX |
+| deviceCategoryCode | string | Return all Deployments that have devices belonging to a specific **Device Category**.   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCategories service](https://wiki.oceannetworks.ca/display/O2A/deviceCategories+Discovery+Service). | deviceCategoryCode=CTD |
+| deviceCode | string | Return all Deployments of a specific **Device**.   * Device Code must be valid. * Specific Device Codes can be obtained from the [devices service](https://wiki.oceannetworks.ca/display/O2A/devices+Discovery+Service). | deviceCode=AandOpt0581 |
+| propertyCode | string | Return all Deployments that have devices with a sensor for a specific **Property.**   * Property Code must be valid. * Specific Property Codes can be obtained using the [properties service](https://wiki.oceannetworks.ca/display/O2A/properties+Discovery+Service). | propertyCode=differentialtemperature |
+| dateFrom | datetime | Return all of the Deployments that have a **Deployment Beginning** on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | datetime | Return all of the Deployments that have a **Deployment Ending** before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+
+### Response
+
+Example for request: [https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&locationCode=BACAX&deviceCategoryCode=CTD](https://data.oceannetworks.ca/apiproxy/deployments?method=get&locationCode=BACAX&deviceCategoryCode=CTD)
+
+#### Success (HTTP 200)
+
+Returns a list of locations with values for Location Code, Location Name, Description, Device Data indicator, Property Data indicator, and Data Search Link URL, ordered by Location Code
+
+|  |
+| --- |
+| [ { "begin": "2014-05-09T15:50:42.000Z", "depth": 982, "deviceCode": "SBECTD16p6002", "deviceCategoryCode": "CTD", "end": "2015-09-17T12:59:52.000Z", "hasDeviceData": true, "heading": null, "lat": 48.31658, "locationCode": "BACAX", "lon": -126.0508, "pitch": null, "roll": null }, { "begin": "2013-09-10T16:08:33.000Z", "depth": 985, "deviceCode": "SBECTD16p7031", "deviceCategoryCode": "CTD", "end": "2014-05-05T18:08:36.000Z", "hasDeviceData": true, "heading": null, "lat": 48.316517, "locationCode": "BACAX", "lon": -126.05022, "pitch": null, "roll": null }, { "begin": "2016-06-14T08:58:41.000Z", "depth": 982, "deviceCode": "SBECTD19p6813", "end": null, "deviceCategoryCode": "CTD", "hasDeviceData": true, "heading": null, "lat": 48.31658, "locationCode": "BACAX", "lon": -126.0508, "pitch": null, "roll": null } ] |
+
+| locationCode | string | The locationCode for the deployment location. | ``` "locationCode":"BACAX" ``` |
+| deviceCode | string | The deviceCode for a deployed device. | ``` "deviceCode":"SBECTD19p6813" ``` |
+| deviceCategoryCode | String | the deviceCategoryCode for a deployed device. | "deviceCategoryCode": "CTD" |
+| begin | datetime | The beginning datetime of the deployment.  Date Time format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html) | ``` "begin":2010-07-27T00:00:00.000Z ``` |
+| end | datetime | The ending datetime of the deployment.   * If the deployment is current, the value is null.   Date Time format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html) | ``` "end":2016-08-01T00:00:00.000Z ``` |
+| hasDeviceData | string | Indicates that data products can be requested using a device category code for the deployment. | ``` "hasDeviceData":"true ``` |
+| depth | double | The depth of the device deployment. | `"depth"``:982` |
+| lat | double | The latitude of the device deployment. | `"lat"``:``48.31658` |
+| lon | double | The longitude of the device deployment. | `"lon"``:-``126.0508` |
+| heading | double | The heading of the device deployment. | `"heading"``:244` |
+| pitch | double | The pitch of the device deployment. | `"pitch"``:null` |
+| roll | double | The pitch of the device deployment. | `"roll"``:null` |
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+
+#### Bad Request (HTTP 400)
+
+| 23 | Invalid Time Range, Start Time is greater than End Time or start time is not provided | Occurs when the end is before the begin date/time.   * The name of both of the datetime filters are included in the parameter property. |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter is included in the parameter property. |
+| 128 | Missing parameter | Occurs when multiple parameters are needed, but not all are present. Occurs when deploymentBegin is used without deploymentEnd.   * The names of the required filter parameters, separated by /, are included in the parameter property. |
+| 129 | Invalid parameter name | Occurs when a filter parameter is used, but is not supported. |
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+
+### URL Examples
+
+* Return a list of **All** Deployments (no filters)
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]](https://data.oceannetworks.ca/apiproxy/deployments?method=get)
+
+* Return a list of all Deployments with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)')
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/deployments?method=get&locationCode=BACAX)
+
+* Return a list of all Deployments that have devices with the **Device Category** 'ADCP2MHZ'
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/deployments?method=get&deviceCategoryCode=ADCP2MHZ)
+
+* Return a list of all Deployments with the **Property Code** 'differentialtemperature'
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&propertyCode=differentialtemperature](https://data.oceannetworks.ca/apiproxy/deployments?method=get&propertyCode=differentialtemperature)
+
+* Return a list of all Deployments with the **Device Category** 'CTD' and **Property Code** 'pressure'
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCategoryCode=CTD&propertyCode=pressure](https://data.oceannetworks.ca/apiproxy/deployments?method=get&deviceCategoryCode=CTD&propertyCode=pressure)
+
+* Return a list of all Deployments of a device with the **Device Code** 'NORTEKAQDPRO8398'
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/deployments?method=get&deviceCode=NORTEKAQDPRO8398)
+
+* Return a list of all of the Deployments **Between** 1 July 2010 and 30 June 2012
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/deployments?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z)
+
+* Return a list of all Deployments **Between** 1 July 2010 and 30 June 2011 with the sensor **Property Code** 'seawatertemperature'
+
+[https://data.oceannetworks.ca/api/deployments?method=get&token=[YOUR\_TOKEN\_HERE]&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/deployments?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature)
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/deployments URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the deployments endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/deployments url along with a valid token.
+
+### Code Examples
+
+| Title | Creator | Modified |
+| --- | --- | --- |
+| [Client Libraries](/spaces/O2A/pages/75170291/Client+Libraries) | [Dany A Cabrera](/display/~dcabrera%40uvic.ca) | 27-Feb-25 |
+| [Ouranos Use Case](/spaces/O2A/pages/55155975/Ouranos+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Bird Studies Canada Use Case](/spaces/O2A/pages/55155972/Bird+Studies+Canada+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Internal Use Case](/spaces/O2A/pages/49448569/Internal+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+| [Research Use Case](/spaces/O2A/pages/49447595/Research+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* No labels
+
+# END OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/49449052/deployments+Discovery+Service

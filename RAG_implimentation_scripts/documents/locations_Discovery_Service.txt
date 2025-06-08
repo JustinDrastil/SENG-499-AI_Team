@@ -1,0 +1,217 @@
+# START OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/49447546/locations+Discovery+Service
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [22-Feb-24](/pages/diffpagesbyversion.action?pageId=49447546&selectedPageVersions=42&selectedPageVersions=43 "Show changes")
+
+  9 minute read
+
+Description
+-----------
+
+The API **locations** discovery web service returns all the locations defined in Oceans 3.0 that meet a set of filter criteria.
+
+A location is the parent of an Oceans 3.0 Tree Node from which you can get data. In the Oceans 3.0 Data Search GUI, a location is a Tree Node that contains device categories (Instruments by Location) or properties (Variables by Location) that can be selected to download data. From the Oceans 3.0 perspective, a location is a Search Tree Node that has one or more site devices and/or has one or more primary sensors. If there are multiple instruments of the same device category at a location, child locations or pseudo-nodes will exist and can be pulled from any one of them. Device Categories can be either at the location or at the child-level, whereas Properties (variables) can only be at the location level, due to the "Primary Sensor" concept, which stitches together data from multiple sensors over time at a location.
+
+The primary purpose for the locations service is to find locations that have the data you are interested in and use the locationCode when requesting a data product using the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+
+### URL
+
+```
+https://data.oceannetworks.ca/api/locations
+```
+
+| Method | Description | Example |
+| --- | --- | --- |
+| get | Retrieve a flat list of locations metadata | `method=get` |
+| getTree | Retrieve a Search Tree Node hierarchy of locations | ``` method=getTree ``` |
+
+get
+---
+
+The get method retrieves a list of location names and location codes.
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| Required |  |  |  |
+| --- | --- | --- | --- |
+| token | string | All Web Services require a token. This can be generated at <https://data.oceannetworks.ca/Profile>. Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| Optional |  |  |  |
+| locationCode | string | Return a single Location matching a specific **Location Code**.   * Location Code must be valid. * Specific Location Codes can be found by simply running the service without this parameter to get a list of all locations. | locationCode=BACAX |
+| deviceCategoryCode | string | Return all Locations that have devices with a specific **Device Category Code**.   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCategories service](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service). | deviceCategoryCode=CTD |
+| propertyCode | string | Return all Locations that have devices with a sensor with a specific **Property Code**.   * Property Code must be valid. * Specific Property Codes can be obtained using the [properties service](/spaces/O2A/pages/48696426/properties+Discovery+Service). | propertyCode=differentialtemperature |
+| dataProductCode | string | Return all of the Locations that support a specific **Data Product Code**.   * Data Product Code must be valid. * Specific Data Product Codes can be obtained from the [dataProducts service](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service). | dataProductCode=CPID |
+| dateFrom | datetime | Return all of the Locations that have a **Deployment Beginning** on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | datetime | Return all of the Locations that have a **Deployment Ending** before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| locationName | string | Return all of the Locations where the **Location Name** contains a keyword.   * Not case sensitive. | locationName=mill |
+| deviceCode | string | Return all of the Locations where a specific device with that **Device Code** has been deployed.   * Location Code must be valid. * Specific Device Codes can be obtained from the [devices service](/spaces/O2A/pages/48696422/devices+Discovery+Service). | deviceCode=AandOpt0581 |
+| includeChildren | bool | Return all Devices that are deployed at a specific Location and sub-tree Locations.   * Requires a valid **Location Code** * Valid values are either true or false * If not specified, the default value is false | includeChildren=true |
+
+### Response
+
+Example for request: <https://data.oceannetworks.ca/api/locations?method=get&token=YOUR_TOKEN_HERE&locationCode=BACAX>
+
+#### Success (HTTP 200)
+
+Returns a list of locations with values for Location Code, Location Name, Description, Device Data indicator, Property Data indicator, bounding box, and Data Search Link URL, ordered by Location Code
+
+|  |
+| --- |
+| `[` `{` `"deployments"``:51,` `"locationName"``:``"Axis "``,` `"depth"``:984.164314,` `"bbox"``: {` `"maxDepth"``:987.0,` `"maxLat"``:48.316839,` `"maxLon"``:-126.050123,` `"minDepth"``:981.0,` `"minLat"``:48.316517,` `"minLon"``:-126.050872` `},` `"description"``:``"Depth: 985 m Latitude: 48.3167 Longitude: -126.0501 Type: Stationary platform Description: Canyon axis: benthic processes, biodiversity, sediment dynamics."``,` `"hasDeviceData"``:``"true"``,` `"lon"``:-126.050355,` `"locationCode"``:``"BACAX"``,` `"hasPropertyData"``:``"false"``,` `"lat"``:48.316685,` `"dataSearchURL"``:``"http://data.oceannetworks.ca/DataSearch?location=BACAX"` `}` `]` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| locationName | string | The name of the location | ``` "locationName":"Axis (POD 1)" ``` |
+| locationCode | string | The locationCode for that location. | ``` "locationCode":"BACAX" ``` |
+| description | string | The description of the location | ``` "description":"Depth: 985 m Latitude: 48.3167 Longitude: -126.0501 Type: Stationary platform Description: Canyon axis: benthic processes, biodiversity, sediment dynamics." ``` |
+| hasDeviceData | string | Indicates that data products can be requested using a device category code for the location | ``` "hasDeviceData":"true" ``` |
+| hasPropertyData | string | Indicates that data products can be requested using a property code for the location | ``` "hasPropertyData":"true" ``` |
+| dataSearchURL | string | The location specific Data Search web page URL | ``` "dataSearchURL":"https://data.oceannetworks.ca/DataSearch?location=BACAX" ``` |
+| deployments | integer | Number of deployments | `"deployments"` `:``10` |
+| depth | double | Average depth of deployments (in meters below the water surface) | `"depth"` `:`984.164314 |
+| lat | double | Average latitude of deployments (in degrees north of the equator) | `"lat"` `:``48.47672` |
+| lon | double | Average longitude of deployments (in degrees east of the prime meridian) | `"lon"` `: -``123.294902` |
+| bbox | object | Bounding box of site devices at location for device that pass filters | `"bbox"` `: {` `"maxDepth"` `:``100``,` `"maxLat"` `:``48.476740``,` `"maxLon"` `: -``123.294904``,` `"minDepth"` `:``50``,` `"minLat"` `:``48.47670``,` `"minLon"` `: -``123.294900` `}` |
+| * + bbox.maxDepth | double | Maximum depth in meters below water surface (negative numbers denote above) | ``` "maxDepth":987.0 ``` |
+| * + bbox.maxLat | double | Maximum latitude in degrees north of the equator (negative numbers denote south) | ``` "maxLat":48.316839 ``` |
+| * + bbox.maxLon | double | Maximum longitude in degrees east of the prime meridian (negative numbers denote west) | ``` "maxLon":-126.050123 ``` |
+| * + bbox.minDepth | double | Minimum depth in meters below water surface (negative numbers denote above) | ``` "minDepth":981.0 ``` |
+| * + bbox.minLat | double | Minimum latitude in degrees north of the equator (negative numbers denote south) | ``` "minLat":48.316517 ``` |
+| * + bbox.minLon | double | Minimum longitude in degrees east of the prime meridian (negative numbers denote west) | ``` "minLon":-126.050872 ``` |
+
+#### Bad Request (HTTP 400)
+
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+| 23 | Invalid Time Range, Start Time is greater that End Time or start time is not provided | Occurs when the dateTo is before the dateFrom date/time.   * The name of both of the datetime filters will be included in the "parameter" property |
+| 25 | Invalid Time Range, Start Time is in the future. | Occurs when the dateFrom is in the future.   * The name of both of the datetime filters will be included in the "parameter" property |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter will be included in the "parameter" property |
+| 128 | Missing parameter | Occurs when multiple parameters are needed, but not all are present. Occurs when dateFrom is used without dateTo or vice versa   * The names of the required filter parameters will be included in the "parameter" property separated by / |
+| 129 | Invalid parameter name | Occurs when a filter parameter is in the query but is not supported.   * The name of the filter parameter will be included in the "parameter" property |
+
+getTree
+-------
+
+The getTree method returns a hierarchical representation of the ONC Search Tree Nodes. The Search Tree is used in Oceans 3.0 to organize Instruments and Variables by Location so that users can easily drill down by place name or mobile platform name to find the instruments or properties they are interested in.
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| Required |  |  |  |
+| --- | --- | --- | --- |
+| token | string | All Web Services require a token. This can be generated at <https://data.oceannetworks.ca/Profile>. Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| Optional |  |  |  |
+| locationCode | string | Return a single Location matching a specific **Location Code**.   * Location Code must be valid. * Specific Location Codes can be found by simply running the service without this parameter to get a list of all locations. | locationCode=BACAX |
+| deviceCategoryCode | string | Return all Locations that have devices with a specific **Device Category Code**.   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCategories service](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service). | deviceCategoryCode=CTD |
+| propertyCode | string | Return all Locations that have devices with a sensor with a specific **Property Code**.   * Property Code must be valid. * Specific Property Codes can be obtained using the [properties service](/spaces/O2A/pages/48696426/properties+Discovery+Service). | propertyCode=differentialtemperature |
+| dataProductCode | string | Return all of the Locations that support a specific **Data Product Code**.   * Data Product Code must be valid. * Specific Data Product Codes can be obtained from the [dataProducts service](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service). | dataProductCode=CPID |
+| dateFrom | datetime | Return all of the Locations that have a **Deployment Beginning** on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | datetime | Return all of the Locations that have a **Deployment Ending** before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| locationName | string | Return all of the Locations where the **Location Name** contains a keyword.   * Not case sensitive. | locationName=mill |
+| deviceCode | string | Return all of the Locations where a specific device with that **Device Code** has been deployed.   * Location Code must be valid. * Specific Device Codes can be obtained from the [devices service](/spaces/O2A/pages/48696422/devices+Discovery+Service). | deviceCode=AandOpt0581 |
+
+### Response
+
+Response for request <https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR_TOKEN_HERE&locationCode=BACCC>
+
+#### Success (HTTP 200)
+
+|  |
+| --- |
+| `[` `{` `"locationName"``:``"Coral Cliff"``,` `"children"``: [` `{` `"locationName"``:``"ADCP 2 MHz East"``,` `"children"``:``null``,` `"description"``:``"Depth: 824 m Latitude: 48.3098 Longitude: -126.0621 Type: Autonomous platform Description: Boundary layer flow near steep bathymetry, interaction of currents and deep-sea corals."``,` `"hasDeviceData"``:``"true"``,` `"locationCode"``:``"BACCC.A1"``,` `"hasPropertyData"``:``"false"` `},` `{` `"locationName"``:``"ADCP 2 MHz West"``,` `"children"``:``null``,` `"description"``:``"Depth: 807 m Latitude: 48.3104 Longitude: -126.0623 Type: Autonomous platform Description: Boundary layer flow near steep bathymetry, interaction of currents and deep-sea corals."``,` `"hasDeviceData"``:``"true"``,` `"locationCode"``:``"BACCC.A2"``,` `"hasPropertyData"``:``"false"` `}` `],` `"description"``:``"Depth: 816 m Latitude:48.3101 Longitude: -126.0622 Type: Autonomous platform Description: Boundary layer flow near steep bathymetry, interaction of currents and deep-sea corals."``,` `"hasDeviceData"``:``"false"``,` `"locationCode"``:``"BACCC"``,` `"hasPropertyData"``:``"true"` `}` `]` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| locationName | string | The name of the location | ``` "locationName":"Axis (POD 1)" ``` |
+| locationCode | string | The locationCode for that location. | ``` "locationCode":"BACAX" ``` |
+| children | list | A list of all child nodes for the location. Each child node contains all of the available parameters | ``` "children":[{...},{...},...] ``` |
+| description | string | The description of the location | ``` "description":"Depth: 985 m Latitude: 48.3167 Longitude: -126.0501 Type: Stationary platform Description: Canyon axis: benthic processes, biodiversity, sediment dynamics." ``` |
+| hasDeviceData | string | Indicates that data products can be requested using a device category code for the location | ``` "hasDeviceData":"true" ``` |
+| hasPropertyData | string | Indicates that data products can be requested using a property code for the location | ``` "hasPropertyData":"true" ``` |
+
+#### Bad Request (HTTP 400)
+
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter will be included in the "parameter" property |
+| 129 | Invalid parameter name | Occurs when a filter parameter is in the query but is not supported.   * The name of the filter parameter will be included in the "parameter" property |
+
+### Examples
+
+* Return a list of **All** of the Locations (no filters)
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/locations?method=get)
+
+* Return the Location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)')
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/locations?method=get&locationCode=BACAX)
+
+* Return a list of all of the Locations including and below a location in the Tree View, with a **Location Code** of 'NEP' ('Northeast Pacific')
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&locationCode=NEP&includeChildren=true](https://data.oceannetworks.ca/apiproxy/locations?method=get&locationCode=NEP&includeChildren=true)
+
+* This example returns the NEP location and all of it's child locations, in a flat format. The "hasDeviceData" and "hasPropertyData" properties in the results indicate if there is data at that location. If both values are false, the location is a hierarchical tree node.
+
+* Return a list of all of the Locations that have a **Location Name** which contains 'underwater'
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&locationName=underwater](https://data.oceannetworks.ca/apiproxy/locations?method=get&locationName=underwater)
+
+* Return a list of all of the Locations that have devices with a **Device Category Code** of 'ADCP2MHZ'
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/locations?method=get&deviceCategoryCode=ADCP2MHZ)
+
+* Return a list of all of the Locations with a **Property Code** of 'differentialtemperature'
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=differentialtemperature](https://data.oceannetworks.ca/apiproxy/locations?method=get&propertyCode=differentialtemperature)
+
+* Return a list of all of the Locations with a **Device Category Code** of 'CTD' and **Property Code** of 'pressure'
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=CTD&propertyCode=pressure](https://data.oceannetworks.ca/apiproxy/locations?method=get&deviceCategoryCode=CTD&propertyCode=pressure)
+
+* Return a list of all of the Locations where a device with a **Device Code** of 'NORTEKAQDPRO8398' has been deployed
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/locations?method=get&deviceCode=NORTEKAQDPRO8398)
+
+* Return a list of all of the Locations that have instruments that support the **Data Product Code** of 'IBPP' ('Ice Buoy Profile Plots')
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&dataProductCode=IBPP](https://data.oceannetworks.ca/apiproxy/locations?method=get&dataProductCode=IBPP)
+
+* Return a list of all of the Locations that have instruments that were **Deployed****Between** July 1st 2010 and June 30th 2012
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/locations?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z)
+
+* Return a list of all of the Locations which has instruments **Deployed****Between** July 1st 2010 and June 30th 2011 with a sensor with the **Property Code** of 'seawatertemperature'
+
+[https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/locations?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature)
+
+* Return the complete**DMAS Search Tree** hierarchy
+
+[https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/locations?method=getTree)
+
+or
+
+[https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR\_TOKEN\_HERE&locationCode=ONC](https://data.oceannetworks.ca/apiproxy/locations?method=getTree&locationCode=ONC)
+
+* Return the**DMAS Search Tree** hierarchy from the 'Mobile Platforms' node and below
+
+[https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR\_TOKEN\_HERE&locationCode=MOBP](https://data.oceannetworks.ca/apiproxy/locations?method=getTree&locationCode=MOBP)
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/locations URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behavior. In order to use the deployments endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/locations url along with a valid token.
+
+### Code Examples
+
+| Title | Creator | Modified |
+| --- | --- | --- |
+| [Ouranos Use Case](/spaces/O2A/pages/55155975/Ouranos+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Bird Studies Canada Use Case](/spaces/O2A/pages/55155972/Bird+Studies+Canada+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Internal Use Case](/spaces/O2A/pages/49448569/Internal+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* No labels
+
+# END OF PAGE https://wiki.oceannetworks.ca/spaces/O2A/pages/49447546/locations+Discovery+Service
