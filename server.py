@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
 import chromadb
 from sentence_transformers import SentenceTransformer, CrossEncoder
+from langchain.schema import Document
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+import hashlib
 
 model = SentenceTransformer('BAAI/bge-large-en-v1.5')
 reranker = CrossEncoder('BAAI/bge-reranker-base')
@@ -13,29 +16,52 @@ app = Flask(__name__)
 def home():
     return "Flask server is running! Use /add, /delete, or /search endpoints with a 'collection_name' parameter."
 
+def compute_hash(text):
+    return hashlib.md5(text.encode('utf-8')).hexdigest()
+
+def chunk_text(text, collection_name):
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=200,
+        chunk_overlap=40,
+        separators=["\n\n", "\n", ".", "!", "?", " ", ""]
+    )
+    doc = Document(page_content=text)
+    chunks = splitter.split_documents([doc])
+
+    chunk_data = []
+    for idx, chunk in enumerate(chunks):
+        hash_input = f"{collection_name}-{idx}-{chunk.page_content}"
+        chunk_data.append({
+            "text": chunk.page_content,
+            "chunk_id": idx,
+            "hash": compute_hash(hash_input)
+        })
+
+    return chunk_data
+
 @app.route('/add', methods=['POST'])
 def add_data():
     data = request.json
     collection_name = data.get("collection_name")
-    texts = data.get("texts", [])
-    metadatas = data.get("metadatas", [])
-    ids = data.get("ids", [str(i) for i in range(len(texts))])
-    
-    if not collection_name:
-        return jsonify({"error": "No collection_name provided"}), 400
-    if not texts:
-        return jsonify({"error": "No texts provided"}), 400
-    
+    raw_text = data.get("text")
+
+    if not collection_name or not raw_text:
+        return jsonify({"error": "Missing collection_name or text"}), 400
+
+    chunk_data = chunk_text(raw_text, collection_name)
+    texts = [item["text"] for item in chunk_data]
+    ids = [item["hash"] for item in chunk_data]
+    metadatas = [{"chunk_id": item["chunk_id"], "hash": item["hash"]} for item in chunk_data]
+
     collection = chroma_client.get_or_create_collection(name=collection_name)
     embeddings = model.encode(texts).tolist()
-    
     collection.add(
         embeddings=embeddings,
         metadatas=metadatas,
         documents=texts,
         ids=ids
     )
-    
+
     return jsonify({
         "message": "Data added successfully",
         "collection": collection_name,
