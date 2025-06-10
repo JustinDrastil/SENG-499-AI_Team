@@ -2,7 +2,7 @@ import chromadb
 from services.embedding import embed_texts, rerank
 from utils.text_utils import chunk_text, compute_hash
 
-chroma_client = chromadb.PersistentClient(path="./chroma_db")
+chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
 def add_documents(data):
     collection_name = data["collection_name"]
