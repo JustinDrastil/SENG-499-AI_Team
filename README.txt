@@ -22,7 +22,7 @@
 - query_chromadb.py: Once the database has been created, run this to ask questions about embedded documents for testing purposes
 
 ## server folder
-- app.py: Run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
+- app.py: After the database has been initialized, run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
  
 ## legacy folder
 - contains legacy code that is no longer required
