@@ -7,8 +7,8 @@
 	- Command: python -m venv venv
 4. Activate the new venv:
 	- Linux/macOS: source venv/bin/activate
-	- Windows: (Command Prompt) venv\Scripts\activate.bat
-	- Windows: (PowerShell) venv\Scripts\Activate.ps1
+	- Windows (Command Prompt): venv\Scripts\activate.bat
+	- Windows (PowerShell): venv\Scripts\Activate.ps1
 5. You are now working within an isolated Python environment.
 6. Install the dependencies required for the project's python scripts (time <5 minutes):
 	- Command: pip install -r requirements.txt
