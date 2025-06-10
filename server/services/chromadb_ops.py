@@ -7,9 +7,11 @@ chroma_client = chromadb.PersistentClient(path="./chroma_db")
 def add_documents(data):
     collection_name = data["collection_name"]
     text = data["text"]
+    doc_tag = data["doc_tag"]
+
     collection = chroma_client.get_or_create_collection(name=collection_name)
 
-    chunks = chunk_text(text, collection_name)
+    chunks = chunk_text(text, collection_name, doc_tag)
     embeddings = embed_texts([chunk["text"] for chunk in chunks])
 
     collection.add(
@@ -22,17 +24,28 @@ def add_documents(data):
 
 def delete_documents(data):
     collection_name = data["collection_name"]
-    ids = data["ids"]
-    collection = chroma_client.get_or_create_collection(name=collection_name)
-    collection.delete(ids=ids)
-    return {"status": "deleted", "count": len(ids)}
+    doc_tag = data["doc_tag"]
+
+    collection = chroma_client.get_collection(name=collection_name)
+    metadata_filter = {"doc_tag": doc_tag}
+    
+    collection.delete(where=metadata_filter)
+
+    return {"status": "deleted", "doc_tag": doc_tag}
 
 def search_documents(data):
     collection_name = data["collection_name"]
     query = data["query"]
-    collection = chroma_client.get_or_create_collection(name=collection_name)
-    results = collection.query(query_texts=[query], n_results=5)
+
+    collection = chroma_client.get_collection(name=collection_name)
+
+    query_embedding = embed_texts([query])
+    results = collection.query(query_embeddings=query_embedding, n_results=100)
     docs = results["documents"][0]
+
     scores = rerank(query, docs)
+    scores = [float(score) for score in scores]
     ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
-    return {"results": [{"text": doc, "score": score} for doc, score in ranked]}
+    top_ranked = ranked[:10]
+
+    return {"results": [{"text": doc, "score": score} for doc, score in top_ranked]}
