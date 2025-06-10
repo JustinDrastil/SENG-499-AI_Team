@@ -1,0 +1,109 @@
+* Created by  [Martin Heesemann](    /display/~mheesema@uvic.ca
+  ), last updated by  [Martin Scherwath](    /display/~mscherwa@uvic.ca
+  )  on [11-Oct-13](/pages/diffpagesbyversion.action?pageId=42172426&selectedPageVersions=5&selectedPageVersions=6 "Show changes")
+
+  2 minute read
+
+**Description**
+---------------
+
+The station service allows users to retrieve station information across all of the networks.
+
+### URL
+
+|  |
+| --- |
+| <http://dmas.uvic.ca/api/stations> |
+
+| Method | Description | Example |
+| --- | --- | --- |
+| [getTree](http://internal.neptunecanada.ca/#stations-getTree) | Get a hierarchical tree structure of stations, station codes, and their device categories. | method=getTree |
+
+getTree
+-------
+
+Get a hierarchical tree structure of stations, station codes, and their device categories across all networks.
+
+### Parameters
+
+| Parameter | Value | Description | Example |
+| --- | --- | --- | --- |
+| **Required** |
+| There are no required parameters. |
+| **Optional** |
+| None |  |  |  |
+
+### Response
+
+#### Success
+
+```
+[
+    {
+        "deviceCategories": [],
+        "els": [
+            {
+                "description": "<div>Way up North</div>", // description property removed when description value is null
+                "deviceCategories": [],
+                "els": [
+                    {
+                        "description": "<div>Instrumentation located at the end of a dock.</div>",
+                        "deviceCategories": [
+                            "CTD",
+                            "ICEPROFILER",
+                            "METSTN"
+                        ],
+                        "els": [],
+                        "id": 88,
+                        "name": "Dock",
+                        "siteDeviceIds": [
+                            119202,
+                            119199,
+                            119200
+                        ],
+                        "stationCode": "CBDCK",
+                        "type": 10
+                    }
+                ],
+                "id": 84,
+                "name": "Cambridge Bay",
+                "siteDeviceIds": [],
+                "stationCode": "CB",
+                "type": 10
+            }
+        ],
+        "id": 82,
+        "name": "Arctic Observatory by Location",
+        "siteDeviceIds": [],
+        "stationCode": "KRSTA",
+        "type": 10
+    }
+]
+```
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| description | string | A description of the station | Cambridge Bay, Victoria Island, NU |
+| <ac:structured-macro ac:name="unmigrated-wiki-markup" ac:schema-version="1" ac:macro-id="3bb9bf50-9edc-4002-bf12-e4b8ec8a5ab9"><ac:plain-text-body><![CDATA[ | deviceCategories | array | An array of decive category code strings | ["CTD","ICEPROFILER","METSTN"] | ]]></ac:plain-text-body></ac:structured-macro> |
+| <ac:structured-macro ac:name="unmigrated-wiki-markup" ac:schema-version="1" ac:macro-id="390050a7-eab5-4e5e-b7c8-6d6533f28bc6"><ac:plain-text-body><![CDATA[ | els | array | Array of child nodes | [JSONObject] | ]]></ac:plain-text-body></ac:structured-macro> |
+| id | integer | The resource ID of the node. | 123456 |
+| name | string | The name of the station. | "Cambridge Bay" |
+| <ac:structured-macro ac:name="unmigrated-wiki-markup" ac:schema-version="1" ac:macro-id="d4f91d8f-14f9-41b4-ae20-b5195bf1e653"><ac:plain-text-body><![CDATA[ | siteDeviceIds | array | An array of integers | [119202,119199,119200] | ]]></ac:plain-text-body></ac:structured-macro> |
+| stationCode | string | The unique code for the station | "CB" |
+| type | integer | The resource type of the node. All nodes in this structure are of type 10. | 10 |
+
+**Failure**
+
+See [Extermal Web Services Standards](http://external+web+services+standards+error+messaging)
+
+### Example
+
+*Show all stations, with searchable devices*
+
+[http://dmas.uvic.ca/api/stations?method=getTree&token=SAMPLETOKEN123456789](http://dmas.uvic.ca/api/stations?method=getList&token=SAMPLETOKEN123456789)
+
+<http://dmas.uvic.ca/api/stations?method=getList&showHidden=true&token=SAMPLETOKEN123456789>
+
+[JavaScript Usage Example of Station Service](/download/attachments/42172426/stationTreeExample.html?version=2&modificationDate=1428438144000&api=v2)
+
+* No labels

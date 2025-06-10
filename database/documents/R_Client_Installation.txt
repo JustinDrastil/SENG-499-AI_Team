@@ -1,0 +1,47 @@
+* Created by  [Dany A Cabrera](    /display/~dcabrera@uvic.ca
+  ), last updated by  [Bennit L Mueller](    /display/~bennitm@oceannetworks.ca
+  ) on [04-Nov-21](/pages/diffpagesbyversion.action?pageId=78413893&selectedPageVersions=9&selectedPageVersions=10 "Show changes")
+
+  3 minute read
+
+Requirements
+============
+
+|  |
+| --- |
+| This library requires R version 3.3+.  Installation instructions assume you will be using the **RStudio** IDE |
+
+Installing the client library
+=============================
+
+Three alternatives for installing the library are described below.
+
+Alternative 1: Installing from CRAN through RStudio
+---------------------------------------------------
+
+|  |
+| --- |
+| 1. The ONC R Client Library 'onc.api' can be installed from CRAN repository.  Inside RStudio enter the following line in the command line  ``` install.packages("onc.api") ```  or, from the tab bar: **Tools – Install packages ()**  The installation will take some time as some additional packages will be installed as well.  2. Then load the onc.api package by typing:  ``` library(onc.api) ```  3. OPTIONAL: If ERROR messages occur when loading the onc.api package it is likely due to broken dependencies.  You can try loading the missing dependencies manually by carefully looking through the error and adding them e.g. :  ``` library(stringi) library(tictoc) ```  Sometimes restarting your RStudio session is a good option as well.  3. Create an Onc object to access this library's functionalities.  ``` # To create an ONC object we need to access the class methods using the ":::" operator # OPTIONAL: The differences between "::" and ":::" is explained in the RStudio help enter the following in the  # RStuio command line to read it: ?":::"  onc <- onc.api:::Onc('YOUR_TOKEN_HERE')   # Create an ONC object with custom configuration parameters onc = onc.api:::Onc('YOUR_TOKEN_HERE', showInfo=True, outPath='onc-files') ```  It will be ready for use. |
+
+Alternative 2: Installing from Archive Package
+----------------------------------------------
+
+|  |  |  |
+| --- | --- | --- |
+| 1. The ONC R Client Library can be installed as a package for RStudio. |  |  | | --- | --- | | Download the latest version here: | **[Download](https://cran.r-project.org/web/packages/onc.api/index.html)** |  2. After you obtain the package suitable for your system, in RStudio, access the menu: "**Tools**" → "**Install Packages...**"    3. The "Install Packages" dialog will appear.    4. In "Install from:" select "**Package Archive File (.zip; tar.gz)**"  5. In "Package Archive" click "**Browse...**" and select the package file downloaded.  6. Click the "**Install**" button. |
+
+Alternative 3: Installing from GitHub
+-------------------------------------
+
+|  |
+| --- |
+| 1. The ONC R Client Library can also be installed from the ONC Github repository. To access some useful functions install the devtools package from the R command line:  ``` install.packages("devtools") ```  or, from the tab bar: **Tools – Install packages ()**  Then load it:  ``` library(devtools) ```  2. Install the ONC R Client Library using devtools’ “install\_github funtion” in the R command line:  ``` install_github("OceanNetworksCanada/api-r-client") ```   * Selecting “**Option: 1 (All)**” will download missing dependencies such as “**tictoc**”, “**lubridate**” etc. or update existing dependencies. * The installation process will take several minutes to complete depending on how many dependencies are missing or need to be updated. * After the installation process completes (command line returns: “**\* DONE (onc.api)**”) you can load the ONC R Client Library via the command:   ``` library(onc.api) ```  It will be ready for use. |
+
+Troubleshooting
+===============
+
+|  |
+| --- |
+| After installing the R package, make sure it appears in the RStudio packages pane. |
+
+* No labels

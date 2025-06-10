@@ -1,0 +1,90 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Dwight Owens](    /display/~dwowens@uvic.ca
+  ) on [26-Feb-22](/pages/diffpagesbyversion.action?pageId=49448569&selectedPageVersions=8&selectedPageVersions=9 "Show changes")
+
+  2 minute read
+
+Use Case #1 - Create Hydrophone LTSA (Long Term Spectral Averages)
+==================================================================
+
+An ONC Data Team member needs to be able to regularly create [Long Term Spectral Averages LTSA](http://cetus.ucsd.edu/technologies_LTSA.html) spectra from for a 1 week's worth hydrophone audio files in wav file format for all of the deployed hydrophone. The software that they use for generating the spectra is in MATLAB, so for ease of use and simplicity, the audio file download must be done in MATLAB as well.
+
+This example requires the [MATLAB Client Library](#)
+
+```
+o = onc('YOUR_TOKEN_HERE'); %replace YOUR_TOKEN_HERE with your personal token obtained from the 'Web Services API' tab at https://data.oceannetworks.ca/Profile when logged in.
+
+outPath = 'c:\ONC\data';
+locationCode = 'NEP'; 					% Northeast Pacific Ocean
+deviceCategoryCode = 'HYDROPHONE';		
+beginDT = '2017-07-16T00:00:00.000Z';
+endDT = '2017-07-22T23:59:59.999Z';
+dataProductCode = 'AD';					% Audio data
+extension = 'wav';						% Wave File Format
+
+locations = o.getLocations(struct('deviceCategoryCode',deviceCategoryCode,...
+							      'locationCode',locationCode,...
+							      'dateFrom',beginDT,...
+							      'dateTo',endDT,...
+							      'includeChildren','true'));
+
+for i=1:numel(locations)
+    locationCode = locations(i).locationCode;
+	disp(locationCode);
+	o.outPath = strcat(outPath,'/',locationCode);
+ 
+	ret = o.orderDataProduct({'locationCode',locationCode,...
+                 			  'deviceCategoryCode',deviceCategoryCode,...
+                              'dataProductCode',dataProductCode,...
+                              'extension',extension,...
+                              'dateFrom',beginDT,...
+                 			  'dateTo',endDT,...
+                 			  'dpo_hydrophoneDataDiversionMode','All'},1000,false,true);
+	
+end
+```
+
+Python Example
+
+This example requires the [Python Client Library](#)
+
+```
+from onc.onc import ONC
+onc = ONC('YOUR_TOKEN_HERE')		   # Replace YOUR_TOKEN_HERE with your personal token obtained from the 'Web Services API' tab at https://data.oceannetworks.ca/Profile when logged in.
+outPath = 'c:\ONC\data'
+locationCode = 'NEP'                   # Northeast Pacific Ocean
+deviceCategoryCode = 'HYDROPHONE'     
+beginDT = '2017-07-16T00:00:00.000Z'
+endDT = '2017-07-22T23:59:59.999Z'
+dataProductCode = 'AD'                 # Audio data
+extension = 'wav';                     # Wave File Format
+ 
+locations = onc.getLocations({'deviceCategoryCode':deviceCategoryCode,
+                              'locationCode':locationCode,
+                              'dateFrom':beginDT,
+                              'dateTo':endDT,
+                              'includeChildren':'true'})
+ 
+for location in locations:
+    locationCode = location['locationCode']
+    print(locationCode)
+    onc.outPath = "{}/{}".format(outPath,locationCode)
+    ret = onc.orderDataProduct({'locationCode':locationCode,
+                                'deviceCategoryCode':deviceCategoryCode,
+                                'dataProductCode':dataProductCode,
+                                'extension':extension,
+                                'dateFrom':beginDT,
+                                'dateTo':endDT,
+                                'dpo_hydrophoneDataDiversionMode':'All'},50)
+```
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* [matlab](/label/O2A/matlab)
+* [sample-code](/label/O2A/sample-code)
+* [sample-code-locations](/label/O2A/sample-code-locations)
+* [sample-code-data-product-delivery](/label/O2A/sample-code-data-product-delivery)
+* [data-product-delivery-matlab](/label/O2A/data-product-delivery-matlab)
+* [use-case](/label/O2A/use-case)
+* [how-to-article](/label/O2A/how-to-article)
+* [python](/label/O2A/python)

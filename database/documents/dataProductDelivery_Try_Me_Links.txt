@@ -1,0 +1,20 @@
+* Created by  [Kiersten Mort](    /display/~ksmort@uvic.ca
+  )  on [15-Nov-18](/pages/viewpreviousversions.action?pageId=59017762 "Show changes")
+
+  1 minute read
+
+The following links are some examples of using the properties Discovery Service.  The token refers to your Web Services API token, which you can find in the Web Services API tab of your Ocean Networks Canada profile.
+
+| Description | URL |
+| --- | --- |
+| Request a 'Log File' data product in 'txt' format, using **Data Product Code** 'LF' and **Extension** 'txt' for **Device Category Code** 'ADCP2MHZ' at the **Location Code** 'BACAX', **Between** 25-28 July 2016. | [https://data.oceannetworks.ca/api/dataProductDelivery?method=request&token=YOUR\_TOKEN\_HERE&locationCode=BACAX&deviceCategoryCode=ADCP2MHZ&dataProductCode=LF&extension=txt&dateFrom=2016-07-25T00:00:00.000Z&dateTo=2016-07-29T00:00:00.000Z](https://data.oceannetworks.ca/apiproxy/dataProductDelivery?method=request&locationCode=BACAX&deviceCategoryCode=ADCP2MHZ&dataProductCode=LF&extension=txt&dateFrom=2016-07-25T00:00:00.000Z&dateTo=2016-07-29T00:00:00.000Z) |
+| Request a 'Time Series Scalar Data' data product in 'csv' format, using **Data Product Code** 'TSSD' and **Extension**'csv' for **Property Code** 'salinity' at 'Barkley Canyon Axis (Pod 1) location using **Location Code** 'BACAX', **Between** 1-12 July 2017. | [https://data.oceannetworks.ca/api/dataProductDelivery?method=request&token=YOUR\_TOKEN\_HERE&locationCode=BACAX&propertyCode=salinity&dataProductCode=TSSD&extension=csv&dateFrom=2017-01-01T00:00:00.000Z&dateTo=2017-01-13T00:00:00.000Z&dpo\_qualityControl=1&dpo\_resample=none&dpo\_dataGaps=0](https://data.oceannetworks.ca/apiproxy/dataProductDelivery?method=request&locationCode=BACAX&propertyCode=salinity&dataProductCode=TSSD&extension=csv&dateFrom=2017-01-01T00:00:00.000Z&dateTo=2017-01-13T00:00:00.000Z&dpo_qualityControl=1&dpo_resample=none&dpo_dataGaps=0) |
+| Returns data about the status of the request for dataProductRequestId 2007707. | [https://data.oceannetworks.ca/api/dataProductDelivery?method=status&token=YOUR\_TOKEN\_HERE&dpRequestId=2007707](https://data.oceannetworks.ca/apiproxy/dataProductDelivery?method=status&dpRequestId=2007707) |
+| Runs the data product created by a call to the request method for dataProductRequestId 2007707. | https://data.oceannetworks.ca/api/dataProductDelivery?method=run&token=YOUR\_TOKEN\_HERE&dpRequestId=[2007707](https://data.oceannetworks.ca/apiproxy/dataProductDelivery?method=run&dpRequestId=2007707) |
+| The return for a data product that is still being processed. | https://data.oceannetworks.ca/api/dataProductDelivery?method=download&token=YOUR\_TOKEN\_HERE&dpRunId=YOUR\_RUN\_ID\_HERE&index=1 |
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/dataProductDelivery URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the dataProductDelivery endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/dataProductDelivery URL along with a valid token.
+
+* No labels

@@ -1,0 +1,201 @@
+* Created by  [Murray Leslie](    /display/~mleslie@uvic.ca
+  ) , last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [11-Oct-23](/pages/diffpagesbyversion.action?pageId=47777468&selectedPageVersions=31&selectedPageVersions=32 "Show changes")
+
+  12 minute read
+
+Description
+-----------
+
+Gets raw data from an instrument from a date, to a date, or between two given dates.
+
+If no time is specified, the last hour of data will be returned, or the data will be from the beginning of time to the present, subject to (default or otherwise) row and size limits. If time is specified, the data is limited to 100,000 rows.
+
+### URL
+
+```
+http://data.oceannetworks.ca/api/rawdata
+```
+
+| 3.0Method | Description | Example |
+| --- | --- | --- |
+| [getByDevice](#rawdataservice-getByDevice) | Retrieve raw data available for a given device within a time range | method=getByDevice |
+| [getByLocation](#rawdataservice-getByLocation) | Retrieve raw data for the specified location and date range. This method is replacing getByStation. | method=getByLocation |
+
+getByDevice
+-----------
+
+Retrieve raw data for a given device. A date range is optional–if not specified, data from all time will be returned within (possibly default) row and size limits.
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| token | String | All Web Services require a token. This can be generated at <https://data.oceannetworks.ca/Profile>. Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| deviceCode | String | Return raw data of a specific **Device Code**.   * Device Code must be valid. * Specific Device Codes can be found by simply running the service without this parameter to get a list of all devices. | deviceCode=ASLZAP1006 |
+| **Optional** | | | |
+| dateFrom | String | Return raw data that has a timestamp on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | String | Return scalar data that has a timestamp before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| rowLimit | Integer | The limit on the number of raw data readings to return. If not specified the row limit is 100,000. | rowLimit=300 |
+| sizeLimit | Integer | The limit on the size of raw data readings to return, specified in MB. If not specified the size limit is 250 MB. | sizeLimit=20 |
+| convertHexToDecimal | Boolean | Format of raw data readings. Defaults to false, so that binary data will be returned in hexadecimal. If true, will convert binary to decimal, see examples below. | convertHexToDecimal=false |
+| outputFormat | String | There are two values:   * **Array*****(default or if missing)**(case insensitive)*   + Data will be output as three arrays for a given device: a lineTypes array, a readings array, and a times array. * **Object (case insensitive)**   + Data will be output as a list of objects for a given device. Inside each data object, there are lineType, rawData, and sampleTime lists. | outputFormat=array  outputFormat=object |
+| getLatest | Boolean | Specifies whether or not the latest raw data readings should be returned first. This is false by default. When set to true, readings are returned and pagination is done from latest to earliest. | getLatest=true |
+| skipErrors | Boolean | In the exceptional case when some portion of the requested data appears damaged, by default this service will return an error (HTTP status code 500, error code 143) with a description of the problem.  If the user ever comes across this error, it's possible to obtain the original data without the damaged samples by setting the parameter `skipErrors=true`.  ONC runs automated tests and has dedicated teams that detect and handle these exceptional cases at the earliest opportunity. | skipErrors=true |
+
+### Response
+
+#### Success (outputFormat = Array)
+
+|  |
+| --- |
+| `{` `"data"``: {` `"lineTypes"``: <Array of String>,` `"readings"``: <Array of String> OR <Array of Integer Array>,` `"times"``: <Array of String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>` `},` `"next"``: {` `"parameters"``: {` `"method"``:``"getByDevice"``,` `"rowLimit"``: <String>,` `"deviceCode"``: <String>,` `"dateFrom"``: <String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>,` `"outputFormat"``: <String>,` `"token"``: <String>` `},` `"url"``: <String>` `},` `"queryUrl"``: <String>` `}` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| data | Object | An object containing the raw data readings and time stamps |  |
+| * data.lineTypes | Array of Strings | An array of lineTypes, one for each reading in the requested date range. LineTypes are ">" for CommandSent, " " for DataReceived, and "<" for CommandResponse. | ``` [" ",">","<"," "," "," "," ",">"] ``` |
+| * data.readings | Array of Strings OR  Array of Integer Arrays | An array of readings one for each reading in the requested date range. If the raw data is text then this is an array of strings. If the raw data is binary then each item in the array is an array of integers. If conversion is turned off or not specified, array of hexadecimal strings returned. | * Text: "2891917878B1F5102C4D16E27AD6B59B00" * Binary: (convertHexToDecimal = false, default) "a5 01 15 00 04" * Binary: (convertHexToDecimal = true) [60,58,57,0,-70,83] |
+| * data.times | Array of Strings | An array of timestamps one for each reading in the requested date range. Each timestamp is a string in ISO8601 (extended) format, yyyy-MM-dd'T'HH:[mm:ss.SSS'Z](http://mmss.sss/)'. | ``` [ "2014-04-25T00:00:00.005Z" ] ``` |
+| next | Object | An object containing information on how to make a rawdata call if the current call was unable to return all the data as a limit was exceeded. This is null if there is no more data in the requested range. |  |
+| * next.parameters | Object | An object containing the set of parameters making up the query to get the next set of data in the requested date range. The parameters will include all parameters passed into the original URL plus dateFrom if dateFrom hadn't been specified. | ``` "parameters": {       "method": "getByDevice",       "rowLimit": "1",       "deviceCode": "SBECTD19p7128",       "dateFrom": "2014-04-25T00:00:00.006Z",       "token": "YOUR_TOKEN_HERE"     } ``` |
+| * + next.parameters.token | String | As passed into the original call | ``` "YOUR_TOKEN_HERE" ``` |
+| * + next.parameters.method | String | getByDevice, as passed into the original call. | ``` "getByDevice" ``` |
+| * + next.parameters.deviceCode | String | As passed into the original call | ``` "SBECTD19p7128" ``` |
+| * + next.parameters.dateFrom | String | This is set to 1 millisecond more than the date of the last reading sent in the current call. | ``` "2014-04-25T00:00:00.006Z" ``` |
+| * + next.parameters.\* | String | Any optional parameters passed into the original call. | ``` "dateTo":"2014-04-25T00:00:00.001Z", ```  ``` "rowLimit":"5", ```  ``` "outputFormat": "array" ``` |
+| * next.url | String | The complete URL that can be used to get the next set of data in the requested range. | ``` "https://data.oceannetworks.ca/api/rawdata?method=getByDevice&dateTo=2014-04-25T00%3A00%3A00.001Z&deviceCode=SBECTD16p6934&rowLimit=5&dateFrom=2014-04-24T23%3A51%3A00.003Z&token=YOUR_TOKEN_HERE" ``` |
+| queryUrl | String | The complete URL for the current call. | ``` "https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=BARIX001&dateFrom=2017-06-08T00:00:00.000Z&dateTo=2017-06-08T00:00:00.010Z" ``` |
+
+#### Success (outputFormat = Object)
+
+|  |
+| --- |
+| `{` `"data"``:[` `{` `"lineType"``: <String>,` `"rawData"``: <String> OR <Integer Array>,` `"sampleTime"``: <String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>` `},` `...` `],` `"next"``: {` `"parameters"``: {` `"method"``:``"getByDevice"``,` `"rowLimit"``: <String>,` `"deviceCode"``: <String>,` `"dateFrom"``: <String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>,` `"outputFormat"``:``"object"``,` `"token"``: <String>` `},` `"url"``: <String>` `},` `"queryUrl"``: <string>` `}` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| data | Array of Objects | An array containing the raw data readings and time stamps |  |
+| * data.lineType | Strings | A lineType. LineTypes are ">" for CommandSent, " " for DataReceived, and "<" for CommandResponse. | ``` ">" ``` |
+| * data.rawData | String OR Integer Array | A single raw data reading. If the raw data is text then this is a string. If the raw data is binary then this is an array of integers. If conversion is turned off or not specified, a hexadecimal string is returned. | * Text: "2891917878B1F5102C4D16E27AD6B59B00" * Binary: (convertHexToDecimal = false, default) "a5 01 15 00 04" * Binary: (convertHexToDecimal = true) [60,58,57,0,-70,83] |
+| * + data.sampleTime | String | A timestamp. Each timestamp is a string in ISO8601 (extended) format, yyyy-MM-dd'T'HH:[mm:ss.SSS'Z](http://mmss.sss/)'. | ``` "2014-04-25T00:00:00.005Z" ``` |
+| next | Object | An object containing information on how to make a rawdata call if the current call was unable to return all the data as a limit was exceeded. This is null if there is no more data in the requested range. |  |
+| * next.parameters | Object | An object containing the set of parameters making up the query to get the next set of data in the requested date range. The parameters will include all parameters passed into the original URL plus dateFrom if dateFrom hadn't been specified. | ``` "parameters": {       "method": "getByDevice",       "rowLimit": "1",       "deviceCode": "SBECTD19p7128",       "dateFrom": "2014-04-25T00:00:00.006Z",       "token": "YOUR_TOKEN_HERE"     } ``` |
+| * + next.parameters.token | String | As passed into the original call | ``` "YOUR_TOKEN_HERE" ``` |
+| * + next.parameters.method | String | getByDevice, as passed into the original call. | ``` "getByDevice" ``` |
+| * + next.parameters.deviceCode | String | As passed into the original call | ``` "SBECTD19p7128" ``` |
+| * + next.parameters.dateFrom | String | This is set to 1 millisecond more than the date of the last reading sent in the current call. | ``` "2014-04-25T00:00:00.006Z" ``` |
+| * + next.parameters.\* | String | Any optional parameters passed into the original call. | ``` "dateTo":"2014-04-25T00:00:00.001Z", ```  ``` "rowLimit":"5", ```  ``` "outputFormat": "object" ``` |
+| * next.url | String | The complete URL that can be used to get the next set of data in the requested range. | ``` "https://data.oceannetworks.ca/api/rawdata?method=getByDevice&dateTo=2014-04-25T00%3A00%3A00.001Z&deviceCode=SBECTD16p6934&rowLimit=5&dateFrom=2014-04-24T23%3A51%3A00.003Z&token=YOUR_TOKEN_HERE" ``` |
+| queryUrl | String | The complete URL for the current call. | ``` "https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=BARIX001&dateFrom=2017-06-08T00:00:00.000Z&dateTo=2017-06-08T00:00:00.010Z" ``` |
+
+#### Example Service Call
+
+<https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=BARIX001&dateFrom=2017-06-08T00:00:00.000Z&dateTo=2017-06-08T00:00:00.010Z>
+
+|  |
+| --- |
+| `{` `"data"``: {` `"lineTypes"``: [` `">"``,` `"<"``,` `">"` `],` `"readings"``: [` `"version[0d]"``,` `"version,BARIONET 1.2"``,` `"getio,201[0d]"` `],` `"times"``: [` `"2017-06-08T00:00:00.003Z"``,` `"2017-06-08T00:00:00.008Z"``,` `"2017-06-08T00:00:00.009Z"` `]` `},` `"next"``:``null``,` `"queryUrl"``:``"https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=BARIX001&dateFrom=2017-06-08T00:00:00.000Z&dateTo=2017-06-08T00:00:00.010Z"` `}` |
+
+### Example Service Call with outputFormat parameter
+
+<https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=BARIX001&dateFrom=2017-06-08T00:00:00.000Z&dateTo=2017-06-08T00:00:00.004Z&outputFormat=object>
+
+|  |
+| --- |
+| `{` `"data"``:[` `{` `"lineType"``:``">"``,` `"rawData"``:``"version[0d]"``,` `"sampleTime"``:``"2017-06-08T00:00:00.001Z"` `},` `{` `"lineType"``:``"<"``,` `"rawData"``:``"version,BARIONET 1.2 Simulator"``,` `"sampleTime"``:``"2017-06-08T00:00:00.002Z"` `},` `{` `"lineType"``:``">"``,` `"rawData"``:``"getio,201[0d]"``,` `"sampleTime"``:``"2017-06-08T00:00:00.003Z"` `}` `],` `"next"``:``null``,` `"queryUrl"``:``"https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=BARIX001&dateFrom=2017-06-08T00:00:00.000Z&dateTo=2017-06-08T00:00:00.004Z&outputFormat=object"` `}` |
+
+getByLocation
+-------------
+
+Retrieve the raw data at a given location for the given device category. A date range is optional–when not specified, data from all time will be returned within (possibly default) row and size limits.
+
+### Parameters
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| token | String | All Web Services require a token. This can be generated at [http://data.oceannetworks.ca/Profile.](http://dmas.uvic.ca/Profile.) Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| locationCode | String | Return raw data from a specific **Location**.   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](https://wiki.oceannetworks.ca/display/O2A/locations+Discovery+Service). | locationCode=SCVIP |
+| deviceCategoryCode | String | Return raw data belonging to a specific **Device Category Code**.   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCategories service](https://wiki.oceannetworks.ca/display/O2A/deviceCategories+Discovery+Service). | deviceCategoryCode=CTD |
+| **Optional** | | | |
+| dateFrom | String | Return raw data that has a timestamp on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | String | Return scalar data that has a timestamp before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| rowLimit | Integer | The limit on the number of raw data readings to return. If not specified the row limit is 100,000. | rowLimit=300 |
+| sizeLimit | Integer | The limit on the size of raw data readings to return specified in MB. If not specified the size limit is 250 MB. | sizeLimit=20 |
+| outputFormat | String | **Array*****(default or if missing)**(case insensitive)* data will be output as three arrays for a given device. Array of lineTypes, array of readings, array of times  **Object (case insensitive)** data will be output as a list of objects for a given device. Inside each data object, there are lineType, rawData, and sampleTime. | outputFormat= array  outputFormat = object |
+| getLatest | Boolean | Specifies whether or not the latest raw data readings should be returned first. This is false by default. When set to true, readings are returned and pagination is done from latest to earliest. | getLatest=true |
+| skipErrors | Boolean | In the exceptional case when some portion of the requested data appears damaged, by default this service will return an error (HTTP status code 500, error code 143) with a description of the problem.  If the user ever comes across this error, it's possible to obtain the original data without the damaged samples by setting the parameter `skipErrors=true`.  ONC runs automated tests and has dedicated teams that detect and handle these exceptional cases at the earliest opportunity. | skipErrors=true |
+
+### Response
+
+#### Success (outputFormat = Array)
+
+|  |
+| --- |
+| `{` `"data"``: {` `"lineTypes"``: <Array of string>,` `"readings"``: <Array of string> OR <Array of Integer Array>,` `"times"``: <Array of String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>` `},` `"metadata"``: {` `"locationName"``: <String>` `},` `"next"``: {` `"parameters"``: {` `"method"``:``"getByLocation"``,` `"rowLimit"``: <String>,` `"locationCode"``: <String>,` `"deviceCategoryCode"``: <String>,` `"dateFrom"``: <String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>,` `"outputFormat"``: <String>,` `"token"``: <String>` `},` `"url"``: <String>` `},` `"queryUrl"``: <String>` `}` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| data | Object | An object containing the raw data readings and time stamps |  |
+| * data.lineTypes | Array of Strings | An array of lineTypes, one for each reading in the requested date range. LineTypes are ">" for CommandSent, " " for DataReceived, and "<" for CommandResponse. | ``` [" "," "," "," "," "," "," "," "] ``` |
+| * data.readings | Array of Strings OR  Array of Integer Arrays | An array of readings one for each reading in the requested date range. If the raw data is text then this is an array of strings. If the raw data is binary then each item in the array is an array of integers. | Text:   * [ "2891917878B1F5102C4D16E27AD6B59B00" ]   Binary:   * ```   [ [ -91, 16, 0, 123, 4, 0 ] ]   ``` |
+| * data.times | Array of Strings | An array of timestamps one for each reading in the requested date range. Each timestamp is a string in ISO8601 (extended) format, yyyy-MM-dd'T'HH:mm:ss.SSS'Z'. | ``` [ "2014-04-25T00:00:00.005Z" ] ``` |
+| metadata | Object | An object containing metadata items. | ```   ``` |
+| * metadata.locationName | String | The name of the location for the requested location code. | ``` "Strait of Georgia VENUS Instrument Platform" ``` |
+| next | Object | An object containing information on how to make a rawdata call if the current call was unable to return all the data as a limit was exceeded. This is null if there is no more data in the requested range. |  |
+| * next.parameters | Object | An object containing the set of parameters making up the query to get the next set of data in the requested date range. The parameters will include all parameters passed into the original URL plus dateFrom if dateFrom hadn't been specified. | ``` "parameters": {       "method": "getByLocation",       "rowLimit": "1",       "locationCode": "SCVIP",       "deviceCategoryCode": "CURRENTMETER",       "dateFrom": "2014-04-25T00:00:00.006Z",       "token": "YOUR_TOKEN_HERE"     }, ``` |
+| * + next.parameters.token | String | As passed into the original call | ``` "YOUR_TOKEN_HERE" ``` |
+| * + next.parameters.method | String | getByLocation, as passed into the original call. | ``` "getByLocation" ``` |
+| * + next.parameters.locationCode | String | As passed into the original call | ``` "SCVIP" ``` |
+| * + next.parameters.deviceCategoryCode | String | As passed into the original call | ``` "CURRENTMETER" ``` |
+| * + next.parameters.dateFrom | String | This is set to 1 millisecond more than the date of the last reading returned in the current call. | ``` "2014-04-25T00:00:00.006Z" ``` |
+| * + next.parameters.\* | String | Any optional parameters passed into the original call. | ``` "dateTo":"2009-08-15T17:50:00.000Z", ```  ``` "rowLimit": "1", ```  ``` "outputFormat": "object" ``` |
+| * next.url | String | The complete URL that can be used to get the next set of data in the requested range. | ``` https://data.oceannetworks.ca/api/rawdata? method=getByLocation&rowLimit=1&locationCode=SCVIP&deviceCategoryCode=CURRENTMETER& token=YOUR_TOKEN_HERE& dateFrom=2014-04-25T00%3A00%3A00.006Z ``` |
+| queryUrl | String | The complete URL for the current call. | ``` "https://data.oceannetworks.ca/api/rawdata?method=getByLocation&locationCode=NCBC&deviceCategoryCode=BPR&dateFrom=2009-07-24T17:50:00.000Z&rowLimit=5&token=YOUR_TOKEN_HERE" ``` |
+
+#### Success (outputFormat = Object)
+
+|  |
+| --- |
+| `{` `"data"``:[` `{` `"lineType"``: <String>,` `"rawData"``: <String> OR <Integer Array>,` `"sampleTime"``: <String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>` `},` `...` `],` `"metadata"``: {` `"locationName"``: <String>` `},` `"next"``: {` `"parameters"``: {` `"method"``:``"getByLocation"``,` `"rowLimit"``: <String>,` `"locationCode"``: <String>,` `"deviceCategoryCode"``: <String>,` `"dateFrom"``: <String (yyyy-MM-dd``'T'``HH:mm:ss.SSS``'Z'``)>,` `"outputFormat"``: <String>,` `"token"``: <String>` `},` `"url"``: <String>` `},` `"queryUrl"``: <String>` `}` |
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| data | Array of Objects | An array containing the raw data readings and time stamps |  |
+| * data.lineType | String | A lineType. LineTypes are ">" for CommandSent, " " for DataReceived, and "<" for CommandResponse. | ``` ">" ``` |
+| * data.rawData | String OR Integer Array | A single raw data reading. If the raw data is text then this is a string. If the raw data is binary then this is an array of integers. If conversion is turned off or not specified, a hexadecimal string is returned. | * Text: "2891917878B1F5102C4D16E27AD6B59B00" * Binary: (convertHexToDecimal = false, default) "a5 01 15 00 04" * Binary: (convertHexToDecimal = true) [60,58,57,0,-70,83] |
+| * data.sampleTime | String | A timestamp. Each timestamp is a string in ISO8601 (extended) format, yyyy-MM-dd'T'HH:[mm:ss.SSS'Z](http://mmss.sss/)'. | ``` "2014-04-25T00:00:00.005Z" ``` |
+| metadata | Object | An object containing metadata items. | ```   ``` |
+| * metadata.locationName | String | The name of the location for the requested location code. | ``` "Strait of Georgia VENUS Instrument Platform" ``` |
+| next | Object | An object containing information on how to make a rawdata call if the current call was unable to return all the data as a limit was exceeded. This is null if there is no more data in the requested range. |  |
+| * next.parameters | Object | An object containing the set of parameters making up the query to get the next set of data in the requested date range. The parameters will include all parameters passed into the original URL plus dateFrom if dateFrom hadn't been specified. | ``` "parameters": {       "method": "getByLocation",       "rowLimit": "1",       "locationCode": "SCVIP",       "deviceCategoryCode": "CURRENTMETER",       "dateFrom": "2014-04-25T00:00:00.006Z",       "token": "YOUR_TOKEN_HERE"     }, ``` |
+| * + next.parameters.token | String | As passed into the original call | ``` "YOUR_TOKEN_HERE" ``` |
+| * + next.parameters.method | String | getByLocation, as passed into the original call. | ``` "getByLocation" ``` |
+| * + next.parameters.locationCode | String | As passed into the original call | ``` "SCVIP" ``` |
+| * + next.parameters.deviceCategoryCode | String | As passed into the original call | ``` "CURRENTMETER" ``` |
+| * + next.parameters.dateFrom | String | This is set to 1 millisecond more than the date of the last reading returned in the current call. | ``` "2014-04-25T00:00:00.006Z" ``` |
+| * + next.parameters.\* | String | Any optional parameters passed into the original call. | ``` "dateTo":"2009-08-15T17:50:00.000Z", ```  ``` "rowLimit": "1", ```  ``` "outputFormat": "object" ``` |
+| * next.url | String | The complete URL that can be used to get the next set of data in the requested range. | ``` https://data.oceannetworks.ca/api/rawdata? method=getByLocation&rowLimit=1&locationCode=SCVIP&deviceCategoryCode=CURRENTMETER& token=YOUR_TOKEN_HERE& dateFrom=2014-04-25T00%3A00%3A00.006Z ``` |
+| queryUrl | String | The complete URL for the current call. | ``` "https://data.oceannetworks.ca/api/rawdata?method=getByLocation&locationCode=NCBC&deviceCategoryCode=BPR&dateFrom=2009-07-24T17:50:00.000Z&rowLimit=5&token=YOUR_TOKEN_HERE" ``` |
+
+### Examples
+
+Get 5 raw data readings for BPR data from Barkley Canyon Upper Slope (NCBC):
+
+* <http://data.oceannetworks.ca/api/rawdata?method=getByLocation&locationCode=NCBC&deviceCategoryCode=BPR&dateFrom=2017-07-24T17:50:00.000Z&rowLimit=5&token=YOUR_TOKEN_HERE>
+
+|  |
+| --- |
+| `{` `"data"``: {` `"lineTypes"``: [` `" "``,` `" "``,` `" "``,` `" "``,` `" "` `],` `"readings"``: [` `"379B562059B0ECB82CA529C0783C479400"``,` `"379B562159B0EC6B2CA529C4783C470D00"``,` `"379B562259B0ED0F2CA529BB783C453400"``,` `"379B562359B0ED892CA529BD783C44D100"``,` `"379B562459B0ECEA2CA529BC783C461400"` `],` `"times"``: [` `"2017-07-24T17:50:00.062Z"``,` `"2017-07-24T17:50:01.061Z"``,` `"2017-07-24T17:50:02.065Z"``,` `"2017-07-24T17:50:03.069Z"``,` `"2017-07-24T17:50:04.064Z"` `]` `},` `"metadata"``: {` `"locationName"``:``"Upper Slope"` `},` `"next"``: {` `"parameters"``: {` `"method"``:``"getByLocation"``,` `"rowLimit"``:``"5"``,` `"locationCode"``:``"NCBC"``,` `"deviceCategoryCode"``:``"BPR"``,` `"dateFrom"``:``"2017-07-24T17:50:04.065Z"``,` `"token"``:``"YOUR_TOKEN_HERE"` `},` `"url"``:``"https://data.oceannetworks.ca/api/rawdata?method=getByLocation&rowLimit=5&locationCode=NCBC&deviceCategoryCode=BPR&dateFrom=2017-07-24T17%3A50%3A04.065Z&token=YOUR_TOKEN_HERE` `},` `"queryUrl"``:``"https://data.oceannetworks.ca/api/rawdata?method=getByLocation&locationCode=NCBC&deviceCategoryCode=BPR&dateFrom=2017-07-24T17:50:00.000Z&rowLimit=5&token=YOUR_TOKEN_HERE` `}` |
+
+Get 1 raw data reading for Current Meter (CURRENTMETER) data from Strait of Georgia VENUS Instrument Platform (SCVIP):
+
+* <http://data.oceannetworks.ca/api/rawdata?method=getByLocation&locationCode=SCVIP&deviceCategoryCode=CURRENTMETER&token=YOUR_TOKEN_HERE&dateFrom=2014-04-25T00:00:00.000Z&rowLimit=1>
+
+|  |
+| --- |
+| `{` `"data"``: {` `"lineTypes"``: [` `" "` `],` `"readings"``: [` `[` `-``91``,` `16``,` `0``,` `-``50``,` `4``,` `0``,` `-``99``,` `-``95``,` `0``,` `0``,` `-``2``,` `0``,` `65``,` `0``,` `-``48``,` `-``2``,` `95``,` `89``,` `90``,` `99``,` `97``,` `96``,` `-``5``,` `82` `]` `],` `"times"``: [` `"2014-04-25T00:00:00.087Z"` `]` `},` `"metadata"``: {` `"locationName"``:``"Strait of Georgia VENUS Instrument Platform"` `},` `"next"``: {` `"parameters"``: {` `"method"``:``"getByLocation"``,` `"rowLimit"``:``"1"``,` `"locationCode"``:``"SCVIP"``,` `"deviceCategoryCode"``:``"CURRENTMETER"``,` `"dateFrom"``:``"2014-04-25T00:00:00.088Z"``,` `"token"``:``"YOUR_TOKEN_HERE"` `},` `"url"``:``"https://data.oceannetworks.ca/api/rawdata?method=getByLocation&rowLimit=1&locationCode=SCVIP&deviceCategoryCode=CURRENTMETER&dateFrom=2014-04-25T00%3A00%3A00.088Z&token=YOUR_TOKEN_HERE` `},` `"queryUrl"``:``"https://data.oceannetworks.ca/api/rawdata?method=getByLocation&locationCode=SCVIP&deviceCategoryCode=CURRENTMETER&token=YOUR_TOKEN_HERE&dateFrom=2014-04-25T00:00:00.000Z&rowLimit=1"` `}` |
+
+* No labels

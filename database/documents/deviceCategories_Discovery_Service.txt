@@ -1,0 +1,111 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [05-Oct-23](/pages/diffpagesbyversion.action?pageId=48696424&selectedPageVersions=24&selectedPageVersions=25 "Show changes")
+
+  5 minute read
+
+**Description**
+---------------
+
+The API **deviceCategories** service returns all device categories defined in Oceans 3.0 that meet a filter criteria.
+
+A Device Category represents an instrument type classification such as CTD (Conductivity, Temperature & Depth Instrument) or BPR (Bottom Pressure Recorder). Devices from a category can record data for one or more properties (variables).
+
+The primary purpose of this service, is to find device categories that have the data you want to access; the service provides the deviceCategoryCode you can use when requesting a data product via the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+
+### URL
+
+```
+https://data.oceannetworks.ca/api/deviceCategories
+```
+
+| Method | Description | Example |
+| --- | --- | --- |
+| get | Get a list of files for a given station, and filtered by others optional parameters. | method=get |
+
+get
+---
+
+Get a list of device categories in Oceans 3.0.
+
+### **Parameters**
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| token | string | All Web Services require a token. Once logged in at <https://data.oceannetworks.ca/login>, your token can be retrieved or generated at <https://data.oceannetworks.ca/Profile> . Click on the "Web Services" tab, then click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| **Optional** | | | |
+| deviceCategoryCode | string | Return a single Device Category matching a specific **Device Category Code**   * Device Category Code must be valid. * Run the service without this parameter to get a list of all devices. | deviceCategoryCode=CTD |
+| deviceCategoryName | string | Return all of the Device Categories where the **Device Category Name** contains a keyword   * Filter is not case sensitive, treating adcp and ADCP as the same word.   + Filter will find partial words. The filter deviceCategoryName=adcp returns "ADCP 55 kHz, "ADCP 75 kHz", "ADCP 150 kHz", "ADCP 300 kHz", "ADCP 1 MHz", "ADCP 2 MHz" and more. | deviceCategoryName=adcp |
+| description | string | Return all of the Device Categories where the **Description** contains a keyword.   * Filter is not case sensitive and will find partial words. (See above) | description=Camera |
+| locationCode | string | Return all Device Categories that are represented at a specific **Location.**   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](/spaces/O2A/pages/49447546/locations+Discovery+Service). | locationCode=BACAX |
+| propertyCode | string | Return all Device Categories associated specific **Property**.   * Property Code must be valid. * Specific Property Codes can be obtained using the [properties service](/spaces/O2A/pages/48696426/properties+Discovery+Service). | propertyCode=differentialtemperature |
+
+### Response
+
+Example for request: [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]&propertyCode=salinity](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&propertyCode=salinity)
+
+#### Success (HTTP 200)
+
+Returns a list of device categories with values for Device Category Code, Device Category Name, Description and Long Description, ordered by Device Category Code
+
+|  |
+| --- |
+| [  `{`  `"description"``:``"Conductivity Temperature (and Depth Sensor)"``,`  `"deviceCategoryCode"``:``"CTD"``,`  `"deviceCategoryName"``:``"CTD"``,`  `"longDescription"``:``" Conductivity Temperature Depth (CTD) is an abbreviated name for an instrument package that contains sensors for measuring the conductivity, temperature, and pressure of seawater. Salinity, sound velocity, and density are variables derived from sensor measurements. CTDs can carry additional instruments and sensors such as oxygen sensors, turbidity sensors and fluorometers. "``,`  `"cvTerm"``: [{``"deviceCategory"``: [{``"vocabulary"``:``"SeaDataNet device categories"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/L05/current/130/"``}]    }]`  `},`  `{`  `"description"``:``"Current Meter"``,`  `"deviceCategoryCode"``:``"CURRENTMETER"``,`  `"deviceCategoryName"``:``"Current Meter"``,`  `"longDescription"``:``" Acoustic Current Meters (ACM) use the Doppler Effect to measure current velocities in the ocean environment. The instrument transmits a short pulse of sound, and then listens to its echo to measure the change in pitch or frequency. The change in pitch can determine the velocity of the current.  Current metres are installed at many locations on Ocean Networks Canada observatories. Several current metres are installed on the Regional Circulation Moorings (RCM) at Endeavour. The instruments are spaced at various depths on the RCM moorings, and are used to study currents within the axial rift valley of Endeavour Ridge. Aquadopp current metres have a sensor head that contains 3 acoustic transducers, a tilt sensor, a temperature sensor and a pressure sensor."``,`  `"cvTerm"``: [{``"deviceCategory"``: [{``"vocabulary"``:``"SeaDataNet device categories"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/L05/current/114/"``}]    }]`  `},`  `{`  `"description"``:``"Thermosalinograph"``,`  `"deviceCategoryCode"``:``"TSG"``,`  `"deviceCategoryName"``:``"Thermosalinograph"``,`  `"longDescription"``:``" Thermosalinographs collect data about the sea surface via flow-through systems that move over water on a vessel. Often, they are mounted near the front of the vessel in order to minimize contamination. Primary variables measured are temperature and conductivity, and other variables like salinity and density are derived."``,`  `"cvTerm"``: [{``"deviceCategory"``: [{``"vocabulary"``:``"SeaDataNet device categories"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/L05/current/123/"``}]    }]`  `},`  `{`  `"description"``:``"Water Quality Monitor"``,`  `"deviceCategoryCode"``:``"WETLABS_WQM"``,`  `"deviceCategoryName"``:``"Water Quality Monitor"``,`  `"longDescription"``:``" Water Quality Monitors (WQM) have sensors to measure temperature, salinity, depth, dissolved oxygen, chlorophyll fluorescence, turbidity and backscattering data. The WQM incorporate technologies from two manufacturers, WET Labs and Sea-Bird. To reduce fouling and growth of marine organisms, WQM also have features such as a Bleach Injection System (BLIS), bio-wipers, and passive inhibitors that allow extended deployments up to one year. WQMs provide comprehensive data used to track subtle changes in coastal and inshore marine systems. WQM have been installed in local settings such as Mill Bay, as well as the frigid Arctic waters of Cambridge Bay."``,`  `"cvTerm"``: [{``"deviceCategory"``: [{``"vocabulary"``:``"SeaDataNet device categories"``,``"uri"``:``"http://vocab.nerc.ac.uk/collection/L05/current/123/"``}]    }]`  `}`  `]` |
+
+| Property | Type | Description | Examples |
+| --- | --- | --- | --- |
+| ``` deviceCategoryCode ``` | ``` string ``` | The unique code for the device category. | ``` "deviceCategoryCode":"ICE_BUOY" ``` |
+| ``` deviceCategoryName ``` | ``` string ``` | The name of the device category. | ``` "deviceCategoryName":"Ice Buoy" ``` |
+| ``` description ``` | ``` string ``` | The short description of the device category. | ``` "description":"Ice Buoy" ``` |
+| hasDeviceData | string | Whether at least one device with this device category is NEPTUNE-searchable and has a NEPTUNE-searchable site. | "hasDeviceData":"true" |
+| ``` longDescription ``` | ``` string ``` | The long description of the device category. | ``` "longDescription":" Ice buoys are used in Arctic and Antarctic regions to track ice movement and collect environmental data.  ```  ``` Ice buoys can be geographically located with the Argos system or other satellite navigation receivers (e.g. GPS)." ``` |
+| cvTerm | list | The list of controlled vocabulary terms associated with the device category.  Each vocabulary term in the controlled vocabulary list contains two key-value pairs:   1. **Key** : "vocabulary" **Value** : "title of the vocabulary the term belongs to" 2. **Key**: "uri" **Value**: "the vocabulary term url" | `"cvTerm"``: [`  `{`  `"deviceCategory"``: [`  `{`  `"vocabulary"``:``"NERC-L05"``,`  `"uri"``:``"http://vocab..."`  `}`  `]`  `}`  ] |
+
+#### Bad Request (HTTP 400)
+
+| errorCode | errorMessage | Description |
+| --- | --- | --- |
+| 127 | Invalid parameter value | Occurs when an invalid code is used in the filter. Most filters require an exact match, otherwise this error will occur.   * The name of the filter parameter are included in the parameter property |
+| 129 | Invalid parameter name | Occurs when a filter parameter is used, but is not supported. |
+
+### URL Examples
+
+* Return a list of **All** Device Categories (no filters)
+
+[https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get)
+
+* Return the Device Category with **Code** 'ADCP1MHZ'
+
+[https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCategoryCode=ADCP1MHZ](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&deviceCategoryCode=ADCP1MHZ)
+
+* Return a list of all Device Categories that have a **Name** which contains 'acoustic'
+
+[https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]&deviceCategoryName=acoustic](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&deviceCategoryName=acoustic)
+
+* Return a list of all Device Categories that have a **Description**which contains 'doppler'
+
+[https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]&description=doppler](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&description=doppler)
+
+* Return a list of all Device Categories that are available at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)')
+
+[https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&locationCode=BACAX)
+
+* Return a list of all Device Categories which has devices with a specific **Property Code** of 'salinity'
+
+[https://data.oceannetworks.ca/api/deviceCategories?method=get&token=[YOUR\_TOKEN\_HERE]&propertyCode=salinity](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&propertyCode=salinity)
+
+#### API Proxy
+
+The <https://data.oceannetworks.ca>/**apiproxy**/deviceCategories URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the deviceCategories endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/deviceCateogies url along with a valid token.
+
+### Code Examples
+
+How-to article
+--------------
+
+Provide step-by-step guidance for completing a task.
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* No labels

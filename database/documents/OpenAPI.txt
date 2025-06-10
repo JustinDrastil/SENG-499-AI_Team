@@ -1,0 +1,103 @@
+* Created by  [Angela Schlesinger](    /display/~schlesin@uvic.ca
+  ), last updated [yesterday at 17:34 +0000](/pages/diffpagesbyversion.action?pageId=124912264&selectedPageVersions=16&selectedPageVersions=17 "Show changes")
+
+  3 minute read
+
+*Disclaimer: page under development*
+
+**How to:**
+===========
+
+<https://data.oceannetworks.ca/OpenAPI>
+=======================================
+
+* Uses the Oceans 3.0 API web services described here: [Oceans 3.0 API Home](/spaces/O2A/pages/48696392/Oceans+3.0+API+Home)
+* See below tree structure:
+* Each tree item is expandable: displays parameter fields, some default/examples, links to documentation, response field and URL links
+
+![](/download/attachments/124912264/Screen%20Shot%202023-04-12%20at%2011.16.16%20AM.png?version=1&modificationDate=1681323387000&api=v2)
+
+---
+
+**Discovery Services**
+----------------------
+
+### Locations
+
+* Just use the default settings and hit "Try"
+
+![](/download/attachments/124912264/Screen%20Shot%202023-04-12%20at%2011.19.49%20AM.png?version=1&modificationDate=1681323745000&api=v2)
+
+* results will be returned as following options:
+
+  + JSON formatted response to copy and paste
+  + CURL  - URL response to use in script or browser to query programmatically
+
+![](/download/attachments/124912264/Screen%20Shot%202023-04-12%20at%2011.24.57%20AM.png?version=1&modificationDate=1681323904000&api=v2)
+
+### Data Products
+
+* [https://data.oceannetworks.ca/OpenAPI - get-/dataProducts](https://data.oceannetworks.ca/OpenAPI)
+* Discover all data products for a CTD (Conductivity-Temperature-Depth) device at Barkley Canyon Upper slope (locationCode: NCBC)
+
+![](/download/attachments/124912264/OpenAPI_DiscoverDataProducts_CTD_screenshot.png?version=1&modificationDate=1685394385000&api=v2)
+
+* The response field can be adjusted (expand/compress with corners; scroll within the response field) to view all data products and their available options.
+
+### 
+
+---
+
+**Data Delivery Services**
+--------------------------
+
+### Archive Files
+
+Most filetypes for a deviceCategory that are found via Oceans3.0 Data Search portal (<https://data.oceannetworks.ca/DataSearch>) are already archive and can be retrieved with the OpenAPI ArchiveFile services ([Oceans 3.0 API Home#archivefiles](/spaces/O2A/pages/48696392/Oceans+3.0+API+Home#Oceans3.0APIHome-archivefiles))
+
+**NOTE**: Especially **hydrophone** data can be downloaded this way with the file extensions "flac" or "mp3". 
+
+The OpenAPI page provided two method options:
+
+1. getListByLocation: <https://data.oceannetworks.ca/OpenAPI#get-/archivefile/location>
+2. getListByDevice: <https://data.oceannetworks.ca/OpenAPI#get-/archivefile/device>
+
+Fill out the fields as per example and the return will be a JSON with the field "files":
+
+![](/download/attachments/124912264/Screenshot%202025-06-03%20at%2010.32.25%E2%80%AFAM.png?version=1&modificationDate=1748971972000&api=v2)
+
+ The files can be downloaded in either the next step: <https://data.oceannetworks.ca/OpenAPI#get-/archivefile/download> by entering the filenames individually or programmatically with your language of choice.
+
+### Data Product Delivery Services
+
+Request data product (LF - logfile; extension: txt) from CTD at NCBC
+
+* [https://data.oceannetworks.ca/OpenAPI#get-/dataProductDelivery-request](https://data.oceannetworks.ca/OpenAPI)
+
+* Once all required parameters are filled in (\* indicated) data product options can be filtered (see arrow)
+* The return field indicates the approx. time for the request to run and the file size to be expected from this data request
+* The dpRequestId is utilized in the next step
+
+Run data product request(LF - logfile; extension: txt) from CTD at NCBC
+
+* <https://data.oceannetworks.ca/OpenAPI#get-/dataProductDelivery-run>
+* The page prefills the dpRequestId from your previous step.
+* You can re-run any requests multiple times by filling in the appropriate dpRequestId.
+* Notes:
+
+  + the dpRunId is utilized in next step
+  + the status indicates the process state: queued, completed (hit **Try** to update status)
+  + fileCount: indicates how many files to be downloaded
+
+Download data product
+
+* The page prefills the dpRunId from your previous step.
+* The index indicates the file number to download: 1 to the number of result files. If index is string **meta**, metadata file will be downloaded.
+* The data product will be automatically downloaded from your browser. It can take a while for the download to complete – be patient.
+
+**How to get from Oceans3.0 Plotting utility to the scalar data**
+-----------------------------------------------------------------
+
+See this video clip for some guidance:<https://drive.google.com/drive/folders/1S7-jFsQv3shwDvi9zZ5YdL2clWtYYwlS?usp=drive_link>
+
+* No labels

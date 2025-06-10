@@ -1,0 +1,16 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Angela Schlesinger](    /display/~schlesin@uvic.ca
+  ) on [06-Aug-24](/pages/diffpagesbyversion.action?pageId=49448875&selectedPageVersions=14&selectedPageVersions=15 "Show changes")
+
+  1 minute read
+
+If you are a Python, MATLAB or R programmer, you can quickly start using the Oceans 3.0 API, by taking advantage of our client libraries. This guide will take you step-by-step through getting setup, writing code and retrieving data.
+
+Choose your Language and Work with ONC Client libraries
+-------------------------------------------------------
+
+* + All code samples and client libraries are available in Python, MATLAB and R; however, any programming language that can make HTTP GET requests can be used, along with the [API Reference](/spaces/O2A/pages/49447536/API+Reference) to make requests and download data using the ONC web services.
+
+[Client Libraries](/spaces/O2A/pages/75170291/Client+Libraries)
+
+* No labels

@@ -1,0 +1,51 @@
+* Created by  [Allan Rempel](    /display/~agrempel
+  ), last updated by  [Dwight Owens](    /display/~dwowens@uvic.ca
+  ) on [26-Feb-22](/pages/diffpagesbyversion.action?pageId=55155972&selectedPageVersions=2&selectedPageVersions=3 "Show changes")
+
+  1 minute read
+
+Use Case - Obtain ONC Data
+==========================
+
+A scientific developer who needs to provide near-real-time data to bird behavioural researchers needs to be able to obtain data through the API to be used in their programming languages of choice. The data includes short station weather data (wind speed, direction, temperature, etc.), tide heights, wave heights, currents, shore camera data, and chlorophyll.
+
+The following link returns a list of shore stations locations; their locationCode values are BFSS, CRSS, DISS, KVSS, RISS.
+
+<https://data.oceannetworks.ca/api/locations?method=get&token=YOUR_TOKEN_HERE&locationName=shore>
+
+The following links return the device information for those locationCode values. For CRSS the deviceCode values are AXISQ6044PTZACCC8E334FCD, LUFFTWS501-14110141009039, LUFFTWS501-19212161009223, SHINEMICRORADARPLUSAIS151.
+
+<https://data.oceannetworks.ca/api/devices?method=get&token=YOUR_TOKEN_HERE&locationCode=CRSS>
+
+The following link returns the device categories available at those location Code values. For CRSS the deviceCategoryCode values are AISRECEIVER, METSTN, VIDEOCAM.
+
+<https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR_TOKEN_HERE&locationCode=CRSS>
+
+The following link returns a list (limited to 100 entries) of archived image and video files available for the video camera at CRSS, beginning at 2018-04-01T00:00:00.000Z.
+
+<https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&token=YOUR_TOKEN_HERE&locationCode=CRSS&deviceCategoryCode=VIDEOCAM&dateFrom=2018-04-01T00:00:00.000Z&rowLimit=100>
+
+The following link downloads the first .jpg file in the above list.
+
+<https://data.oceannetworks.ca/api/archivefiles?method=getFile&token=YOUR_TOKEN_HERE&filename=AXISQ6044PTZACCC8E334FCD_20180401T000001.000Z.jpg>
+
+The following link returns weather data (limited to 100 entries) at CRSS, beginning at 2018-04-01T00:00:00.000Z.
+
+<https://data.oceannetworks.ca/api/scalardata?method=getByLocation&token=YOUR_TOKEN_HERE&locationCode=CRSS&deviceCategoryCode=METSTN&outputFormat=Object&dateFrom=2018-04-01T00:00:00.000Z&rowLimit=100>
+
+The following link returns raw data (limited to 100 entries) for the LUFFTWS501-19212161009223 device at CRSS, beginning at 2018-04-01T00:00:00.000Z.
+
+<https://data.oceannetworks.ca/api/rawdata?method=getByDevice&token=YOUR_TOKEN_HERE&deviceCode=LUFFTWS501-19212161009223&outputFormat=Object&convertHexToDecimal=false&dateFrom=2018-04-01T00:00:00.000Z&rowLimit=100>
+
+Additional links for other locations, types of data, or time ranges of data can be similarly constructed programmatically.
+
+Please report all issues with the web services, documentation, samples and client libraries to the [Oceans 3.0 Help Centre](http://jira.neptune.uvic.ca/servicedesk)
+
+* [matlab](/label/O2A/matlab)
+* [sample-code](/label/O2A/sample-code)
+* [sample-code-locations](/label/O2A/sample-code-locations)
+* [sample-code-data-product-delivery](/label/O2A/sample-code-data-product-delivery)
+* [data-product-delivery-matlab](/label/O2A/data-product-delivery-matlab)
+* [use-case](/label/O2A/use-case)
+* [how-to-article](/label/O2A/how-to-article)
+* [python](/label/O2A/python)

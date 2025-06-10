@@ -1,0 +1,26 @@
+* Created by  [Kiersten Mort](    /display/~ksmort@uvic.ca
+  ) , last updated on [15-Nov-18](/pages/diffpagesbyversion.action?pageId=59017733&selectedPageVersions=4&selectedPageVersions=5 "Show changes")
+
+  2 minute read
+
+The following links are some examples of using the devices Discovery Service.  The token refers to your Web Services API token, which you can find in the Web Services API tab of your Ocean Networks Canada profile.
+
+| Description | URL |
+| --- | --- |
+| Return a list of **All** of the Devices (no filters) | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/devices?method=get) |
+| Return the Device with a **Device Code** of 'NORTEKADCP9917' | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceCode=NORTEKADCP9917](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceCode=NORTEKADCP9917) |
+| Return a list of all of the Devices that have a **Device Name** which contains 'JASCO' | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceName=JASCO](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceName=JASCO) |
+| Return a list of all of the devices that have been deployed at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)') | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/devices?method=get&locationCode=BACAX) |
+| Return a list of all of the Devices with a **Device Category** of 'ADCP2MHZ' | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceCategoryCode=ADCP2MHZ) |
+| Return a list of all of the Devices with a **Property Code** of 'oxygen' | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=oxygen](https://data.oceannetworks.ca/apiproxy/devices?method=get&propertyCode=oxygen) |
+| Return a list of all of the Devices with a **Device Category** of 'CTD' and **Property Code** of 'pressure' | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=CTD&propertyCode=pressure](https://data.oceannetworks.ca/apiproxy/devices?method=get&deviceCategoryCode=CTD&propertyCode=pressure) |
+| Return a list of all of the Devices that support the **Data Product Code** of 'IBPP' ('Ice Buoy Profile Plots') | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&dataProductCode=IBPP](https://data.oceannetworks.ca/apiproxy/devices?method=get&dataProductCode=IBPP) |
+| Return a list of all of the Devices that were **Deployed****Between** July 1st 2010 and June 30th 2012 | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/devices?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z) |
+| Return a list of all of the Devices **Deployed****Between** July 1st 2010 and June 30th 2011, at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)') | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/devices?method=get&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z) |
+| Return a list of all of the Devices which have a **Property Code** of 'seawatertemperature',  at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)'), **Deployed****Between** July 1st 2010 and June 30th 2011 | [https://data.oceannetworks.ca/api/devices?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/devices?method=get&locationCode=BACAX&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature) |
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/devices URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the devices endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/devices URL along with a valid token.
+
+* No labels

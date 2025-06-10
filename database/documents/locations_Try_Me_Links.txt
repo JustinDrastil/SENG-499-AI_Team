@@ -1,0 +1,28 @@
+* Created by  [Kiersten Mort](    /display/~ksmort@uvic.ca
+  ) , last updated on [15-Nov-18](/pages/diffpagesbyversion.action?pageId=59017730&selectedPageVersions=5&selectedPageVersions=6 "Show changes")
+
+  2 minute read
+
+The following links are some examples of using the locations Discovery Service.  The token refers to your Web Services API token, which you can find in the Web Services API tab of your Ocean Networks Canada profile.
+
+| Description | URL |
+| --- | --- |
+| Return a list of **All** of the Locations (no filters) | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/locations?method=get) |
+| Return the Location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)') | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/locations?method=get&locationCode=BACAX) |
+| Return a list of all of the Locations including and below a location in the Tree View, with a **Location Code** of 'NEP' ('Northeast Pacific')   * This example returns the NEP location and all of it's child locations, in a flat format. The "hasDeviceData" and "hasPropertyData" properties in the results indicate if there is data at that location. If both values are false, the location is a hierarchical tree node. | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&locationCode=NEP&includeChildren=true](https://data.oceannetworks.ca/apiproxy/locations?method=get&locationCode=NEP&includeChildren=true) |
+| Return a list of all of the Locations that have a **Location Name** which contains 'underwater' | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&locationName=underwater](https://data.oceannetworks.ca/apiproxy/locations?method=get&locationName=underwater) |
+| Return a list of all of the Locations that have devices with a **Device Category Code** of 'ADCP2MHZ' | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/locations?method=get&deviceCategoryCode=ADCP2MHZ) |
+| Return a list of all of the Locations with a **Property Code** of 'differentialtemperature' | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=differentialtemperature](https://data.oceannetworks.ca/apiproxy/locations?method=get&propertyCode=differentialtemperature) |
+| Return a list of all of the Locations with a **Device Category Code** of 'CTD' and **Property Code** of 'pressure' | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=CTD&propertyCode=pressure](https://data.oceannetworks.ca/apiproxy/locations?method=get&deviceCategoryCode=CTD&propertyCode=pressure) |
+| Return a list of all of the Locations where a device with a **Device Code** of 'NORTEKAQDPRO8398' has been deployed | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/locations?method=get&deviceCode=NORTEKAQDPRO8398) |
+| Return a list of all of the Locations that have instruments that support the **Data Product Code** of 'IBPP' ('Ice Buoy Profile Plots') | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&dataProductCode=IBPP](https://data.oceannetworks.ca/apiproxy/locations?method=get&dataProductCode=IBPP) |
+| Return a list of all of the Locations that have instruments that were **Deployed****Between** July 1st 2010 and June 30th 2012 | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/locations?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z) |
+| Return a list of all of the Locations which has instruments **Deployed****Between** July 1st 2010 and June 30th 2011 with a sensor with the **Property Code** of 'seawatertemperature' | [https://data.oceannetworks.ca/api/locations?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/locations?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature) |
+| Return the complete**DMAS Search Tree** hierarchy | [https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/locations?method=getTree)  or [https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR\_TOKEN\_HERE&locationCode=ONC](https://data.oceannetworks.ca/apiproxy/locations?method=getTree&locationCode=ONC) |
+| Return the**DMAS Search Tree** hierarchy from the 'Mobile Platforms' node and below | [https://data.oceannetworks.ca/api/locations?method=getTree&token=YOUR\_TOKEN\_HERE&locationCode=MOBP](https://data.oceannetworks.ca/apiproxy/locations?method=getTree&locationCode=MOBP) |
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/locations URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the locations endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/locations URL along with a valid token.
+
+* No labels

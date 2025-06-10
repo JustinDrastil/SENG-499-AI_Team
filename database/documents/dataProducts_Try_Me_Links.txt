@@ -1,0 +1,25 @@
+* Created by  [Kiersten Mort](    /display/~ksmort@uvic.ca
+  ) , last updated on [15-Nov-18](/pages/diffpagesbyversion.action?pageId=59017756&selectedPageVersions=2&selectedPageVersions=3 "Show changes")
+
+  2 minute read
+
+The following links are some examples of using the dataProducts Discovery Service.  The token refers to your Web Services API token, which you can find in the Web Services API tab of your Ocean Networks Canada profile.
+
+| Description | URL |
+| --- | --- |
+| Return a list of **All** Data Product Extensions (no filters) | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get) |
+| Return a list of all Data Product Extensions available for **Data Product Code** 'TSSD' (Time Series Scalar Data) | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&dataProductCode=TSSD](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&dataProductCode=TSSD) |
+| Return a list of all Data Products Extensions available for the **Extension** 'pdf' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&extension=pdf](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&extension=pdf) |
+| Return a list of all Data Products Extensions available for **Data Product Code** 'TSSD' (Time Series Scalar Data) and **Extension** of 'csv' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&dataProductCode=TSSD&extension=csv](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&dataProductCode=TSSD&extension=csv) |
+| Return a list of all Data Product Extension with a **Data Product Name** containing 'scalar' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&dataProductName=scalar](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&dataProductName=scalar) |
+| Return a list of all Data Product Extensions available for instruments at the location with **Location Code** 'BACAX' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&locationCode=BACAX) |
+| Return a list of all Data Products with the **Extension** 'mat' that are available for instruments at the location with **Location Code** 'BACAX' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&extension=mat&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&extension=mat&locationCode=BACAX) |
+| Return a list of all Data Product Extensions available for the device with **Device Code** 'NORTEKAQDPRO8398' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&deviceCode=NORTEKAQDPRO8398) |
+| Return a list of all Data Product Extensions available for instruments with the **Device Category** 'ADCP2MHZ' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&deviceCategoryCode=ADCP2MHZ) |
+| Return a list of all Data Products Extensions available for the **Property Code** 'seawatertemperature' | [https://data.oceannetworks.ca/api/dataProducts?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/dataProducts?method=get&propertyCode=seawatertemperature) |
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/dataProducts URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the dataProducts endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/dataProducts URL along with a valid token.
+
+* No labels

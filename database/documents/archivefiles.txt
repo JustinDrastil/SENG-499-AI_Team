@@ -1,0 +1,846 @@
+* Created by  [Martin Heesemann](    /display/~mheesema@uvic.ca
+  ), last updated by  [Eli T Ferguson](    /display/~elif@uvic.ca
+  ) on [11-Oct-23](/pages/diffpagesbyversion.action?pageId=42172423&selectedPageVersions=23&selectedPageVersions=24 "Show changes")
+
+  15 minute read
+
+**Description**
+---------------
+
+API ***archivefiles***allows user to search for available files in a station and download the file.
+
+### URL
+
+```
+https://data.oceannetworks.ca/api/archivefiles
+```
+
+| Method | Description | Example |
+| --- | --- | --- |
+| [getListByLocation](#archivefiles-getListByLocation) | Get a list of files for a given location code and device category code, and filtered by others optional parameters. | method=getListByLocation |
+| [getListByDevice](#archivefiles-getListByDevice) | Get a list of files for a given device code, and filtered by others optional parameters. | method=getListByDevice |
+| [getFile](#archivefiles-getFile) | Download a file from DMAS Archiving System by specifying the file name. | method=getFile |
+
+getListByLocation
+-----------------
+
+Get a list of files available in Oceans 3.0 Archiving System for a given location code and device category code. The list of filenames can be filtered by time range.
+
+### **Parameters**
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| token | string | All Web Services require a token. This can be generated at <https://data.oceannetworks.ca/Profile>. Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| locationCode | string | Return a list of files from a specific **Location**.   * Location Code must be valid. * Specific Location Codes can be obtained using the [locations service](https://wiki.oceannetworks.ca/display/O2A/locations+Discovery+Service). | locationCode=BACUS |
+| deviceCategoryCode | string | Return a list of files of a specific **Device Category Code**.   * Device Category Code must be valid. * Specific Device Category Codes can be obtained using the [deviceCategories service](https://wiki.oceannetworks.ca/display/O2A/deviceCategories+Discovery+Service). | deviceCategoryCode=JB |
+| **Optional** | | | |
+| dateFrom | date | Return files that have a timestamp on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | date | Return files that have a timestamp before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| dateArchivedFrom | date | Return files archived on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateArchivedFrom=2010-07-27T00:00:00.000Z  dateArchivedFrom=2010-07-27  dateArchivedFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateArchivedTo | date | Return files archived before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://wiki.oceannetworks.ca/display/O2A/Glossary+of+Terms#GlossaryofTerms-ISO8601Duration))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateArchivedTo=2016-08-01T00:00:00.000Z  dateArchivedTo=2016-08-01  dateArchivedTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| fileExtension | String | Return files of a specific **File Extension**.   * file extension is not case sensitive | png |
+| dataProductCode | String | Return files of a specific **Data Product Code**.   * Specific Data Product Codes can be obtained using the [dataProducts Discovery Service](https://wiki.oceannetworks.ca/display/O2A/dataProducts+Discovery+Service). | HSD |
+| returnOptions | string | If there is **no value** given, list of filenames will be returned.  If the value is "**archiveLocation**"  a list of filenames with their archiveLocation will be returned. Mostly used by [www.oceannetworks.ca](http://www.oceannetworks.ca/) website.  If the value is "**all**" , more metadata information will be returned.  **\***All results returned with **serviceMetadata object.** | returnOptions=archiveLocation |
+| rowLimit | integer | The maximum number of data to return, within the constraints of the service. Note this will limit the data starting at the dateFrom time and ending at the row limit, not necessarily at the dateTo time.  default row limit: 100000 | rowLimit=100 |
+| page | integer | The service will return data starting from a certain page. By default this value is 1.  If the data size is greater than rowLimit, results will be split into pages where each page contains at most rowLimit number of data.  This parameter is used to generate serviceMetadata.next parameter, which can be used to get the next set of data. | page=1 |
+| getLatest | boolean | Specifies whether or not the latest raw data readings should be returned first. This is false by default. When set to true, readings are returned and pagination is done from latest to earliest. | getLatest=true |
+
+### Response
+
+#### Success
+
+HTTP status code 200 will be returned in HTTP header.
+
+If "returnOption" parameter is "all", a list of file names with their metadata information will be returned.
+
+* Order of list will be by filename ascending
+
+```
+{
+"files":
+[
+	{
+    	"archivedDate": <date>,
+        "compression": <string>,
+		"dataProductCode": <string>,
+        "dateFrom": <date>,
+        "dateTo": <date>,
+        "deviceCode":<string>,
+        "fileSize": <long>,
+        "filename": <string>,
+        "modifyDate": <date>,
+        "uncompressedFileSize": <long>
+            
+    },
+],
+"serviceMetadata":
+	{
+		"dateArchivedFrom":<date>,
+		"dateArchivedTo":<date>,
+		"dateFrom":<date>,
+		"dateTo":<date>,
+		"deviceCategoryCode":<string>,
+		"returnOptions":<string>,
+		"rowLimit":<integer>,
+		"page":<integer>,
+		"locationCode":<string>
+	}
+} 
+```
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| files.archivedDate | date | The time stamp of current file in AD while it is archived | 2010-04-21T00:00:00.000Z |
+| files.compressedSize | long | File size, in bytes, after compressed with GZip |  |
+| files.compression | string | The file extension if the file is compressed | gz |
+| files.dataProductCode | string | Data product code | 8 |
+| files.dateFrom | date | The beginning time stamp the data is recorded in the file | 2010-04-21T00:00:00.000Z |
+| files.dateModified | date | The last time stamp of any modification related to the file | 2010-04-22T01:55:00.000Z |
+| files.dateTo | date | The end time stamp the data is recorded in the file | 2010-04-22T00:00:00.000Z |
+| files.deviceCode | string | Device Code |  |
+| files.filename | string | The name of the file | "BC\_POD2\_JB\_20090908T000000.000Z.txt" |
+| files.uncompressedSize | long | Original file size, in bytes, without compressed | 156545 |
+| serviceMetadata.dateArchivedFrom | date | As passed into the original call |  |
+| serviceMetadata.dateArchivedTo | date | As passed into the original call |  |
+| serviceMetadata.dateFrom | date | As passed into the original call |  |
+| serviceMetadata.dateTo | date | As passed into the original call |  |
+| serviceMetadata.deviceCategoryCode | string | As passed into the original call | "JB" |
+| serviceMetadata.returnOptions | string | As passed into the original call |  |
+| serviceMetadata.rowLimit | integer | As passed into the original call | 5 |
+| serviceMetadata.next | Object | An object containing information for the next service call if the current call was unable to return all the data due to limit restrictions. This is **null** if there is no more data in the requested range. |  |
+| * serviceMetadata.next.parameters | Object | An object containing the set of parameters making up the query to get the next set of data in the requested date range. The parameters will include all parameters passed into the original URL. |  |
+| * + serviceMetadata.next.parameters.deviceCategoryCode | String | As passed into the original call | "JB" |
+| * + serviceMetadata.next.parameters.method | String | As passed into the original call | "getListByLocation" |
+| * + serviceMetadata.next.parameters.returnOptions | String | As passed into the original call | "archiveLocation" |
+| * + serviceMetadata.next.parameters.rowLimit | integer | As passed into the original call | 5 |
+| * + serviceMetadata.next.parameters.page | integer | The page index for next call | 1 |
+| * + serviceMetadata.next.parameters.locationCode | String | As passed into the original call | "BACUS" |
+| * + serviceMetadata.next.parameters.token | String | As passed into the original call | "YOUR\_TOKEN\_HERE" |
+| * serviceMetadata.next.url | String | The complete URL that can be used to get the next set of data in the requested range. | ```   ``` |
+| serviceMetadata.page | integer | The page index for next call. **1 means all results are returned and there is no more data** |  |
+| serviceMetadata.locationCode | string | As passed into the original call |  |
+
+### **Example**
+
+* If  "**returnOptions**" parameter**is NOT** set, list of file names will be returned in files array object.
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&token=YOUR_TOKEN_HERE&locationCode=BACUS&deviceCategoryCode=JB&rowLimit=5>
+
+```
+{
+	"files":[
+		"BC_POD2_JB_20090908T000000.000Z.txt",
+		"BC_POD2_JB_20090909T000000.000Z.txt",
+		"BC_POD2_JB_20090916T000000.000Z.txt",
+		"BC_POD2_JB_20090925T000000.000Z.txt",
+		"BC_POD2_JB_20090926T000000.000Z.txt"
+	],
+	"serviceMetadata":{
+		"dateArchivedFrom":null,
+		"dateArchivedTo":null,
+		"dateFrom":null,
+		"dateTo":null,
+		"deviceCategoryCode":"JB",
+		"locationCode":"BACUS",
+		"next":{
+			"parameters":{
+				"method":"getListByLocation",
+				"rowLimit":"5",
+				"page":"2",
+				"locationCode":"BACUS",
+				"deviceCategoryCode":"JB",
+				"token":"YOUR_TOKEN_HERE"
+			},
+			"url":"https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&rowLimit=5&page=2&locationCode=BACUS&deviceCategoryCode=JB&token=YOUR_TOKEN_HERE"
+		},
+		"page":2,
+		"returnOptions":"",
+		"rowLimit":5
+	}
+}
+```
+
+* If "**returnOptions**" parameter is set to **all**, more information will be returned in files array.
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&token=YOUR_TOKEN_HERE&locationCode=BACUS&deviceCategoryCode=JB&returnOptions=all&rowLimit=1>
+
+```
+{
+	"files":[
+		{
+			"archivedDate":"2010-06-03T08:27:23.000Z",
+			"compression":"gz",
+			"dataProductCode":"LF",
+			"dateFrom":"2009-09-08T00:00:00.000Z",
+			"dateTo":"2009-09-09T00:00:00.000Z",
+			"deviceCode":"BC_POD2_JB",
+			"fileSize":24668,
+			"filename":"BC_POD2_JB_20090908T000000.000Z.txt",
+			"modifyDate":"2015-01-09T19:40:22.000Z",
+			"uncompressedFileSize":684891
+		}
+	],
+	"serviceMetadata":{
+		"dateArchivedFrom":null,
+		"dateArchivedTo":null,
+		"dateFrom":null,
+		"dateTo":null,
+		"deviceCategoryCode":"JB",
+		"locationCode":"BACUS",
+		"next":{
+			"parameters":{
+				"method":"getListByLocation",
+				"returnOptions":"all",
+				"rowLimit":"1",
+				"page":"2",
+				"locationCode":"BACUS",
+				"deviceCategoryCode":"JB",
+				"token":"YOUR_TOKEN_HERE"
+			},
+			"url":"https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&returnOptions=all&rowLimit=1&page=2&locationCode=BACUS&deviceCategoryCode=JB&token=YOUR_TOKEN_HERE"
+		},
+		"page":2,
+		"returnOptions":"all",
+		"rowLimit":1
+	}
+}
+```
+
+* If "**returnOptions**" parameter is set to **archiveLocation**
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&token=YOUR_TOKEN_HERE&locationCode=BACUS&deviceCategoryCode=JB&returnOptions=archiveLocation&rowLimit=1>
+
+```
+{
+	"files":[
+		{
+			"archiveLocation":"/archive/AD/venus/VENUS_UNIQUE/VUNIQUE0007",
+			"dateFrom":"2009-09-08T00:00:00.000Z",
+			"filename":"BC_POD2_JB_20090908T000000.000Z.txt",
+			"path":"00/15/88"
+		}
+	],
+	"serviceMetadata":{
+		"dateArchivedFrom":null,
+		"dateArchivedTo":null,
+		"dateFrom":null,
+		"dateTo":null,
+		"deviceCategoryCode":"JB",
+		"locationCode":"BACUS",
+		"next":{
+			"parameters":{
+				"method":"getListByLocation",
+				"returnOptions":"archiveLocation",
+				"rowLimit":"1",
+				"page":"2",
+				"locationCode":"BACUS",
+				"deviceCategoryCode":"JB",
+				"token":"YOUR_TOKEN_HERE"
+			},
+			"url":"https://data.oceannetworks.ca/api/archivefiles?method=getListByLocation&returnOptions=archiveLocation&rowLimit=1&page=2&locationCode=BACUS&deviceCategoryCode=JB&token=YOUR_TOKEN_HERE"
+		},
+		"page":2,
+		"returnOptions":"archiveLocation",
+		"rowLimit":1
+	}
+}
+```
+
+getListByDevice
+---------------
+
+Get a list of files available in Oceans 3.0 Archiving System for a given device code. The list of filenames can be filtered by time range.
+
+### **Parameters**
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| token | string | All Web Services require a token. This can be generated at [http://data.oceannetworks.ca/Profile.](http://dmas.uvic.ca/Profile.) Click on the "Web Services" tab and click "Generate Token". | token=YOUR\_TOKEN\_HERE |
+| deviceCode | string | Return a list of files of a specific **Device Code**.   * Device Code must be valid. * Specific Device Codes can be found by simply running the service without this parameter to get a list of all devices. | deviceCode=BC\_POD2\_JB |
+| **Optional** | | | |
+| dateFrom | date | Return files that have a timestamp on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateFrom=2010-07-27T00:00:00.000Z  dateFrom=2010-07-27  dateFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateTo | date | Return files that have a timestamp before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateTo=2016-08-01T00:00:00.000Z  dateTo=2016-08-01  dateTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| dateArchivedFrom | date | Return files archived on or after a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm))   If not specified, the default value is the beginning of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateArchivedFrom=2010-07-27T00:00:00.000Z  dateArchivedFrom=2010-07-27  dateArchivedFrom=-P1DT1H   * Previous 1 day and 1 hour, relative to the dateTo. Note the '-' before the P. |
+| dateArchivedTo | date | Return files archived before a specific date/time.  Accepted DateTime formats:   * yyyy-MM-dd'T'HH:mm:ss.SSS'Z' (ISO 8601 Extended) * yyyy-MM-dd (ISO 8601 Extended) * PnYnMnDTnHnMnS ([ISO 8601 Duration](https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm))   If not specified, the default value is the end of time.   * DateTime is represented in [Coordinated Universal Time (UTC)](https://www.timeanddate.com/time/aboututc.html). * ISO 8601 Extended format without a time will be assumed to mean midnight (T00:00:000.000Z). * Queries with both dateFrom and dateTo in the ISO 8601 Duration format will not be accepted. | dateArchivedTo=2016-08-01T00:00:00.000Z  dateArchivedTo=2016-08-01  dateArchivedTo=PT12H30M   * Next 12 hours and 30 minutes, relative to the dateFrom. |
+| fileExtension | String | Return files of a specific **File Extension**.   * file extension is not case sensitive | png |
+| dataProductCode | String | Return files of a specific **Data Product Code**.   * Specific Data Product Codes can be obtained using the [dataProducts Discovery Service](https://wiki.oceannetworks.ca/display/O2A/dataProducts+Discovery+Service). | HSD |
+| returnOptions | string | If there is **no value** given, list of filenames will be returned.  If the value is "**archiveLocation**"  a list of filenames with their archiveLocation will be returned.  If the value is "**all**" , more metadata information will be returned.  **\***All results returned with **serviceMetadata object.** | returnOptions=archiveLocation |
+| rowLimit | integer | The maximum number of data to return, within the constraints of the service. Note this will limit the data starting at the dateFrom time and ending at the row limit, not necessarily at the dateTo time.  default row limit: 100000 | rowLimit=100 |
+| page | integer | The service will return data starting from a certain page. By default this value is 1.  If the data size is greater than rowLimit, results will be split into pages where each page contains at most rowLimit number of data.  This parameter is used to generate serviceMetadata.next parameter, which can be used to get the next set of data. | page=1 |
+| getLatest | boolean | Specifies whether or not the latest raw data readings should be returned first. This is false by default. When set to true, readings are returned and pagination is done from latest to earliest. | getLatest=true |
+
+### Response
+
+#### Success
+
+HTTP status code 200 will be returned in HTTP header.
+
+If "returnOption" parameter is "all", a list of file names with their metadata information will be returned.
+
+* Order of list will be by filename ascending
+
+```
+{
+"files":
+[
+	{
+    	"archivedDate": <date>,
+        "compression": <string>,
+		"dataProductCode": <string>,
+        "dateFrom": <date>,
+        "dateTo": <date>,
+        "fileSize": <long>,
+        "filename": <string>,
+        "modifyDate": <date>,
+        "uncompressedFileSize": <long>
+            
+    },
+],
+"serviceMetadata":
+	{
+		"dateArchivedFrom":<date>,
+		"dateArchivedTo":<date>,
+		"dateFrom":<date>,
+		"dateTo":<date>,
+		"deviceCode":<string>,
+		"returnOptions":<string>,
+		"rowLimit":<integer>,
+		"page":<integer>
+	}
+} 
+```
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| files.archivedDate | date | The time stamp of current file in AD while it is archived | 2010-04-21T00:00:00.000Z |
+| files.compressedSize | long | File size, in bytes, after compressed with GZip |  |
+| files.compression | string | The file extension if the file is compressed | gz |
+| files.dataProductCode | string | Data product code | 8 |
+| files.dateFrom | date | The beginning time stamp the data is recorded in the file | 2010-04-21T00:00:00.000Z |
+| files.dateModified | date | The last time stamp of any modification related to the file | 2010-04-22T01:55:00.000Z |
+| files.dateTo | date | The end time stamp the data is recorded in the file | 2010-04-22T00:00:00.000Z |
+| files.filename | string | The name of the file | "BC\_POD2\_JB\_20090908T000000.000Z.txt" |
+| files.uncompressedSize | long | Original file size, in bytes, without compression | 155545654 |
+| serviceMetadata.dateArchivedFrom | date | As passed into the original call |  |
+| serviceMetadata.dateArchivedTo | date | As passed into the original call |  |
+| serviceMetadata.dateFrom | date | As passed into the original call |  |
+| serviceMetadata.dateTo | date | As passed into the original call |  |
+| serviceMetadata.deviceCode | string | As passed into the original call | "BC\_POD2\_JB" |
+| serviceMetadata.next | Object | An object containing information for the next service call if the current call was unable to return all the data due to limit restrictions. This is **null** if there is no more data in the requested range. |  |
+| * serviceMetadata.next.parameters | Object | An object containing the set of parameters making up the query to get the next set of data in the requested date range. The parameters will include all parameters passed into the original URL. |  |
+| * + serviceMetadata.next.parameters.deviceCode | String | As passed into the original call | "BC\_POD2\_JB" |
+| * + serviceMetadata.next.parameters.method | String | As passed into the original call | "getListByDevice" |
+| * + serviceMetadata.next.parameters.page | integer | The page index for next call | 1 |
+| * + serviceMetadata.next.parameters.returnOptions | String | As passed into the original call | "archiveLocation" |
+| * + serviceMetadata.next.parameters.rowLimit | integer | As passed into the original call | 5 |
+| * + serviceMetadata.next.parameters.token | String | As passed into the original call | "YOUR\_TOKEN\_HERE" |
+| * serviceMetadata.next.url | String | The complete URL that can be used to get the next set of data in the requested range. | ```   ``` |
+| serviceMetadata.page | integer | The page index for next call. **1 means all results are returned and there is no more data** |  |
+| serviceMetadata.returnOptions | string | As passed into the original call |  |
+| serviceMetadata.rowLimit | integer | As passed into the original call | 5 |
+
+### **Example**
+
+* If  "**returnOptions**" parameter**is NOT** set, list of file names will be returned in files array object.
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&token=YOUR_TOKEN_HERE&deviceCode=BC_POD2_JB&rowLimit=5>
+
+```
+{  
+   "files":[  
+      "BC_POD2_JB_20080929T000000.000Z.log",
+      "BC_POD2_JB_20081002T000000.000Z.log",
+      "BC_POD2_JB_20081002T000000.000Z.txt",
+      "BC_POD2_JB_20081003T000000.000Z.txt",
+      "BC_POD2_JB_20081004T000000.000Z.txt"
+   ],
+   "serviceMetadata":{  
+      "dateArchivedFrom":null,
+      "dateArchivedTo":null,
+      "dateFrom":null,
+      "dateTo":null,
+      "deviceCode":"BC_POD2_JB",
+      "next":{  
+         "parameters":{  
+            "method":"getListByDevice",
+            "deviceCode":"BC_POD2_JB",
+            "rowLimit":"5",
+            "page":"2",
+            "token":"YOUR_TOKEN_HERE"
+         },
+         "url":"https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&deviceCode=BC_POD2_JB&rowLimit=5&page=2&token=YOUR_TOKEN_HERE"
+      },
+      "page":2,
+      "returnOptions":"",
+      "rowLimit":5
+   }
+}
+```
+
+ 
+
+* If "**returnOptions**" parameter is set to **all**, more information will be returned in files array.
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&token=YOUR_TOKEN_HERE&deviceCode=BC_POD2_JB&returnOptions=all&rowLimit=1>
+
+```
+{  
+   "files":[  
+      {  
+         "archivedDate":"2013-09-20T22:52:49.000Z",
+         "compression":"gz",
+         "dataProductCode":null,
+         "dateFrom":"2008-09-29T00:00:00.000Z",
+         "dateTo":"2008-09-30T00:00:00.000Z",
+         "deviceCode":"BC_POD2_JB",
+         "fileSize":87,
+         "filename":"BC_POD2_JB_20080929T000000.000Z.log",
+         "modifyDate":"2013-09-20T22:52:49.000Z",
+         "uncompressedFileSize":67
+      }
+   ],
+   "serviceMetadata":{  
+      "dateArchivedFrom":null,
+      "dateArchivedTo":null,
+      "dateFrom":null,
+      "dateTo":null,
+      "deviceCode":"BC_POD2_JB",
+      "next":{  
+         "parameters":{  
+            "method":"getListByDevice",
+            "returnOptions":"all",
+            "deviceCode":"BC_POD2_JB",
+            "rowLimit":"1",
+            "page":"2",
+            "token":"YOUR_TOKEN_HERE"
+         },
+         "url":"https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&returnOptions=all&deviceCode=BC_POD2_JB&rowLimit=1&page=2&token=YOUR_TOKEN_HERE"
+      },
+      "page":2,
+      "returnOptions":"all",
+      "rowLimit":1
+   }
+}
+```
+
+* Return a list of files with extension png
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&token=TOKEN_HERE&deviceCode=IOS3HYDARR01&rowLimit=5&fileExtension=png>
+
+```
+{
+	"next": {
+		"parameters": {
+			"method": "getListByDevice",
+			"fileExtension": "png",
+			"deviceCode": "IOS3HYDARR01",
+			"rowLimit": "5",
+			"page": "2",
+			"token": "TOKEN_HERE"
+		},
+		"url": "https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&fileExtension=png&deviceCode=IOS3HYDARR01&rowLimit=5&page=2&token=TOKEN_HERE"
+	},
+	"queryUrl": "https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&token=TOKEN_HERE&deviceCode=IOS3HYDARR01&rowLimit=5&fileExtension=png",
+	"files": ["IOS3HYDARR01_20060314T130754.000Z-spect-H3.png", "IOS3HYDARR01_20060314T130754.000Z-spect-H2.png", "IOS3HYDARR01_20060314T130754.000Z-spect-H1.png", "IOS3HYDARR01_20060314T131752.000Z-spect-H3.png", "IOS3HYDARR01_20060314T131752.000Z-spect-H2.png"]
+}
+```
+
+* Return a list of files with data product code HSD (Hydrophone Spectral Data)
+* <https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&token=TOKEN_HERE&deviceCode=IOS3HYDARR01&rowLimit=5&dataProductCode=HSD>
+
+```
+{
+	"next": {
+		"parameters": {
+			"method": "getListByDevice",
+			"dataProductCode": "HSD",
+			"deviceCode": "IOS3HYDARR01",
+			"rowLimit": "5",
+			"page": "2",
+			"token": "TOKEN_HERE"
+		},
+		"url": "https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&dataProductCode=HSD&deviceCode=IOS3HYDARR01&rowLimit=5&page=2&token=TOKEN_HERE"
+	},
+	"queryUrl": "https://data.oceannetworks.ca/api/archivefiles?method=getListByDevice&token=TOKEN_HERE&deviceCode=IOS3HYDARR01&rowLimit=5&dataProductCode=HSD",
+	"files": ["IOS3HYDARR01_20060314T130754.000Z-spect-H3.png", "IOS3HYDARR01_20060314T130754.000Z-spect-H2.png", "IOS3HYDARR01_20060314T130754.000Z-spect-H1.png", "IOS3HYDARR01_20060314T130754.000Z-spect-H3.pdf", "IOS3HYDARR01_20060314T130754.000Z-spect-H2.pdf"]
+}
+```
+
+getFile
+-------
+
+Download a file from Oceans 3.0 Archiving System by specifying the file name. The file will be downloaded without *any compression*.
+
+Many files in the archive are compressed for storage, uncompressing these files takes time on the server and increases data volume to transfer. We will address this performance issue in a future update.
+
+### **Parameters**
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| filename | string | A valid name of a file in DMAS Archiving System. | NAXYS\_02345\_P008\_20100107T185747.660Z.wav |
+| token | string | Credential token. |  |
+
+### Response
+
+#### Success
+
+HTTP status code 200 will be returned in HTTP header and the requested file will be downloaded.
+
+#### Example
+
+<https://data.oceannetworks.ca/api/archivefiles?method=getFile&token=SAMPLETOKEN123456789&filename=NAXYS_02345_P008_20100107T185747.660Z.wav>
+
+getList (No longer available - deprecated)
+------------------------------------------
+
+Get a list of files available in Oceans 3.0 Archiving System for a given station. The list of filenames can be filtered by device category and time range.
+
+Click here to expand...
+
+**Parameters**
+--------------
+
+| Parameter | Type | Description | Example |
+| --- | --- | --- | --- |
+| **Required** | | | |
+| station | string | Station code defined by DMAS. |  |
+| token | string | Credential token. |  |
+| **Optional** | | | |
+| deviceCategory | string | Device category code defined by DMAS. |  |
+| dateFrom | date | The date (in "yyyy-MM-ddTHH:mm:ss.SSSZ" format). | 2010-02-15T00:00:00.000Z |
+| dateTo | date | The date (in "yyyy-MM-ddTHH:mm:ss.SSSZ" format). | 2010-03-15T18:00:00.000Z |
+| dateArchivedFrom | date | The date (in "yyyy-MM-ddTHH:mm:ss.SSSZ" format). | 2010-04-15T00:00:00.000Z |
+| dateArchivedTo | date | The date (in "yyyy-MM-ddTHH:mm:ss.SSSZ" format). | 2010-07-15T22:30:00.000Z |
+| returnOptions | string | If there is no value given, only a list of filenames will be returned.  If the value is "archiveLocation"  a list of filenames with their archiveLocation will be returned.  If the value is "all" there are more metadata information will be returned. | all |
+| rowLimit | integer | The maximum number of data to return, within the constraints of the service. Note this will limit the data starting at the dateFrom time and ending at the row limit, not necessarily at the dateTo time.  default row limit: 100000 | rowLimit=100 |
+| returnServiceMetadata | string | if it is true, the service will return all the input parameters with an additional information to indicate the next start index | returnServiceMetadata=true |
+| startIndex | integer | This only works if returnServiceMetadata=true. The service will return data starting from the startIndex. It is useful for client code to create a loop. | startIndex = 100 |
+
+### Response
+
+#### Success
+
+HTTP status code 200 will be returned in HTTP header.
+
+If "returnServiceMetadata" is NOT set to "true" and if "returnOption" parameter is "all", a list of file names with their metadata information will be returned.
+
+* Order of list will be by filename ascending
+
+```
+[
+	{
+    	"archivedDate": <date>,
+        "compression": <string>,
+		"dataProductFormatId": <integer>
+        "dateFrom": <date>,
+        "dateTo": <date>,
+        "deviceId":<integer>,
+        "fileSize": <long>,
+        "filename": <string>,
+        "modifyDate": <date>,
+        "uncompressedFileSize": <long>
+            
+    },
+]
+```
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| archivedDate | date | The time stamp of current file in AD while it is archived | 2010-04-21T00:00:00.000Z |
+| compressedSize | long | File size, in bytes, after compressed with GZip |  |
+| compression | string | The file extension if the file is compressed | gz |
+| dataProductFormatId | integer | Data product format ID | 8 |
+| dateFrom | date | The beginning time stamp the data is recorded in the file | 2010-04-21T00:00:00.000Z |
+| dateModified | date | The last time stamp of any modification related to the file | 2010-04-22T01:55:00.000Z |
+| dateTo | date | The end time stamp the data is recorded in the file | 2010-04-22T00:00:00.000Z |
+| deviceId | integer | Device ID |  |
+| filename | string | The name of the file |  |
+| uncompressedSize | long | Original file size, in bytes, without compressed |  |
+
+If "returnServiceMetadata" is NOT set to "true" and if "returnOptions" parameter is NOT set, only a list of file names will be returned in JSON array object.
+
+```
+[
+    <string>,
+    <string>
+]
+```
+
+If "returnServiceMetadata" is set to "true" and if "returnOption" parameter is "all", a list of file names with their metadata information will be returned.
+
+* Order of list will be by filename ascending
+
+```
+{
+"files":
+[
+	{
+    	"archivedDate": <date>,
+        "compression": <string>,
+		"dataProductFormatId": <integer>
+        "dateFrom": <date>,
+        "dateTo": <date>,
+        "deviceId":<integer>,
+        "fileSize": <long>,
+        "filename": <string>,
+        "modifyDate": <date>,
+        "uncompressedFileSize": <long>
+            
+    },
+],
+"serviceMetadata":
+	{
+		"dateArchivedFrom":<date>,
+		"dateArchivedTo":<date>,
+		"dateFrom":<date>,
+		"dateTo":<date>,
+		"deviceCategory":<string>,
+		"returnOptions":<string>,
+		"rowLimit":<integer>,
+		"startIndex":<integer>,
+		"station":<string>
+	}
+} 
+```
+
+| Property | Type | Description | Example |
+| --- | --- | --- | --- |
+| files.archivedDate | date | The time stamp of current file in AD while it is archived | 2010-04-21T00:00:00.000Z |
+| files.compressedSize | long | File size, in bytes, after compressed with GZip |  |
+| files.compression | string | The file extension if the file is compressed | gz |
+| files.dataProductFormatId | integer | Data product format ID | 8 |
+| files.dateFrom | date | The beginning time stamp the data is recorded in the file | 2010-04-21T00:00:00.000Z |
+| files.dateModified | date | The last time stamp of any modification related to the file | 2010-04-22T01:55:00.000Z |
+| files.dateTo | date | The end time stamp the data is recorded in the file | 2010-04-22T00:00:00.000Z |
+| files.deviceId | integer | Device ID |  |
+| files.filename | string | The name of the file |  |
+| files.uncompressedSize | long | Original file size, in bytes, without compressed |  |
+| ``` serviceMetadata.dateArchivedFrom ``` | date | returned input parameter |  |
+| ``` serviceMetadata.dateArchivedTo ``` | date | returned input parameter |  |
+| ``` serviceMetadata.dateFrom ``` | date | returned input parameter |  |
+| ``` serviceMetadata.dateTo ``` | date | returned input parameter |  |
+| ``` serviceMetadata.deviceCategory ``` | string | returned input parameter |  |
+| ``` serviceMetadata.returnOptions ``` | string | returned input parameter |  |
+| ``` serviceMetadata.rowLimit ``` | integer | returned input parameter |  |
+| ``` serviceMetadata.startIndex ``` | integer | the start index for next call. -1  means there is no any data for next call |  |
+| ``` serviceMetadata.station ``` | string | returned input parameter |  |
+
+If "returnServiceMetadata" is set to "true" and if "returnOptions" parameter is NOT set, only a list of file names will be returned in JSON array object.
+
+```
+{
+"files":
+[
+    <string>,
+    <string>
+],
+"serviceMetadata":
+	{
+		"dateArchivedFrom":<date>,
+		"dateArchivedTo":<date>,
+		"dateFrom":<date>,
+		"dateTo":<date>,
+		"deviceCategory":<string>,
+		"returnOptions":<string>,
+		"rowLimit":<integer>,
+		"startIndex":<integer>,
+		"station":<string>
+	}
+}
+```
+
+|  | Type | Description | Example |
+| --- | --- | --- | --- |
+| files.\* | string | The name of the file | "BIOSONICSDTXU08003\_20100129T000000.000Z.txt" |
+| ``` serviceMetadata.dateArchivedFrom ``` | date | returned input parameter |  |
+| ``` serviceMetadata.dateArchivedTo ``` | date | returned input parameter |  |
+| ``` serviceMetadata.dateFrom ``` | date | returned input parameter |  |
+| ``` serviceMetadata.dateTo ``` | date | returned input parameter |  |
+| ``` serviceMetadata.deviceCategory ``` | string | returned input parameter |  |
+| ``` serviceMetadata.returnOptions ``` | string | returned input parameter |  |
+| ``` serviceMetadata.rowLimit ``` | integer | returned input parameter |  |
+| ``` serviceMetadata.startIndex ``` | integer | the start index for next call. -1  means there is no any data for next call |  |
+| ``` serviceMetadata.station ``` | string | returned input parameter |  |
+
+Example
+
+<https://data.oceannetworks.ca/api/archivefiles?method=getList&token=YOUR_TOKEN_HERE&station=FPDP.J1&deviceCategory=HYDROPHONE&dateFrom=2010-02-26T18:38:00.000Z&dateTo=2010-02-26T19:04:00.000Z&returnOptions=all>
+
+```
+[
+    {
+        "archivedDate": "2010-02-26T19:29:15.000Z",
+        "compression": "gz",
+        "dataProductFormatId": 8,
+        "dateFrom": "2010-02-26T18:38:23.000Z",
+        "dateTo": "2010-02-26T18:43:28.000Z",
+        "deviceId": 21601,
+        "fileSize": 29325540,
+        "filename": "NAXYS_HYD_P004_20100226T183823.766Z.wav",
+        "modifyDate": "2010-02-26T19:29:15.000Z",
+        "uncompressedFileSize": 57600044
+    },
+    {
+        "archivedDate": "2010-03-17T19:11:41.000Z",
+        "compression": "gz",
+        "dataProductFormatId": 8,
+        "dateFrom": "2010-02-26T18:43:28.000Z",
+        "dateTo": "2010-02-26T18:48:28.000Z",
+        "deviceId": 21601,
+        "fileSize": 29092930,
+        "filename": "NAXYS_HYD_P004_20100226T184328.414Z.wav",
+        "modifyDate": "2010-03-17T19:11:41.000Z",
+        "uncompressedFileSize": 57600044
+    },
+    {
+        "archivedDate": "2010-02-26T18:53:34.000Z",
+        "compression": "gz",
+        "dataProductFormatId": 8,
+        "dateFrom": "2010-02-26T18:48:28.000Z",
+        "dateTo": "2010-02-26T18:53:34.000Z",
+        "deviceId": 21601,
+        "filename": "NAXYS_HYD_P004_20100226T184828.572Z.wav"
+    },
+    {
+        "archivedDate": "2010-03-17T23:17:50.000Z",
+        "compression": "gz",
+        "dataProductFormatId": 8,
+        "dateFrom": "2010-02-26T18:53:34.000Z",
+        "dateTo": "2010-02-26T18:58:34.000Z",
+        "deviceId": 21601,
+        "fileSize": 28719719,
+        "filename": "NAXYS_HYD_P004_20100226T185334.825Z.wav",
+        "modifyDate": "2010-03-17T23:17:50.000Z",
+        "uncompressedFileSize": 57600044
+    },
+    {
+        "archivedDate": "2010-02-26T20:40:40.000Z",
+        "compression": "gz",
+        "dataProductFormatId": 8,
+        "dateFrom": "2010-02-26T18:58:34.000Z",
+        "dateTo": "2010-02-26T19:03:34.000Z",
+        "deviceId": 21601,
+        "fileSize": 28891774,
+        "filename": "NAXYS_HYD_P004_20100226T185834.820Z.wav",
+        "modifyDate": "2010-02-26T20:40:40.000Z",
+        "uncompressedFileSize": 57600044
+    }
+]
+ 
+```
+
+<https://data.oceannetworks.ca/api/archivefiles?method=getList&token=YOUR_TOKEN_HERE&station=FPDP.J1&dateFrom=2012-03-05T00:00:00.000Z&dateTo=2012-03-06T00:00:00.000Z>
+
+```
+[
+	"RDIADCP300WH15551_20120305T000000.000Z.rdi",
+    "RDIADCP300WH15551_20120305T000000.000Z.txt",
+    "RDIADCP300WH15551_20120305T060000.000Z.rdi",
+    "RDIADCP300WH15551_20120305T120000.000Z.rdi"
+]
+```
+
+<https://data.oceannetworks.ca/apiproxy/archivefiles?method=getList&station=BACHY&returnServiceMetadata=true&rowLimit=5&startIndex=10&returnOptions=all>
+
+```
+{
+	"files":
+	[
+		{
+			"archivedDate":"2013-09-20T18:05:59.000Z",
+			"compression":"gz",
+			"dataProductFormatId":5,
+			"dateFrom":"2009-09-02T00:00:00.000Z",
+			"dateTo":"2009-09-03T00:00:00.000Z",
+			"deviceId":10002,
+			"fileSize":815980,
+			"filename":"BC_MC_PJB_20090902T000000.000Z.txt",
+			"modifyDate":"2015-01-07T23:51:17.000Z",
+			"uncompressedFileSize":20772075
+		},
+		...
+	],
+	"serviceMetadata":
+	{
+		"dateArchivedFrom":null,
+		"dateArchivedTo":null,
+		"dateFrom":null,
+		"dateTo":null,
+		"deviceCategory":"",
+		"returnOptions":"all",
+		"rowLimit":5,
+		"startIndex":15,
+		"station":"BACHY"
+	}
+}
+```
+
+<https://data.oceannetworks.ca/apiproxy/archivefiles?method=getList&station=BACHY&returnServiceMetadata=true&rowLimit=5>
+
+```
+{
+	"files":
+	[
+		{
+			"archivedDate":"2013-09-20T18:05:59.000Z",
+			"compression":"gz",
+			"dataProductFormatId":5,
+			"dateFrom":"2009-09-02T00:00:00.000Z",
+			"dateTo":"2009-09-03T00:00:00.000Z",
+			"deviceId":10002,
+			"fileSize":815980,
+			"filename":"BC_MC_PJB_20090902T000000.000Z.txt",
+			"modifyDate":"2015-01-07T23:51:17.000Z",
+			"uncompressedFileSize":20772075
+		},
+		...
+	],
+	"serviceMetadata":
+	{
+		"dateArchivedFrom":null,
+		"dateArchivedTo":null,
+		"dateFrom":null,
+		"dateTo":null,
+		"deviceCategory":"",
+		"returnOptions":"all",
+		"rowLimit":5,
+		"startIndex":15,
+		"station":"BACHY"
+	}
+}
+{
+	"files":
+	[
+		"AGOTEMP02_20110713T000000.000Z.txt",
+		"AGOTEMP02_20110714T000000.000Z.txt",
+		"AGOTEMP02_20110715T000000.000Z.txt",
+		"BC_MC_PJB_20090801T000000.000Z.txt",
+		"BC_MC_PJB_20090802T000000.000Z.txt"
+	],
+	"serviceMetadata":
+	{
+		"dateArchivedFrom":null,
+		"dateArchivedTo":null,
+		"dateFrom":null,
+		"dateTo":null,
+		"deviceCategory":"",
+		"returnOptions":"all",
+		"rowLimit":5,
+		"startIndex":5,
+		"station":"BACHY"
+	}
+}
+
+```
+
+* No labels
+
+1 Comment
+---------
+
+1. ![User icon: mthorne@uvic.ca](/s/-sq6c87/9109/emrnub/_/images/icons/profilepics/anonymous.svg "mthorne@uvic.ca")
+
+   #### [Mic PROD Thorne]( /display/~mthorne@uvic.ca )
+
+
+
+   09-Jul-14
+
+   The value of the required parameter ***station*** for the ***getList*** service call, comes from the the DMAS database column ***searchtreenodecode*** in the table ***searchtreenode***.

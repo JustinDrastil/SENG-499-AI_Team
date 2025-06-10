@@ -1,0 +1,56 @@
+* Created by  [Dany A Cabrera](    /display/~dcabrera@uvic.ca
+  ), last updated by  [Vladislav Govor](    /display/~vgovor@oceannetworks.ca
+  ) on [04-Mar-25](/pages/diffpagesbyversion.action?pageId=78413885&selectedPageVersions=4&selectedPageVersions=5 "Show changes")
+
+  2 minute read
+
+**Requirements**
+----------------
+
+This library has been tested on MATLAB **R2022b**. MATLAB versions **older than R2018a are not supported**, since it uses updates to the HTTP library that support payloads with non-200 status codes and consumers for writing responses with files onto a disk.
+
+Basic unit testing on MATLAB R2018a indicates general compatibility with this version. While the client may work on versions newer than R2018a, compatibility with versions other than R2022b has not been explicitly verified.
+
+If you haven't signed in to your account in MATLAB yet, you will also need your MathWorks credentials to sign in (or create a free account when prompted).
+
+**Installing the MATLAB Add-On**
+--------------------------------
+
+The ONC MATLAB Client Library can be installed directly from MATLAB's Add-ons manager.
+
+**1.** In the **HOME** tab click "**Add-Ons**" → "**Get Add-Ons**":
+
+![](/download/thumbnails/78413885/image2019-12-12_8-49-50.png?version=1&modificationDate=1576185040000&api=v2)
+
+This will show the Add-Ons explorer.
+
+**2.** In the search box in the top right corner, type "**onc**" and press Enter:
+
+![](/download/attachments/78413885/image2019-12-12_8-52-8.png?version=1&modificationDate=1576185040000&api=v2)
+
+The first result found is typically the Oceans 3.0 API Client Library.
+
+![](/download/attachments/78413885/image2019-12-13_17-0-10.png?version=1&modificationDate=1576285431000&api=v2)
+
+**3.** Click the link in the title to access the Add-on page.
+
+**4.** In the Add-On page, click "**Add from GitHub**":
+
+![](/download/thumbnails/78413885/image2019-12-13_17-6-9.png?version=1&modificationDate=1576285790000&api=v2)
+
+**5.** (Optional) If you haven't signed in to your MATLAB account yet, you will be prompted to do so.
+
+**6.** MATLAB will require you to confirm the installation of third-party software. Click **OK** and the library will be installed.
+
+**7.** You can close the Add-Ons manager now.
+
+The ONC MATLAB Client Library is provided as a free, open-source package under the [Simplified BSD license](https://opensource.org/licenses/BSD-2-Clause). The source code is hosted on [GitHub](https://github.com/OceanNetworksCanada/api-matlab-client) as part of ONC's open-source initiative.
+
+**Troubleshooting**
+-------------------
+
+After installing the MATLAB Add-On, make sure it appears in the Add-On Manager:
+
+![](/download/attachments/78413885/image2019-12-12_9-29-18.png?version=1&modificationDate=1576185040000&api=v2)
+
+* No labels

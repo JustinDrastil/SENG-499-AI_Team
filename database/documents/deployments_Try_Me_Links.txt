@@ -1,0 +1,23 @@
+* Created by  [Kiersten Mort](    /display/~ksmort@uvic.ca
+  ) , last updated on [15-Nov-18](/pages/diffpagesbyversion.action?pageId=59017737&selectedPageVersions=3&selectedPageVersions=4 "Show changes")
+
+  1 minute read
+
+The following links are some examples of using the deployments Discovery Service.  The token refers to your Web Services API token, which you can find in the Web Services API tab of your Ocean Networks Canada profile.
+
+| Description | URL |
+| --- | --- |
+| Return a list of **All** Deployments (no filters) | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/deployments?method=get) |
+| Return a list of all Deployments with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)') | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/deployments?method=get&locationCode=BACAX) |
+| Return a list of all Deployments that have devices with the **Device Category** 'ADCP2MHZ' | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP2MHZ](https://data.oceannetworks.ca/apiproxy/deployments?method=get&deviceCategoryCode=ADCP2MHZ) |
+| Return a list of all Deployments with the **Property Code** 'differentialtemperature' | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=differentialtemperature](https://data.oceannetworks.ca/apiproxy/deployments?method=get&propertyCode=differentialtemperature) |
+| Return a list of all Deployments with the **Device Category** 'CTD' and **Property Code** 'pressure' | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=CTD&propertyCode=pressure](https://data.oceannetworks.ca/apiproxy/deployments?method=get&deviceCategoryCode=CTD&propertyCode=pressure) |
+| Return a list of all Deployments of a device with the **Device Code** 'NORTEKAQDPRO8398' | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&deviceCode=NORTEKAQDPRO8398](https://data.oceannetworks.ca/apiproxy/deployments?method=get&deviceCode=NORTEKAQDPRO8398) |
+| Return a list of all of the Deployments **Between** 1 July 2010 and 30 June 2012 | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z](https://data.oceannetworks.ca/apiproxy/deployments?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2012-06-30T23:59:59.999Z) |
+| Return a list of all Deployments **Between** 1 July 2010 and 30 June 2011 with the sensor **Property Code** 'seawatertemperature' | [https://data.oceannetworks.ca/api/deployments?method=get&token=YOUR\_TOKEN\_HERE&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature](https://data.oceannetworks.ca/apiproxy/deployments?method=get&dateFrom=2010-07-01T00:00:00.000Z&dateTo=2011-06-30T23:59:59.999Z&propertyCode=seawatertemperature) |
+
+#### API Proxy
+
+The [https://data.oceannetworks.ca](https://data.oceannetworks.ca/)/**apiproxy**/deployments URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the deployments endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/deployments URL along with a valid token.
+
+* No labels

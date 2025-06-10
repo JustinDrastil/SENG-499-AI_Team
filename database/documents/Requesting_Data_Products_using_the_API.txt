@@ -1,0 +1,55 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Ben Biffard](    /display/~bbiffard@uvic.ca
+  ) on [09-Jan-23](/pages/diffpagesbyversion.action?pageId=48696522&selectedPageVersions=13&selectedPageVersions=14 "Show changes")
+
+  1 minute read
+
+### Oceans 3.0 API
+
+The Oceans 3.0 API lets you programmatically discover [locations](/spaces/O2A/pages/49447546/locations+Discovery+Service), [devices](/spaces/O2A/pages/48696422/devices+Discovery+Service), [deviceCategories](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service), [properties](/spaces/O2A/pages/48696426/properties+Discovery+Service) and [dataProducts](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service) via web service calls. Information returned by these calls can be used to request data via the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service) service.
+
+Each data product has a unique code and one or more supported extensions. The code and extension must combined to request a data product, using the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)service. Additional Data Product Options required for the data product can be defined using filters, with some options requiring additional filters.
+
+The data product code can be used as a filter on the:
+
+* [locations](/spaces/O2A/pages/49447546/locations+Discovery+Service) service to find all locations where the data product can be requested.
+* [devices](/spaces/O2A/pages/48696422/devices+Discovery+Service) service to find devices for which the data product can be requested.
+* [dataProducts](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service) service to return additional metadata about the data product.
+
+### Sample Code
+
+| Title | Creator | Modified |
+| --- | --- | --- |
+| [Research Use Case](/spaces/O2A/pages/49447595/Research+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+
+Python Code
+
+| Title | Creator | Modified |
+| --- | --- | --- |
+| [Research Use Case](/spaces/O2A/pages/49447595/Research+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+
+MATLAB Code
+
+| Title | Creator | Modified |
+| --- | --- | --- |
+| [Ouranos Use Case](/spaces/O2A/pages/55155975/Ouranos+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Bird Studies Canada Use Case](/spaces/O2A/pages/55155972/Bird+Studies+Canada+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Internal Use Case](/spaces/O2A/pages/49448569/Internal+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+
+R Code
+
+How-to article
+--------------
+
+Provide step-by-step guidance for completing a task.
+
+### Use Cases
+
+| Title | Creator | Modified |
+| --- | --- | --- |
+| [Ouranos Use Case](/spaces/O2A/pages/55155975/Ouranos+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Bird Studies Canada Use Case](/spaces/O2A/pages/55155972/Bird+Studies+Canada+Use+Case) | [Allan Rempel](/display/~agrempel) | 26-Feb-22 |
+| [Internal Use Case](/spaces/O2A/pages/49448569/Internal+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+| [Research Use Case](/spaces/O2A/pages/49447595/Research+Use+Case) | [Ryan Ross](/display/~ryanross%40uvic.ca) | 26-Feb-22 |
+
+* No labels

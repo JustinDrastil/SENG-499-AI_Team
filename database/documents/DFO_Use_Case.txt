@@ -1,0 +1,13 @@
+* Created by  [Allan Rempel](    /display/~agrempel
+  ), last updated by  [Dwight Owens](    /display/~dwowens@uvic.ca
+  ) on [26-Feb-22](/pages/diffpagesbyversion.action?pageId=59016137&selectedPageVersions=1&selectedPageVersions=2 "Show changes")
+
+  1 minute read
+
+This use case shows one example of how Canada's Department of Fisheries and Oceans (DFO) would use the Oceans 3.0 API and Sandbox to accomplish its objectives. These objectives include using hydrophone data to calculate spectra, detect mammals, and observe noise from vessels. DFO has access to hydrophones that are otherwise restricted from public access, which are well suited to these observations, and so this use case also serves to demonstrate the functionality of data access restrictions.
+
+Researchers at DFO would like to run their own specific analyses on very large quantities of hydrophone data, so a Sandbox that is located close to the data and connected with high-performance computing facilities, to avoid delays due to large data transfers via slow communications channels. They have their own code written in Matlab or Python which they can upload to the Sandbox for processing.
+
+Videos demonstrating the use of the Sandbox, including the DFO use case specifically, can be seen at: <http://www.oceannetworks.ca/dfo-sandbox>
+
+* No labels

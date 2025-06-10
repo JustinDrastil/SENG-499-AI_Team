@@ -1,0 +1,27 @@
+* Created by  [Dany A Cabrera](    /display/~dcabrera@uvic.ca
+  ), last updated on [12-Dec-19](/pages/diffpagesbyversion.action?pageId=78413876&selectedPageVersions=1&selectedPageVersions=2 "Show changes")
+
+  2 minute read
+
+**Requirements**
+----------------
+
+|  |
+| --- |
+| The ONC Python client library requires Python version 3.3 or higher.  Python 2 support was dropped in May 2019 in preparation for Python 2's end of life, after the [official statement](https://python3statement.org/) of the main Python library projects. Should you require Python 2 support, consider using [version 1.25.5](https://pypi.org/project/onc/1.25.5/#files). |
+
+**Installing the client library**
+---------------------------------
+
+|  |
+| --- |
+| The ONC Python client library can be installed directly from the [PyPI package repository](https://pypi.python.org/pypi), with the following command:  ``` pip install onc ```  To **update** a previously installed version of this library, use:  ``` pip install onc --upgrade ```  If you would like to **verify** your installation, use:  ``` pip show onc ```  If the above command prints information on the package (name, version, homepage, author, etc.) you're ready to use this library. |
+
+**Troubleshooting**
+-------------------
+
+|  |
+| --- |
+| Some system configurations might require you to use **`"pip3"`** instead of `"pip"`.  If you can't use either, you might find the pip executable in the "`Scripts`" folder of your Python installation directory.  Some systems might require administrator access (i.e. Opening the terminal with '*Run As Administrator*' in Windows or using "`sudo`" in Mac & Linux). You can also solve privilege-related issues by using isolated Python environments like those provided by [Anaconda](https://www.anaconda.com) or [virtualenv](https://virtualenv.pypa.io/en/latest/).  You can verify that "`pip`" is working properly by opening a terminal window and entering:  ``` pip --version ```  If you experience privileges issues while running pip, you can try running the pip module from the python executable, with the following command (you might need to use "`python3`" and "`pip3`" depending on your system):  ``` python -m pip install onc ```  If you have both Python 2 and Python 3 installed in your system, keep in mind that pip and pip3 maintain **separate** package sets. |
+
+* No labels

@@ -1,0 +1,21 @@
+* Created by  [Kiersten Mort](    /display/~ksmort@uvic.ca
+  ) , last updated on [15-Nov-18](/pages/diffpagesbyversion.action?pageId=59017739&selectedPageVersions=1&selectedPageVersions=2 "Show changes")
+
+  1 minute read
+
+The following links are some examples of using the deviceCategories Discovery Service.  The token refers to your Web Services API token, which you can find in the Web Services API tab of your Ocean Networks Canada profile.
+
+| Description | URL |
+| --- | --- |
+| Return a list of **All** Device Categories (no filters) | [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR\_TOKEN\_HERE](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get) |
+| Return the Device Category with **Code** 'ADCP1MHZ' | [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryCode=ADCP1MHZ](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&deviceCategoryCode=ADCP1MHZ) |
+| * Return a list of all Device Categories that have a **Name** which contains 'adcp' | [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR\_TOKEN\_HERE&deviceCategoryName=adcp](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&deviceCategoryName=adcp) |
+| Return a list of all Device Categories that have a **Description**which contains 'doppler' | [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR\_TOKEN\_HERE&description=doppler](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&description=doppler) |
+| Return a list of all Device Categories that are available at a location with a **Location Code** of 'BACAX' ('Barkely Canyon Axis (POD1)') | [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR\_TOKEN\_HERE&locationCode=BACAX](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&locationCode=BACAX) |
+| Return a list of all Device Categories which has devices with a specific **Property Code** of 'salinity' | [https://data.oceannetworks.ca/api/deviceCategories?method=get&token=YOUR\_TOKEN\_HERE&propertyCode=salinity](https://data.oceannetworks.ca/apiproxy/deviceCategories?method=get&propertyCode=salinity) |
+
+#### API Proxy
+
+The <https://data.oceannetworks.ca>/**apiproxy**/deviceCategories URL link in the above examples can be used in a browser for sharing or testing purposes; however, it can not be accessed from code. Calls to the apiproxy server are redirected to a login screen to capture your user id. Accessing the apiproxy URL from code will return html in the payload, which may cause errors or unexpected behaviour. In order to use the deviceCategories endpoint from code, you must use the <https://data.oceannetworks.ca/>**api**/deviceCateogies URL along with a valid token.
+
+* No labels

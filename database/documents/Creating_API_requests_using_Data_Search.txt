@@ -1,0 +1,27 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Angela Schlesinger](    /display/~schlesin@uvic.ca
+  ) on [16-Oct-23](/pages/diffpagesbyversion.action?pageId=49448982&selectedPageVersions=9&selectedPageVersions=10 "Show changes")
+
+  2 minute read
+
+This guide will help experienced users of the Oceans 3.0 web interface understand how to programmatically create Oceans 3.0 API data product requests, using the information available on the Data Search page, when they make an interactive data product request.
+
+Instruments by Location Search
+------------------------------
+
+A typical, programmatic request for a data product request for an 'Instruments by Location' search, would use the following [dataProductDelivery Service](/spaces/O2A/pages/48696520/dataProductDelivery+Service) and Oceans 3.0 [DataSearch Portal](https://data.oceannetworks.ca/DataSearch).
+
+To create the filters needed to order a data product using the API, you can use [Data Search](http://data.oceannetworks.ca/DataSearch) to define the data product request interactively,  using the following steps
+
+1. Open data search <http://data.oceannetworks.ca/DataSearch>,
+   1. Select 'Instruments by Location' from the 'Sort by' drop-down
+   2. Navigate to the location and device category of your data and click 'Next' (or 'Select Data Product')
+   3. Enter a 'Date From' and 'Date To'.
+   4. Select the data product and options you are interested in.
+2. Capture the **locationCode**, **deviceCategoryCode** from the URL at the top of the browser
+3. Capture the **dates** from the date section of the page and use 'dateFrom' and 'dateTo' (instead of 'begin' and 'end')
+4. Click on the link for the **Data Product** you are interested in and use the documentation to retrieve the dataProductCode, extension and all data product options you have identified in the appropriate data product options and codes. The data product documentation includes the API data product option codes for every Data Product Option available on the Data Search page.
+
+![](/download/attachments/49448982/DataSearch-to-orderDataProduct.png?version=4&modificationDate=1503341129000&api=v2)
+
+* No labels

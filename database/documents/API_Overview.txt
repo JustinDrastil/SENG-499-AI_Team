@@ -1,0 +1,15 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Angela Schlesinger](    /display/~schlesin@uvic.ca
+  ) on [06-Aug-24](/pages/diffpagesbyversion.action?pageId=49448851&selectedPageVersions=4&selectedPageVersions=5 "Show changes")
+
+  1 minute read
+
+![](/download/attachments/49448851/API%20Home%20with%20Interop.png?version=1&modificationDate=1502314049000&api=v2)
+
+The Oceans 3.0 API provides a collection of web services for programmatically unlocking access to the vast ONC data archive, whether it is scalar data, complex data or video and imagery. The services in the API are split into three functional groups: **1) Discovery, 2) Delivery and 3) Interoperability.**
+
+b) The synchronous approach is currently being handled by the **scalardata and rawdata services**. The objective of these services is to provide fast access to small amounts of simple data, such as the last reading from an instrument and return it immediately in the response payload in json format, so that it can be quickly utilized by the calling program.
+
+See for more information here: [Oceans 3.0 API Home](/spaces/O2A/pages/48696392/Oceans+3.0+API+Home)
+
+* No labels

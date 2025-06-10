@@ -1,0 +1,106 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Angela Schlesinger](    /display/~schlesin@uvic.ca
+  ) on [17-Oct-23](/pages/diffpagesbyversion.action?pageId=49449509&selectedPageVersions=8&selectedPageVersions=9 "Show changes")
+
+  5 minute read
+
+The following matrix provides a web service, sample code and client library functionality cross-reference to help users quickly figure out which filters are available for discovery and data requests and which information (metadata) is returned in the service payload.
+
+|  |  |
+| --- | --- |
+| ✔ | Available Now |
+| ✔ | Available Now in API version 1 |
+
+|  | [locations](/spaces/O2A/pages/49447546/locations+Discovery+Service) | [devices](/spaces/O2A/pages/48696422/devices+Discovery+Service) | [deployments](/spaces/O2A/pages/49449052/deployments+Discovery+Service) | [device Categories](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service) | [properties](/spaces/O2A/pages/48696426/properties+Discovery+Service) | [data Products](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service) | data Product Delivery  [request method](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service#dataProductDeliveryService-request) | data Product Delivery  [run method](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service#dataProductDeliveryService-run) | data Product Delivery  [download method](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service#dataProductDeliveryService-download) | Sensor Observation Service (SOS) | OPeNDAP (ERDDAP) | MatLab Samples / [Client Library](https://wiki.oceannetworks.ca/display/O2A/MATLAB+Client+Library) | Python Samples / [Client Library](https://wiki.oceannetworks.ca/display/O2A/Python+Client+Library) | R Samples / [Client Library](https://wiki.oceannetworks.ca/display/O2A/R+Client+Library) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| User **authentication** required (Token) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  | ✔ | ✔ | ✔ |
+| Honors **data restrictions** |  |  |  |  |  |  | ✔ | | |  |  | ✔ | ✔ | ✔ |
+| **Discover** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| **All** (no filters) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Location Code** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **L****ocation Name** (fuzzy search - name contains value & case insensitive) | ✔ |  |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Device Code** | ✔ | ✔ | ✔ |  | ✔ | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Device****Name** (fuzzy search - name contains value & case insensitive) |  | ✔ |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Description** (fuzzy search - description contains value & case insensitive) |  |  |  | ✔ | ✔ |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Device Category Code** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Device Category****Name** (fuzzy search - name contains value & case insensitive) |  |  |  | ✔ |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Property Code** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Property****Name** (fuzzy search - name contains value & case insensitive) |  |  |  |  | ✔ |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Data Product Code** | ✔ | ✔ |  |  |  | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Data Product****Name** (fuzzy search - name contains value & case insensitive) |  |  |  |  |  | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Data Product Extension** (file format) |  |  |  |  |  | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| by deployment **Time Range** (begin and end) | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| **Metadata** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| get **Location Code** | ✔ |  | ✔ |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Device Code** |  | ✔ | ✔ |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Device ID** |  | ✔ |  |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Device Category Code** |  |  | in progress | ✔ |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Property Code** |  |  |  |  | ✔ |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Data Product Code** |  |  |  |  |  | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Data Product Extension** (file format) |  |  |  |  |  | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Name** | ✔ | ✔ |  | ✔ | ✔ | ✔ |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Description** | ✔ |  |  | ✔ | ✔ |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Long Description** |  |  |  | ✔ |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Device Data Availability** | ✔ |  | ✔ |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Property Data Availabilty** | ✔ |  | ✔ |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Deployment Count** | ✔ |  |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Geographic Location** (lat, lon & depth) | ✔ |  | ✔ |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Device Orientation** (heading, pitch & roll) |  |  | ✔ |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get**Data Rating** |  | ✔ |  |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get deployment **Time Range** (begin & end) |  |  | ✔ |  |  |  |  |  | some DP |  |  | ✔ | ✔ | ✔ |
+| get **Unit of Measure** |  |  |  |  | ✔ |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Controlled Vocabulary Term** |  | ✔ |  | ✔ | ✔ |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Data Search URL** | ✔ |  |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get **Device Listing URL** |  | ✔ |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |
+| get**Help Document URL** |  |  |  |  |  | ✔ |  |  |  |  |  | ✔ | ✔ | ✔ |
+| **Request Data** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| by **Location** & **Device Category** (Device Level) |  |  |  |  |  |  | ✔ |  |  |  |  | ✔ | ✔ | ✔ |
+| by**Location & Property** (Primary Sensor) |  |  |  |  |  |  | ✔ |  |  | ✔ |  | ✔ | ✔ | ✔ |
+| by **Location, Device Category & Property**(Sensor Level) |  |  |  |  |  |  | ✔ |  |  |  |  | ✔ | ✔ | ✔ |
+| by **Device** |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ | ✔ | ✔ |
+| by **Device & Property** |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ | ✔ | ✔ |
+| by **Time Range** |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ | ✔ | ✔ |
+| by data product **Extension** |  |  |  |  |  |  | ✔ |  |  |  |  | ✔ | ✔ | ✔ |
+| by data product**Code** |  |  |  |  |  |  | ✔ |  |  |  |  | ✔ | ✔ | ✔ |
+| by **[Data Product Options](https://wiki.oceannetworks.ca/display/DP/Data+Product+Options)** |  |  |  |  |  |  | ✔ |  |  |  |  | ✔ | ✔ | ✔ |
+| get estimated **file count** for data product request |  |  |  |  |  |  | some DP |  |  |  |  | ✔ | ✔ | ✔ |
+| get estimated **file size**for data product request |  |  |  |  |  |  | some DP |  |  |  |  | ✔ | ✔ | ✔ |
+| get processing **time estimate** for data product request |  |  |  |  |  |  | some DP |  |  |  |  | ✔ | ✔ | ✔ |
+| **create**data product request |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ | ✔ |
+| get **status** of product request |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| **download** data product request |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **scalar** data |  |  |  |  |  |  |  |  | ✔ | ✔ |  | ✔ | ✔ | ✔ |
+| download **complex** data (ADCP) |  |  |  |  |  |  |  |  | ✔ |  | ✔ | ✔ | ✔ | ✔ |
+| download **video** files |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **hydrophone**files |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **CODAR** files |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **Raw** data from the instrument |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **Parsed** (Raw) data |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **Clean**data (Fill missing/bad data with NaNs) |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| download **Clean**data (Do not fill gaps) |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| **Resample** data by time Interval |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| **Average** data by time period |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| **JSON** output from data products |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| retrieve **small amounts** of data with a single call |  |  |  |  |  |  |  |  | ✔ |  |  | ✔ | ✔ | ✔ |
+| **Standardization** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| uses/represents **controlled vocabulary terms** |  | ✔ NERC L22 (SeaVoc) |  | ✔ NERC L05 (SeaDataNet) | ✔ NERC P7 (CF) |  |  |  |  |  |  |  |  |  |
+| **OMJSON** output |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| **netCDF** output |  |  |  |  |  |  |  |  | some data products |  | ✔ |  |  |  |
+| **FGDC** Metadata output |  |  |  |  |  |  |  |  | ✔ \*to be deprecated |  |  |  |  |  |
+| **ISO 19115** Metadata output |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| supports data **Citations** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| **Performance** |  |  |  |  |  |  |  | | |  |  |  |  |  |
+| Discovery service returns response in < 1 second | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  | | |  |  |  |  |  |
+| A request for a Data Product should return a response in < 1 second |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| A request to run a Data Product request should return a response in < 1 second |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| The generated files should be available on the FTP in < 1 second after completion |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| **Scalar** data   * + download 1 day of observations at 1 sec sample rate, for 1 property (86,400 rows, 86,400 observations) in < 30 seconds at any time of the day   + download 1 day of observations at 1 min sample rate, for 1 property (1,440 rows, 1,440 observations) in < 10 seconds at any time of the day |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| **Complex** data   * + download 1 day of ADCP observations at 10 sec sample rate for 6 properties (8,640 rows, 51,840 observations) in < 30 sec at any time of the day   + download 1 day of ADCP observations at 1 sec sample rate for 6 properties (86,400 rows, 518,400 observations) in < 1 min at any time of the day |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| **Hydrophone** audio files  * + download 6 hours (~4 GB) of files in < 15 mins at any time of the day   + download 1 hour of high gain hydrophone audio files (bit rate 1,536 kbsp) - 12 audio files @5:00 length, ~659 MB in < 2 mins at any time of the day |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| **Video** files   * + download 1 day low resolution video (1280x720, 1363 kbps, 11 fps) - 12 videos @2:30 length, ~275 MB in < 20 sec at any time of the day   + download 6 hours of high resolution video (1600x1200, 6476 kbps, 20 fps) - 3 videos @4:35 length, 780.3 MB in < 1 min at any time of the day |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+| **CODAR** files   * + download 1 day (24 files - 2.29 MB) in < 1 min at any time of the day |  |  |  |  |  |  | ✔ | | |  |  |  |  |  |
+|  | **[locations](/spaces/O2A/pages/49447546/locations+Discovery+Service)** | **[devices](/spaces/O2A/pages/48696422/devices+Discovery+Service)** | **[deployments](/spaces/O2A/pages/49449052/deployments+Discovery+Service)** | **[device Categories](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service)** | **[properties](/spaces/O2A/pages/48696426/properties+Discovery+Service)** | **[data Products](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service)** | data Product Delivery  [request method](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service#dataProductDeliveryService-request) | data Product Delivery  [run method](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service#dataProductDeliveryService-run) | data Product Delivery  [download method](https://wiki.oceannetworks.ca/display/O2A/dataProductDelivery+Service#dataProductDeliveryService-download) | **Sensor Observation Service (SOS)** | **OPeNDAP (ERDDAP)** | **MatLab Samples / [Client Library](https://wiki.oceannetworks.ca/display/O2A/MATLAB+Client+Library)** | **Python Samples / [Client Library](https://wiki.oceannetworks.ca/display/O2A/Python+Client+Library)** | **R Samples / [Client Library](https://wiki.oceannetworks.ca/display/O2A/R+Client+Library)** |
+
+Please report all issues with the web services, documentation, samples and client libraries by going to [Oceans 3.0 Data Portal](https://data.oceannetworks.ca/DataPreview?TREETYPE=1&LOCATION=11&TIMECONFIG=0) and clicking **Request Support** button available for each application.
+
+* No labels

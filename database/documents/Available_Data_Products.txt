@@ -1,0 +1,311 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Dany A Cabrera](    /display/~dcabrera@uvic.ca
+  ) on [19-Mar-19](/pages/diffpagesbyversion.action?pageId=48697035&selectedPageVersions=9&selectedPageVersions=10 "Show changes")
+
+  1 minute read
+
+All data products
+-----------------
+
+The following dynamic list of all of the data products, are being pulled from the [dataProducts](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service) web service using the URL [http://data.oceannetworks.ca/api/dataProducts?method=get&token=[YOUR\_TOKEN\_HERE]](http://dmas.uvic.ca/apiproxy/dataProducts?method=get)
+
+The **dataProductCode** values can be used as a filter on the [locations](/spaces/O2A/pages/49447546/locations+Discovery+Service) and [devices](/spaces/O2A/pages/48696422/devices+Discovery+Service) services and along with **extension** values on the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service) service. Filters on the **dataProductCode**, **dataProductName and****extension**columns can be used to reduce the results returned from the [dataProducts](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service) service. The **helpDocument** column provides a link to the Help documentation for the specific Data Product. All of the information about the data product options and their usage, needed to successfully request a data product, can be found in the documentation.
+
+| dataProductCode | dataProductName | extension | helpDocument |
+| --- | --- | --- | --- |
+| 3DCIS | 3D Camera Image Stitching | tar | <https://wiki.oceannetworks.ca/display/DP/86> |
+| 3DCR | 3D Camera Reconstruction | tar | <https://wiki.oceannetworks.ca/display/DP/85> |
+| AAPTS | ASL Acoustic Profiler Time Series | 01a | <https://wiki.oceannetworks.ca/display/DP/24> |
+| AAPTS | ASL Acoustic Profiler Time Series | csv | <https://wiki.oceannetworks.ca/display/DP/24> |
+| AAPTS | ASL Acoustic Profiler Time Series | mat | <https://wiki.oceannetworks.ca/display/DP/24> |
+| AAPTS | ASL Acoustic Profiler Time Series | pdf | <https://wiki.oceannetworks.ca/display/DP/24> |
+| AAPTS | ASL Acoustic Profiler Time Series | png | <https://wiki.oceannetworks.ca/display/DP/24> |
+| AD | Audio Data | flac | <https://wiki.oceannetworks.ca/display/DP/7> |
+| AD | Audio Data | mp3 | <https://wiki.oceannetworks.ca/display/DP/7> |
+| AD | Audio Data | wav | <https://wiki.oceannetworks.ca/display/DP/7> |
+| AF | Annotation File | an | <https://wiki.oceannetworks.ca/display/DP/89> |
+| AGOTSP | AGO Time Series Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/18> |
+| AGOTSP | AGO Time Series Plot | png | <https://wiki.oceannetworks.ca/display/DP/18> |
+| AISRD | AIS Raw Data | xraw | <https://wiki.oceannetworks.ca/display/DP/191> |
+| AMLCSV | AML Raw Data | amlx | <https://wiki.oceannetworks.ca/display/DP/190> |
+| AMLCSV | AML Raw Data | csv | <https://wiki.oceannetworks.ca/display/DP/190> |
+| APTHIGH | TiltMeter High-Rate Raw Data | apt | <https://wiki.oceannetworks.ca/display/DP/195> |
+| APTLOW | TiltMeter Low-Rate Raw Data | apt | <https://wiki.oceannetworks.ca/display/DP/75> |
+| AQSCATAPD | AQUAscat Acoustic Profiler Data | mat | <https://wiki.oceannetworks.ca/display/DP/197> |
+| AQSCATAPD | AQUAscat Acoustic Profiler Data | pdf | <https://wiki.oceannetworks.ca/display/DP/197> |
+| AQSCATAPD | AQUAscat Acoustic Profiler Data | png | <https://wiki.oceannetworks.ca/display/DP/197> |
+| AQUALMF | AQUAlogger Manufacturer Format | csv | <https://wiki.oceannetworks.ca/display/DP/129> |
+| AQUAMF | AQUAscat Manufacturer Format | aqa | <https://wiki.oceannetworks.ca/display/DP/104> |
+| ASFV | ASF Video | asf | <https://wiki.oceannetworks.ca/display/DP/39> |
+| AVIV | AVI Video | avi | <https://wiki.oceannetworks.ca/display/DP/14> |
+| BHTTSP | BHT Time Series Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/3> |
+| BHTTSP | BHT Time Series Plot | png | <https://wiki.oceannetworks.ca/display/DP/3> |
+| BPRRD | BPR Raw Data | bin | <https://wiki.oceannetworks.ca/display/DP/72> |
+| BPRRD | BPR Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/72> |
+| BSTS | BioSonics Time Series | csv | <https://wiki.oceannetworks.ca/display/DP/19> |
+| BSTS | BioSonics Time Series | dt4 | <https://wiki.oceannetworks.ca/display/DP/19> |
+| BSTS | BioSonics Time Series | mat | <https://wiki.oceannetworks.ca/display/DP/19> |
+| BSTS | BioSonics Time Series | pdf | <https://wiki.oceannetworks.ca/display/DP/19> |
+| BSTS | BioSonics Time Series | png | <https://wiki.oceannetworks.ca/display/DP/19> |
+| CDFD | COVIS Diffuse Flow Data | mat | <https://wiki.oceannetworks.ca/display/DP/41> |
+| CDFD | COVIS Diffuse Flow Data | pdf | <https://wiki.oceannetworks.ca/display/DP/41> |
+| CDFD | COVIS Diffuse Flow Data | png | <https://wiki.oceannetworks.ca/display/DP/41> |
+| CDFRF | COVIS Diffuse Flow Raw Files | tar | <https://wiki.oceannetworks.ca/display/DP/34> |
+| CDSSRRF | COVIS DIFFUSESLOW Special Run Raw Files | tar | <https://wiki.oceannetworks.ca/display/DP/47> |
+| CFAALF | Community Fishers Android App Log File | androidlog | <https://wiki.oceannetworks.ca/display/DP/183> |
+| CFCSVAN | Community Fishers CSV Annotations | csv | <https://wiki.oceannetworks.ca/display/DP/196> |
+| CFISOXML | Community Fishers ISO 19115 XML Report | xml | <https://wiki.oceannetworks.ca/display/DP/193> |
+| CFSOC | Community Fishers State of the Ocean Climate | csv | <https://wiki.oceannetworks.ca/display/DP/199> |
+| CFSOC | Community Fishers State of the Ocean Climate | mat | <https://wiki.oceannetworks.ca/display/DP/199> |
+| CFSOC | Community Fishers State of the Ocean Climate | png | <https://wiki.oceannetworks.ca/display/DP/199> |
+| CFSPA | Community Fishers Station Profile Animation | gif | <https://wiki.oceannetworks.ca/display/DP/198> |
+| CFSPA | Community Fishers Station Profile Animation | mp4 | <https://wiki.oceannetworks.ca/display/DP/198> |
+| CFSPA | Community Fishers Station Profile Animation | pdf | <https://wiki.oceannetworks.ca/display/DP/198> |
+| CFSPA | Community Fishers Station Profile Animation | png | <https://wiki.oceannetworks.ca/display/DP/198> |
+| CODARCD | CODAR Manufacturer Surface Currents | gif | <https://wiki.oceannetworks.ca/display/DP/114> |
+| CODARCD | CODAR Manufacturer Surface Currents | png | <https://wiki.oceannetworks.ca/display/DP/114> |
+| CODARCD | CODAR Manufacturer Surface Currents | ruv | <https://wiki.oceannetworks.ca/display/DP/114> |
+| CODARCD | CODAR Manufacturer Surface Currents | tuv | <https://wiki.oceannetworks.ca/display/DP/114> |
+| CODARCFG | CODAR Configurations | zip | <https://wiki.oceannetworks.ca/display/DP/173> |
+| CODARCSQ | CODAR Raw CSQ Data | tar | <https://wiki.oceannetworks.ca/display/DP/117> |
+| CODARCSS | CODAR Raw CSS Data | tar | <https://wiki.oceannetworks.ca/display/DP/116> |
+| CODARDA | CODAR Data Availability | mat | <https://wiki.oceannetworks.ca/display/DP/154> |
+| CODARDA | CODAR Data Availability | pdf | <https://wiki.oceannetworks.ca/display/DP/154> |
+| CODARDA | CODAR Data Availability | png | <https://wiki.oceannetworks.ca/display/DP/154> |
+| CODARGRD | CODAR Grid Files | grd | <https://wiki.oceannetworks.ca/display/DP/150> |
+| CODARQCSC | CODAR Quality Controlled Surface Currents | gif | <https://wiki.oceannetworks.ca/display/DP/148> |
+| CODARQCSC | CODAR Quality Controlled Surface Currents | mat | <https://wiki.oceannetworks.ca/display/DP/148> |
+| CODARQCSC | CODAR Quality Controlled Surface Currents | nc | <https://wiki.oceannetworks.ca/display/DP/148> |
+| CODARQCSC | CODAR Quality Controlled Surface Currents | pdf | <https://wiki.oceannetworks.ca/display/DP/148> |
+| CODARQCSC | CODAR Quality Controlled Surface Currents | png | <https://wiki.oceannetworks.ca/display/DP/148> |
+| CODARRNG | CODAR Raw RNG Data | tar | <https://wiki.oceannetworks.ca/display/DP/115> |
+| CPD | Aligned and Depth-Binned Profile Data (Legacy) | cor | <https://wiki.oceannetworks.ca/display/DP/87> |
+| CPDD | COVIS Plume Doppler Data | mat | <https://wiki.oceannetworks.ca/display/DP/67> |
+| CPDD | COVIS Plume Doppler Data | pdf | <https://wiki.oceannetworks.ca/display/DP/67> |
+| CPDD | COVIS Plume Doppler Data | png | <https://wiki.oceannetworks.ca/display/DP/67> |
+| CPDRF | COVIS Plume Doppler Raw Files | tar | <https://wiki.oceannetworks.ca/display/DP/35> |
+| CPID | COVIS Plume Imaging Data | mat | <https://wiki.oceannetworks.ca/display/DP/40> |
+| CPID | COVIS Plume Imaging Data | pdf | <https://wiki.oceannetworks.ca/display/DP/40> |
+| CPID | COVIS Plume Imaging Data | png | <https://wiki.oceannetworks.ca/display/DP/40> |
+| CPIRF | COVIS Plume Imaging Raw Files | tar | <https://wiki.oceannetworks.ca/display/DP/33> |
+| CRD | CORAS Raw Data | dat | <https://wiki.oceannetworks.ca/display/DP/166> |
+| CSEME | CSEM Experiments | mat | <https://wiki.oceannetworks.ca/display/DP/25> |
+| CSEME | CSEM Experiments | raw | <https://wiki.oceannetworks.ca/display/DP/25> |
+| CSMPP | Cast Scalar Multi-Profile Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/139> |
+| CSMPP | Cast Scalar Multi-Profile Plot | png | <https://wiki.oceannetworks.ca/display/DP/139> |
+| CSPPD | Cast Scalar Profile Plot and Data | csv | <https://wiki.oceannetworks.ca/display/DP/56> |
+| CSPPD | Cast Scalar Profile Plot and Data | mat | <https://wiki.oceannetworks.ca/display/DP/56> |
+| CSPPD | Cast Scalar Profile Plot and Data | nc | <https://wiki.oceannetworks.ca/display/DP/56> |
+| CSPPD | Cast Scalar Profile Plot and Data | pdf | <https://wiki.oceannetworks.ca/display/DP/56> |
+| CSPPD | Cast Scalar Profile Plot and Data | png | <https://wiki.oceannetworks.ca/display/DP/56> |
+| DSI | Digital Still | dng | <https://wiki.oceannetworks.ca/display/DP/177> |
+| DSI | Digital Still | jpg | <https://wiki.oceannetworks.ca/display/DP/177> |
+| EDSEDSD | EDS Externally Derived Sensor Data | eds | <https://wiki.oceannetworks.ca/display/DP/74> |
+| EK60ED | EK60 Echosounder Data | zip | <https://wiki.oceannetworks.ca/display/DP/68> |
+| EMF1000DAT | EMF1000 Dat Files | dat | <https://wiki.oceannetworks.ca/display/DP/192> |
+| ENG | TiltMeter Engineering Data | eng | <https://wiki.oceannetworks.ca/display/DP/147> |
+| HACC | Hydrophone Acceleration Data | acc | <https://wiki.oceannetworks.ca/display/DP/128> |
+| HACHASF | HAC HydroAcoustics Standard Format | raw | <https://wiki.oceannetworks.ca/display/DP/96> |
+| HARD | Hydrophone Array Raw Data | hyd | <https://wiki.oceannetworks.ca/display/DP/38> |
+| HS2D | HoloSea 2D Image | png | <https://wiki.oceannetworks.ca/display/DP/131> |
+| HSD | Hydrophone Spectral Data | fft | <https://wiki.oceannetworks.ca/display/DP/45> |
+| HSD | Hydrophone Spectral Data | mat | <https://wiki.oceannetworks.ca/display/DP/45> |
+| HSD | Hydrophone Spectral Data | oct | <https://wiki.oceannetworks.ca/display/DP/45> |
+| HSD | Hydrophone Spectral Data | pdf | <https://wiki.oceannetworks.ca/display/DP/45> |
+| HSD | Hydrophone Spectral Data | png | <https://wiki.oceannetworks.ca/display/DP/45> |
+| HSPD | Hydrophone Spectral Probability Density | mat | <https://wiki.oceannetworks.ca/display/DP/51> |
+| HSPD | Hydrophone Spectral Probability Density | pdf | <https://wiki.oceannetworks.ca/display/DP/51> |
+| HSPD | Hydrophone Spectral Probability Density | png | <https://wiki.oceannetworks.ca/display/DP/51> |
+| HYPACK | Hypack Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/71> |
+| IBPP | Ice Buoy Profile Plots | pdf | <https://wiki.oceannetworks.ca/display/DP/110> |
+| IBPP | Ice Buoy Profile Plots | png | <https://wiki.oceannetworks.ca/display/DP/110> |
+| IBTSPP | Ice Buoy Time Series Profile Plots | pdf | <https://wiki.oceannetworks.ca/display/DP/109> |
+| IBTSPP | Ice Buoy Time Series Profile Plots | png | <https://wiki.oceannetworks.ca/display/DP/109> |
+| IMF | Imagenex Manufacturers Format | 81a | <https://wiki.oceannetworks.ca/display/DP/52> |
+| IMF | Imagenex Manufacturers Format | 837 | <https://wiki.oceannetworks.ca/display/DP/52> |
+| IMF | Imagenex Manufacturers Format | 83p | <https://wiki.oceannetworks.ca/display/DP/52> |
+| IRD | Imagenex Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/30> |
+| IRSD | Imagenex Rotary Sonar Data | avi | <https://wiki.oceannetworks.ca/display/DP/100> |
+| IRSD | Imagenex Rotary Sonar Data | gif | <https://wiki.oceannetworks.ca/display/DP/100> |
+| IRSD | Imagenex Rotary Sonar Data | mat | <https://wiki.oceannetworks.ca/display/DP/100> |
+| IRSD | Imagenex Rotary Sonar Data | pdf | <https://wiki.oceannetworks.ca/display/DP/100> |
+| IRSD | Imagenex Rotary Sonar Data | png | <https://wiki.oceannetworks.ca/display/DP/100> |
+| IRSD | Imagenex Rotary Sonar Data | txt | <https://wiki.oceannetworks.ca/display/DP/100> |
+| ISB | Image Set bmp.zip | zip | <https://wiki.oceannetworks.ca/display/DP/64> |
+| ISR | Image Set raw.zip | zip | <https://wiki.oceannetworks.ca/display/DP/63> |
+| JPGF | JPG File | jpg | <https://wiki.oceannetworks.ca/display/DP/54> |
+| KAD | Kistler Accelerometer Data | mat | <https://wiki.oceannetworks.ca/display/DP/97> |
+| KAD | Kistler Accelerometer Data | pdf | <https://wiki.oceannetworks.ca/display/DP/97> |
+| KAD | Kistler Accelerometer Data | png | <https://wiki.oceannetworks.ca/display/DP/97> |
+| KARF | Kistler Accelerometer Raw Files | kic | <https://wiki.oceannetworks.ca/display/DP/98> |
+| KEA600RD | Kongsberg EA600 Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/76> |
+| KEMSRAD | Kongsberg EM Series Raw ALL Data | all | <https://wiki.oceannetworks.ca/display/DP/66> |
+| KSDP | Kongsberg Scan Data Product | gif | <https://wiki.oceannetworks.ca/display/DP/65> |
+| KSDP | Kongsberg Scan Data Product | mat | <https://wiki.oceannetworks.ca/display/DP/65> |
+| KSDP | Kongsberg Scan Data Product | pdf | <https://wiki.oceannetworks.ca/display/DP/65> |
+| KSDP | Kongsberg Scan Data Product | png | <https://wiki.oceannetworks.ca/display/DP/65> |
+| KSDP | Kongsberg Scan Data Product | smb | <https://wiki.oceannetworks.ca/display/DP/65> |
+| KSMBDP | Kongsberg SMB Data Product | smb | <https://wiki.oceannetworks.ca/display/DP/50> |
+| KSVP | Kongsberg Sound Velocity Profile | asvp | <https://wiki.oceannetworks.ca/display/DP/103> |
+| KSWDP | Kongsberg Sweep Data Product | gif | <https://wiki.oceannetworks.ca/display/DP/48> |
+| KSWDP | Kongsberg Sweep Data Product | mat | <https://wiki.oceannetworks.ca/display/DP/48> |
+| KSWDP | Kongsberg Sweep Data Product | pdf | <https://wiki.oceannetworks.ca/display/DP/48> |
+| KSWDP | Kongsberg Sweep Data Product | png | <https://wiki.oceannetworks.ca/display/DP/48> |
+| KSWDP | Kongsberg Sweep Data Product | smb | <https://wiki.oceannetworks.ca/display/DP/48> |
+| KWCDF | Kongsberg WCD Files | wcd | <https://wiki.oceannetworks.ca/display/DP/29> |
+| LF | Log File | log | <https://wiki.oceannetworks.ca/display/DP/4> |
+| LF | Log File | txt | <https://wiki.oceannetworks.ca/display/DP/4> |
+| LIDARRD | LiDAR Raw Data | hld | <https://wiki.oceannetworks.ca/display/DP/159> |
+| LIDARSD | LiDAR Sensor Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/172> |
+| LIDARTF | LiDAR TEXT FILE | txt | <https://wiki.oceannetworks.ca/display/DP/181> |
+| LIDARTOT | LIDAR Time Over Threshold Data | txt | <https://wiki.oceannetworks.ca/display/DP/188> |
+| MOVV | MOV Video | mov | <https://wiki.oceannetworks.ca/display/DP/42> |
+| MP2F | MP2 File | mp2 | <https://wiki.oceannetworks.ca/display/DP/55> |
+| MP4V | MP4 Video | mp4 | <https://wiki.oceannetworks.ca/display/DP/23> |
+| MP4VUHD | MP4 Video UHD | mp4 | <https://wiki.oceannetworks.ca/display/DP/178> |
+| MPGV | MPG Video | mpg | <https://wiki.oceannetworks.ca/display/DP/44> |
+| MPPSD | McLane Phytoplankton Sampler Data | log | <https://wiki.oceannetworks.ca/display/DP/179> |
+| MRASD | McLane RAS Data | log | <https://wiki.oceannetworks.ca/display/DP/180> |
+| MSCR | Mini Spectrometer Camera Raw | raw | <https://wiki.oceannetworks.ca/display/DP/164> |
+| MSCRCC | Mini Spectrometer Camera Rotated Color Corrected | png | <https://wiki.oceannetworks.ca/display/DP/163> |
+| MSID | Mini Spectrometer Image Data | png | <https://wiki.oceannetworks.ca/display/DP/165> |
+| MSQAQCR | Manual Scalar QAQC Results | qaqc | <https://wiki.oceannetworks.ca/display/DP/106> |
+| MSRD | Mini Spectrometer Raw Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/167> |
+| MSSCD | Mini Spectrometer Sensor Camera Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/185> |
+| MSSD | Mini Spectrometer Sensor Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/184> |
+| MSTD | McLane Sediment Trap Data | log | <https://wiki.oceannetworks.ca/display/DP/130> |
+| MTRD | Muon Tracker Raw Data | hld | <https://wiki.oceannetworks.ca/display/DP/158> |
+| MTSD | Muon Tracker Sensor Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/168> |
+| MTSV | MTS Video | mts | <https://wiki.oceannetworks.ca/display/DP/101> |
+| MTTOT | Muon Tracker Time Over Threshold Data | txt | <https://wiki.oceannetworks.ca/display/DP/187> |
+| MVPRD | Manufacturer Raw Data | csv | <https://wiki.oceannetworks.ca/display/DP/80> |
+| MVPRD | Manufacturer Raw Data | zip | <https://wiki.oceannetworks.ca/display/DP/80> |
+| MXFV | MXF Video | mxf | <https://wiki.oceannetworks.ca/display/DP/162> |
+| ND | Navigation Data | nav | <https://wiki.oceannetworks.ca/display/DP/77> |
+| ND | Navigation Data | zip | <https://wiki.oceannetworks.ca/display/DP/77> |
+| NDCP | Nortek Daily Currents Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/49> |
+| NDCP | Nortek Daily Currents Plot | png | <https://wiki.oceannetworks.ca/display/DP/49> |
+| NTS | Nortek Time Series | ad2cp | <https://wiki.oceannetworks.ca/display/DP/22> |
+| NTS | Nortek Time Series | aqd | <https://wiki.oceannetworks.ca/display/DP/22> |
+| NTS | Nortek Time Series | mat | <https://wiki.oceannetworks.ca/display/DP/22> |
+| NTS | Nortek Time Series | nc | <https://wiki.oceannetworks.ca/display/DP/22> |
+| NTS | Nortek Time Series | prf | <https://wiki.oceannetworks.ca/display/DP/22> |
+| NTS | Nortek Time Series | vec | <https://wiki.oceannetworks.ca/display/DP/22> |
+| NTS | Nortek Time Series | wpr | <https://wiki.oceannetworks.ca/display/DP/22> |
+| ODBTS | Oceanetic Time Series | raw | <https://wiki.oceannetworks.ca/display/DP/32> |
+| OTFCPD | Aligned and Depth-Binned Profile Data (On-Demand) | cor | <https://wiki.oceannetworks.ca/display/DP/152> |
+| OTFCPD | Aligned and Depth-Binned Profile Data (On-Demand) | csv | <https://wiki.oceannetworks.ca/display/DP/152> |
+| PMTRD | PMT Spectrometer Raw Data | hld | <https://wiki.oceannetworks.ca/display/DP/160> |
+| PMTSD | PMT Spectrometer Sensor Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/171> |
+| PMTTC | PMT Spectrometer TRB Counters | hdf5 | <https://wiki.oceannetworks.ca/display/DP/161> |
+| PMTTOT | PMT Spectrometer Time Over Threshold Data | txt | <https://wiki.oceannetworks.ca/display/DP/186> |
+| POCAMBIN | POCAM Binary File | dat | <https://wiki.oceannetworks.ca/display/DP/92> |
+| POCAMBIN | POCAM Binary File | dat | <https://wiki.oceannetworks.ca/display/DP/92> |
+| PRD | VW Piezometer Raw Data | dat | <https://wiki.oceannetworks.ca/display/DP/151> |
+| RADCPPD | RDI ADCP Processed Data | zip | <https://wiki.oceannetworks.ca/display/DP/107> |
+| RADCPRD | RDI ADCP Raw Data | zip | <https://wiki.oceannetworks.ca/display/DP/79> |
+| RADCPTS | RDI ADCP Time Series | mat | <https://wiki.oceannetworks.ca/display/DP/5> |
+| RADCPTS | RDI ADCP Time Series | nc | <https://wiki.oceannetworks.ca/display/DP/5> |
+| RADCPTS | RDI ADCP Time Series | rdi | <https://wiki.oceannetworks.ca/display/DP/5> |
+| RAWMAG | Magnetometer Raw Data | zip | <https://wiki.oceannetworks.ca/display/DP/194> |
+| RBRRF | RBR Ruskin Files | rsk | <https://wiki.oceannetworks.ca/display/DP/88> |
+| RDCUP | RDI Daily Current Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/9> |
+| RDCUP | RDI Daily Current Plot | png | <https://wiki.oceannetworks.ca/display/DP/9> |
+| RDIP | RDI Daily Intensity Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/10> |
+| RDIP | RDI Daily Intensity Plot | png | <https://wiki.oceannetworks.ca/display/DP/10> |
+| RT | Ref Tek Manufacturer Format | log | <https://wiki.oceannetworks.ca/display/DP/73> |
+| RT | Ref Tek Manufacturer Format | rt | <https://wiki.oceannetworks.ca/display/DP/73> |
+| RWTS | RDI Wave Time Series | 000 | <https://wiki.oceannetworks.ca/display/DP/26> |
+| SBCTDRF | Sea-Bird CTD Raw Files | hex | <https://wiki.oceannetworks.ca/display/DP/78> |
+| SBCTDRF | Sea-Bird CTD Raw Files | xmlcon | <https://wiki.oceannetworks.ca/display/DP/78> |
+| SCF | Slocum Cache File | cac | <https://wiki.oceannetworks.ca/display/DP/70> |
+| SD | Seismometer Data | mat | <https://wiki.oceannetworks.ca/display/DP/102> |
+| SD | Seismometer Data | miniseed | <https://wiki.oceannetworks.ca/display/DP/102> |
+| SD | Seismometer Data | pdf | <https://wiki.oceannetworks.ca/display/DP/102> |
+| SD | Seismometer Data | png | <https://wiki.oceannetworks.ca/display/DP/102> |
+| SDOMBIN | SDOM Binary File | hld | <https://wiki.oceannetworks.ca/display/DP/94> |
+| SEGYSD | SEG-Y Seismic Data | sgy | <https://wiki.oceannetworks.ca/display/DP/28> |
+| SEISDRAW | Seismic Discrete Raw Data | mseed | <https://wiki.oceannetworks.ca/display/DP/134> |
+| SEISDRAW | Seismic Discrete Raw Data | seed | <https://wiki.oceannetworks.ca/display/DP/134> |
+| SEISTEST | Seismic Test Data | zip | <https://wiki.oceannetworks.ca/display/DP/125> |
+| SEISTEST | Seismic Test Data | zip | <https://wiki.oceannetworks.ca/display/DP/125> |
+| SFD | Slocum Full Data | zip | <https://wiki.oceannetworks.ca/display/DP/113> |
+| SFMF | SciFish Manufacturer Format | dat | <https://wiki.oceannetworks.ca/display/DP/95> |
+| SH | State of Health | soh | <https://wiki.oceannetworks.ca/display/DP/31> |
+| SHV | Spectrogram For Hydrophone Viewer | png | <https://wiki.oceannetworks.ca/display/DP/146> |
+| SISUSTS | Satlantic ISUS Time Series | raw | <https://wiki.oceannetworks.ca/display/DP/20> |
+| SLISSTD | Sequoia LISST Data | mat | <https://wiki.oceannetworks.ca/display/DP/82> |
+| SLISSTD | Sequoia LISST Data | txt | <https://wiki.oceannetworks.ca/display/DP/82> |
+| SLSRBPI | Structured Light System Raw Bayer Pattern Image | png | <https://wiki.oceannetworks.ca/display/DP/105> |
+| SMRD | Standard Module Raw Data | hdf5 | <https://wiki.oceannetworks.ca/display/DP/157> |
+| SMSONAR | Sound Metrics Sonar Data | aris | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONAR | Sound Metrics Sonar Data | ddf | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONAR | Sound Metrics Sonar Data | gif | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONAR | Sound Metrics Sonar Data | mat | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONAR | Sound Metrics Sonar Data | mp4 | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONAR | Sound Metrics Sonar Data | pdf | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONAR | Sound Metrics Sonar Data | png | <https://wiki.oceannetworks.ca/display/DP/119> |
+| SMSONARMD | Sound Metrics Movement Detections | an | <https://wiki.oceannetworks.ca/display/DP/120> |
+| SRSLMF | SRSL Manufacturer Format | sbd | <https://wiki.oceannetworks.ca/display/DP/108> |
+| SRTS | Satlantic Radiometer Time Series | raw | <https://wiki.oceannetworks.ca/display/DP/27> |
+| SSD | Slocum Subset Data | zip | <https://wiki.oceannetworks.ca/display/DP/112> |
+| SSP | Spatial Scalar Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/91> |
+| SSP | Spatial Scalar Plot | png | <https://wiki.oceannetworks.ca/display/DP/91> |
+| STEXPORT | SeaTube Annotation Export | csv | <https://wiki.oceannetworks.ca/display/DP/126> |
+| TDVSP | Time Distance Variable Scalar Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/90> |
+| TDVSP | Time Distance Variable Scalar Plot | png | <https://wiki.oceannetworks.ca/display/DP/90> |
+| TP | Track Plot | gif | <https://wiki.oceannetworks.ca/display/DP/124> |
+| TP | Track Plot | kml | <https://wiki.oceannetworks.ca/display/DP/124> |
+| TP | Track Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/124> |
+| TP | Track Plot | png | <https://wiki.oceannetworks.ca/display/DP/124> |
+| TSSCP | Time Series Staircase Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/21> |
+| TSSCP | Time Series Staircase Plot | png | <https://wiki.oceannetworks.ca/display/DP/21> |
+| TSSD | Time Series Scalar Data | csv | <https://wiki.oceannetworks.ca/display/DP/1> |
+| TSSD | Time Series Scalar Data | json | <https://wiki.oceannetworks.ca/display/DP/1> |
+| TSSD | Time Series Scalar Data | mat | <https://wiki.oceannetworks.ca/display/DP/1> |
+| TSSD | Time Series Scalar Data | nc | <https://wiki.oceannetworks.ca/display/DP/1> |
+| TSSD | Time Series Scalar Data | txt | <https://wiki.oceannetworks.ca/display/DP/1> |
+| TSSP | Time Series Scalar Plot | pdf | <https://wiki.oceannetworks.ca/display/DP/2> |
+| TSSP | Time Series Scalar Plot | png | <https://wiki.oceannetworks.ca/display/DP/2> |
+| TSSPPGD | Time Series Scalar Profile Plot and Gridded Data | mat | <https://wiki.oceannetworks.ca/display/DP/61> |
+| TSSPPGD | Time Series Scalar Profile Plot and Gridded Data | nc | <https://wiki.oceannetworks.ca/display/DP/61> |
+| TSSPPGD | Time Series Scalar Profile Plot and Gridded Data | pdf | <https://wiki.oceannetworks.ca/display/DP/61> |
+| TSSPPGD | Time Series Scalar Profile Plot and Gridded Data | png | <https://wiki.oceannetworks.ca/display/DP/61> |
+| TSSTD | Time Series Scalar Thomson Detided | mat | <https://wiki.oceannetworks.ca/display/DP/123> |
+| TSSTD | Time Series Scalar Thomson Detided | pdf | <https://wiki.oceannetworks.ca/display/DP/123> |
+| TSSTD | Time Series Scalar Thomson Detided | png | <https://wiki.oceannetworks.ca/display/DP/123> |
+| UURS | SIDSSE UURS Spectral Data | csv | <https://wiki.oceannetworks.ca/display/DP/111> |
+| UURS | SIDSSE UURS Spectral Data | mat | <https://wiki.oceannetworks.ca/display/DP/111> |
+| UURS | SIDSSE UURS Spectral Data | pdf | <https://wiki.oceannetworks.ca/display/DP/111> |
+| UURS | SIDSSE UURS Spectral Data | png | <https://wiki.oceannetworks.ca/display/DP/111> |
+| VC | Video Captions | tar | <https://wiki.oceannetworks.ca/display/DP/99> |
+| VC | Video Captions | vtt | <https://wiki.oceannetworks.ca/display/DP/99> |
+| VOB | VOB Video | vob | <https://wiki.oceannetworks.ca/display/DP/127> |
+| VQAQCR | Video QAQC Results | an | <https://wiki.oceannetworks.ca/display/DP/84> |
+| VQAQCTSB | Video QAQC Training Set Black | zip | <https://wiki.oceannetworks.ca/display/DP/122> |
+| VQAQCTSF | Video QAQC Training Set Focus | zip | <https://wiki.oceannetworks.ca/display/DP/121> |
+| VQAQCTSSD | Video QAQC Training Set Shift Detect | zip | <https://wiki.oceannetworks.ca/display/DP/83> |
+| VRF | Vemco Raw Files | csv | <https://wiki.oceannetworks.ca/display/DP/153> |
+| VRF | Vemco Raw Files | vrl | <https://wiki.oceannetworks.ca/display/DP/153> |
+| VXML | Video XML Metadata | xml | <https://wiki.oceannetworks.ca/display/DP/132> |
+| WBOF | WorkBoat Output Files | fix | <https://wiki.oceannetworks.ca/display/DP/93> |
+| WBOF | WorkBoat Output Files | wbl | <https://wiki.oceannetworks.ca/display/DP/93> |
+| WERARC | WERA Radial Currents | gif | <https://wiki.oceannetworks.ca/display/DP/136> |
+| WERARCA | WERA Radial Current Accuracy | gif | <https://wiki.oceannetworks.ca/display/DP/144> |
+| WERARCB | WERA Radial Current on Beams | gif | <https://wiki.oceannetworks.ca/display/DP/140> |
+| WERARCN | WERA Radial Current Noise Level | gif | <https://wiki.oceannetworks.ca/display/DP/142> |
+| WERARCP | WERA Radial Current Power Level | gif | <https://wiki.oceannetworks.ca/display/DP/141> |
+| WERARCS2N | WERA Radial Current Signal to Noise Ratio | gif | <https://wiki.oceannetworks.ca/display/DP/143> |
+| WERARD | WERA Raw Data | spec | <https://wiki.oceannetworks.ca/display/DP/145> |
+| WERARD | WERA Raw Data | urfi | <https://wiki.oceannetworks.ca/display/DP/145> |
+| WERARD | WERA Raw Data | usort | <https://wiki.oceannetworks.ca/display/DP/145> |
+| WERASWH | WERA Waves | gif | <https://wiki.oceannetworks.ca/display/DP/137> |
+| WERATP | WERA Tsunami Probability | gif | <https://wiki.oceannetworks.ca/display/DP/138> |
+| WMVV | WMV Video | wmv | <https://wiki.oceannetworks.ca/display/DP/81> |
+| WOMLF | WOM Log File | log | <https://wiki.oceannetworks.ca/display/DP/176> |
+| WOMRD | WOM Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/174> |
+| WOMRD | WOM Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/174> |
+| WOMRD | WOM Raw Data | raw | <https://wiki.oceannetworks.ca/display/DP/174> |
+| WOMSD | WOM Sensor Data | csv | <https://wiki.oceannetworks.ca/display/DP/175> |
+
+* No labels

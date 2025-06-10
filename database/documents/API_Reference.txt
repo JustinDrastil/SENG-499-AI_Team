@@ -1,0 +1,68 @@
+* Created by  [Ryan Ross](    /display/~ryanross@uvic.ca
+  ), last updated by  [Spencer Plovie](    /display/~spencerwplovie@uvic.ca
+  ) on [26-Jul-23](/pages/diffpagesbyversion.action?pageId=49447536&selectedPageVersions=15&selectedPageVersions=16 "Show changes")
+
+  3 minute read
+
+Description
+-----------
+
+The Oceans 3.0 API provides public access to Ocean Networks Canada's extensive data archive, via 6 discovery, 4 data delivery and 1 interoperability web service. The API provides programmatic access to:
+
+1. [data products](https://wiki.oceannetworks.ca/display/DP/Data+Products+Home), (identical to those accessed interactively using the [Ocean's 3.0 Data Search](/spaces/O2KB/pages/47776785/Data+Search+Help) interface)
+2. scalar, and raw data for near-realtime applications.
+
+### 
+
+### Discovery Services
+
+A collection of services for obtaining all of the codes needed to successfully request data, via the data delivery services. The services use reductive filtering to return a list, in json format, of all of the items that meet the filter criteria defined in the url parameters. Codes returned from one service can be used in another service to refine the selection, for example, a deviceCategoryCode obtained from the deviceCategories service can be used as a filter on the locations service to find all locations that have instruments of that device category.
+
+* [locations](/spaces/O2A/pages/49447546/locations+Discovery+Service) - Find locations that have the data you are interested in and use the locationCode when requesting a data using the [dataProductDelivery,](/spaces/O2A/pages/48696520/dataProductDelivery+Service)[scalardata](https://wiki.oceannetworks.ca/display/help/scalardata+service) or [rawdata](https://wiki.oceannetworks.ca/display/help/rawdata+service) web services.
+* [devices](/spaces/O2A/pages/48696422/devices+Discovery+Service) - Find devices that have the data you are interested in and use the deviceCode when requesting a data using the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+* [deployments](/spaces/O2A/pages/49449052/deployments+Discovery+Service) - Find the locationCode, deviceCode, deviceCategoryCode, propertyCode and deployment dates and geographic locations of instrument deployments.
+* [deviceCategories](/spaces/O2A/pages/48696424/deviceCategories+Discovery+Service) - Find the device category of the data you are interested in and use the deviceCategoryCode when requesting a data using the [dataProductDelivery,](/spaces/O2A/pages/48696520/dataProductDelivery+Service)[scalardata](https://wiki.oceannetworks.ca/display/help/scalardata+service) or [rawdata](https://wiki.oceannetworks.ca/display/help/rawdata+service) web services.
+* [properties](/spaces/O2A/pages/48696426/properties+Discovery+Service) - Find devices that have the data you are interested in and use the propertyCode when requesting a data using the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service) web service.
+* [dataProducts](/spaces/O2A/pages/48696428/dataProducts+Discovery+Service) -  Find data products and formats (extensions) are available for the locations, devices, device categories or properties of interest and use the dataProductCode and extension when requesting a data product using the [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service)web service.
+
+### Data Delivery Services
+
+A collection of services which return data from the ONC archive, including
+
+1. **An asynchronous service:** [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service) service allows large amounts of customizable data to be delivered in a variety of formats. This delivery method is both flexible and scalable, but requires additional processing time on the server. By utilizing the Task Queue framework, an asynchronous programming pattern of multiple service calls is used to return the data.
+2. **Two synchronous services:** [scalardata](https://wiki.oceannetworks.ca/display/help/scalardata+service) and [rawdata](https://wiki.oceannetworks.ca/display/help/rawdata+service) services return data in the response payload, which supports near real-time access. Because this type of delivery method is optimized for speed, the services do not support resampling or aggregation and have a 100k record count limit.
+3. **Direct file access service:** [archivefiles](https://wiki.oceannetworks.ca/display/help/archivefiles) service returns archived files, using the filename, in the payload.
+
+* [dataProductDelivery](/spaces/O2A/pages/48696520/dataProductDelivery+Service) -  Request, run and download data products for locations or devices.
+* [scalardata](/spaces/O2A/pages/48693360/scalardata+service) - Get the most recent scalar data, or scalar data between two given dates for stations (locations) and device categories.
+* [rawdata](/spaces/O2A/pages/47777468/rawdata+service) - Get the most recent raw data from an instrument, or raw data between two given dates for stations (locations) and device categories.
+* [archivefiles](/spaces/O2A/pages/42172423/archivefiles) - Find archived files available for a station (location) and device category, between two given dates, and download the files.
+
+### Interoperability Services
+
+A collection of services that have standardized interfaces designed for sharing and data integration.
+
+* ERDDAP (OPeNDAP)
+
+### Parameters
+
+All of the services, with the exception of the interoperability services, require the use of a method and token. Only the [scalardata](https://wiki.oceannetworks.ca/display/help/scalardata+service), [rawdata](https://wiki.oceannetworks.ca/display/help/rawdata+service) and [archivefiles](https://wiki.oceannetworks.ca/display/help/archivefiles) services support the responseType optional parameter.
+
+|  |  |  |  |
+| --- | --- | --- | --- |
+| **Parameter** | **Type** | **Description** | **Example** |
+| **Required** |  |  |  |
+| method | string | Each Web Service has 1 or more methods outlined in the documentation. The method name is case sensitive. | method=get |
+| token | string | All Web Services require a token. This can be generated, after logging in at <http://data.oceannetworks.ca/Profile>. Click the "Web Services" tab, then click "Generate Token" | token=YOUR\_TOKEN |
+| **Optional** |  |  |  |
+| responseType | string | Valid values are "json" and "jsonp". Defaults to "json".  ONLY AVAILABLE for [scalardata](https://wiki.oceannetworks.ca/display/help/scalardata+service), [rawdata](https://wiki.oceannetworks.ca/display/help/rawdata+service) and [archivefiles](https://wiki.oceannetworks.ca/display/help/archivefiles) services | responseType =jsonp |
+
+### Request Format
+
+All web service are method oriented and use the following Url pattern:
+
+http://data.oceannetworks.ca/api/[SERVICE\_NAME]?method=[METHOD\_NAME]&token=[YOUR\_TOKEN\_HERE]
+
+If you have any issues with the web services, documentation, samples, or client libraries, please [let us know](https://www.oceannetworks.ca/contact-us/).
+
+* No labels
