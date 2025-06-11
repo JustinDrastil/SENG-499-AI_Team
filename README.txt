@@ -21,10 +21,11 @@
 
 ## database folder
 - documents folder: Contains text documents that are embedded into ChromaDB on initialization
+- chroma_store: Placeholder database for testing purposes, run initialize.py to replace this with an up to date version if needed (time: 15-40+ minutes)
 - initialize.py: Once the server is started, run this to create the database and add all documents from the repo's document folder
 
 ## legacy folder
-- contains legacy code that is no longer required
+- contains legacy code from previous sprint cycles that is not currently being used
 
 ## requirements.txt
 - contains a list of all python packages that are required by different scripts in the repository
