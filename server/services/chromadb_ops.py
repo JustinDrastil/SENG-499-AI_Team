@@ -1,6 +1,7 @@
 import chromadb
 from services.embedding import embed_texts, rerank
 from utils.text_utils import chunk_text, compute_hash
+from services.llm import generate_response
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
@@ -50,4 +51,13 @@ def search_documents(data):
     ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
     top_ranked = ranked[:10]
 
-    return {"results": [{"text": doc, "score": score} for doc, score in top_ranked]} #returns data
+    context_parts = []
+    for i, (doc, _) in enumerate(top_ranked):
+        context_parts.append(f"Source {i+1}:\n{doc.strip()}")
+    context_text = "\n\n".join(context_parts)
+
+    ai_response = generate_response(context_text, query, model_key="api")
+
+    return {
+        "answer": ai_response
+    }

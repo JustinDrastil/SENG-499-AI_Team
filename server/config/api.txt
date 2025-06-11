@@ -1,0 +1,1 @@
+return only an http api call json string to oceans 3.0. that can be used to answer the question. Not the actual call, just the json string that may be used to make the call. Date is 2025-06-11.
