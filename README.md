@@ -12,12 +12,10 @@
 5. You are now working within an isolated Python environment.
 6. Install the dependencies required for the project's python scripts (time <5 minutes):
 	- Command: pip install -r requirements.txt
-7. Set Up Your Google AI Studio API Key
-
-1. Generate an API Key:
+7. Generate an API Key:
    - Visit [Google AI Studio](https://aistudio.google.com/app/apikey) and create a new API key.
 
-2. Configure Environment Variable:
+8. Configure Environment Variable:
    - **Windows (PowerShell)**:
      ```powershell
      $env:GOOGLE_API_KEY = "your_api_key_here"
@@ -28,8 +26,8 @@
      ```
 
    Replace `your_api_key_here` with the API key you generated from Google AI Studio.
-8. Once complete, you should be able to run all non-legacy scripts in the repository.
-9. To deactivate the venv:
+9. Once complete, you should be able to run all non-legacy scripts in the repository.
+10. To deactivate the venv:
 	- Command: deactivate
 
 ## server folder
