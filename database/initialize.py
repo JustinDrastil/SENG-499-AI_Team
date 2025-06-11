@@ -2,7 +2,7 @@ import requests
 import os
 
 API_URL = "http://localhost:5001/add"
-INPUT_DIR = r"./database/documents"
+INPUT_DIR = r"./documents"
 COLLECTION_NAME = "new_collection"
 
 files = [f for f in os.listdir(INPUT_DIR) if f.endswith(".txt")]
