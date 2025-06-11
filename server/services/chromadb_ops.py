@@ -13,7 +13,7 @@ def add_documents(data):
     collection = chroma_client.get_or_create_collection(name=collection_name)
 
     chunks = chunk_text(text, collection_name, doc_tag)
-    embeddings = embed_texts([chunk["text"] for chunk in chunks])
+    embeddings = embed_texts([chunk["text"] for chunk in chunks], batch_size=8)
 
     collection.add(
         documents=[chunk["text"] for chunk in chunks],

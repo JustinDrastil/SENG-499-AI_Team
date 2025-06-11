@@ -17,8 +17,7 @@ def preprocess_text(text):
     text = re.sub(r'[ \t]+', ' ', text)
     return text.strip()
 
-def chunk_text(text, collection_name, doc_tag):
-
+def chunk_text(text, collection_name, doc_tag, min_chunk_chars=100):
     cleaned_text = preprocess_text(text)
 
     splitter = RecursiveCharacterTextSplitter(
@@ -31,9 +30,13 @@ def chunk_text(text, collection_name, doc_tag):
 
     chunk_data = []
     for idx, chunk in enumerate(chunks):
+        content = chunk.page_content.strip()
+        if len(content) < min_chunk_chars:
+            continue  # Skip short or noisy chunks
+
         chunk_data.append({
-            "id": compute_hash(f"{collection_name}-{idx}-{chunk.page_content}"),
-            "text": chunk.page_content,
+            "id": compute_hash(f"{collection_name}-{idx}-{content}"),
+            "text": content,
             "metadata": {
                 "chunk": idx,
                 "collection": collection_name,
