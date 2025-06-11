@@ -16,14 +16,13 @@
 8. To deactivate the venv:
 	- Command: deactivate
 
+## server folder
+- app.py: Run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
+
 ## database folder
 - documents folder: Contains text documents that are embedded into ChromaDB on initialization
-- initialize_chromadb.py: Run this to create the database and add all documents from the repo's document folder
-- query_chromadb.py: Once the database has been created, run this to ask questions about embedded documents for testing purposes
+- initialize.py: Once the server is started, run this to create the database and add all documents from the repo's document folder
 
-## server folder
-- app.py: After the database has been initialized, run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
- 
 ## legacy folder
 - contains legacy code that is no longer required
 
