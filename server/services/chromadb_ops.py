@@ -34,8 +34,10 @@ def delete_documents(data):
     return {"status": "deleted", "doc_tag": doc_tag}
 
 def search_documents(data):
-    collection_name = data["collection_name"]
+    collection_name = data["collection_name"] #dont need anymore
     query = data["query"]
+    # chat hiostory
+    # onc api token
 
     collection = chroma_client.get_collection(name=collection_name)
 
@@ -48,4 +50,4 @@ def search_documents(data):
     ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
     top_ranked = ranked[:10]
 
-    return {"results": [{"text": doc, "score": score} for doc, score in top_ranked]}
+    return {"results": [{"text": doc, "score": score} for doc, score in top_ranked]} #returns data
