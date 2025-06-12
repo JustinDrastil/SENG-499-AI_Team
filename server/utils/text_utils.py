@@ -21,8 +21,8 @@ def chunk_text(text, collection_name, doc_tag, min_chunk_chars=100):
     cleaned_text = preprocess_text(text)
 
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=200,
-        chunk_overlap=40,
+        chunk_size=800,
+        chunk_overlap=100,
         separators=["\n\n", "\n", ".", "!", "?", " ", ""]
     )
     doc = Document(page_content=cleaned_text)
