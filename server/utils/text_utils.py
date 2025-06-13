@@ -6,6 +6,10 @@ import re
 def compute_hash(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
+def is_valid_url(text):
+    # Basic check for a well-formed HTTP/HTTPS URL
+    return re.match(r'^https?://[^\s]+$', text.strip()) is not None
+    
 def preprocess_text(text): 
     text = re.sub(r'\[\s*\d+\s*\]', '', text)
     text = re.sub(r'\[\s*[a-z]+\s*\]', '', text)

@@ -18,7 +18,7 @@ def initialize():
     models = {
         "api": genai.GenerativeModel(
             model_name="gemini-2.0-flash",
-            system_instruction=load_prompt("api")
+            system_instruction=load_prompt("system_prompt")
         ),
         "answer": genai.GenerativeModel(
             model_name="gemini-2.0-flash",

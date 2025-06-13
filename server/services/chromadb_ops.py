@@ -1,7 +1,8 @@
 import chromadb
 from services.embedding import embed_texts, rerank
-from utils.text_utils import chunk_text, compute_hash
+from utils.text_utils import chunk_text, compute_hash, is_valid_url
 from services.llm import generate_response
+from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
@@ -57,7 +58,10 @@ def search_documents(data):
     context_text = "\n\n".join(context_parts)
 
     ai_response = generate_response(context_text, query, model_key="api")
+    print(ai_response)
+    clean_response = ai_response.strip("`\n")
 
-    return {
-        "answer": ai_response
-    }
+    if is_valid_url(clean_response):
+        return { "answer": fetch_onc_data(clean_response) }
+    else:
+        return { "answer": clean_response }

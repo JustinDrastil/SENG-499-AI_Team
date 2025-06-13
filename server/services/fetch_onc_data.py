@@ -17,8 +17,9 @@ def fetch_onc_data(api_url: str):
         print("Failed to parse JSON response.")
     return None
 
-# Example LLM-generated API call
-llm_generated_api_call = "https://data.oceannetworks.ca/api/locations?locationCode=CBYIP&token=5e3aec6d-8ed0-49bc-9e96-7980704c17ef"
+# # Example LLM-generated API call
+# llm_generated_api_call = "https://data.oceannetworks.ca/api/locations?locationCode=CBYIP&token=5e3aec6d-8ed0-49bc-9e96-7980704c17ef"
+# api_call_2 = "https://data.oceannetworks.ca/api/properties?locationCode=CBYIP&deviceCategoryCode=ICEPROFILER&token=5e3aec6d-8ed0-49bc-9e96-7980704c17ef"
 
-# Fetch and print results
-fetch_onc_data(llm_generated_api_call)
+# # Fetch and print results
+# fetch_onc_data(api_call_2)
