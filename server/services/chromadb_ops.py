@@ -1,4 +1,5 @@
 import chromadb
+import torch
 from services.embedding import embed_texts, rerank
 from utils.text_utils import chunk_text, compute_hash, is_valid_url
 from services.llm import generate_response
@@ -44,10 +45,12 @@ def search_documents(data):
     collection = chroma_client.get_collection(name=collection_name)
 
     query_embedding = embed_texts([query])
-    results = collection.query(query_embeddings=query_embedding, n_results=100)
+    results = collection.query(query_embeddings=query_embedding, n_results=20)
     docs = results["documents"][0]
 
     scores = rerank(query, docs)
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
     scores = [float(score) for score in scores]
     ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
     top_ranked = ranked[:10]
@@ -58,6 +61,8 @@ def search_documents(data):
     context_text = "\n\n".join(context_parts)
 
     ai_response = generate_response(context_text, query, model_key="api")
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
     print(ai_response)
     clean_response = ai_response.strip("`\n")
 
