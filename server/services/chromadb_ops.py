@@ -45,7 +45,7 @@ def search_documents(data):
     collection = chroma_client.get_collection(name=collection_name)
 
     query_embedding = embed_texts([query])
-    results = collection.query(query_embeddings=query_embedding, n_results=20)
+    results = collection.query(query_embeddings=query_embedding, n_results=50)
     docs = results["documents"][0]
 
     scores = rerank(query, docs)
@@ -63,10 +63,13 @@ def search_documents(data):
     ai_response = generate_response(context_text, query, model_key="api")
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
-    print(ai_response)
+    # print(ai_response)
     clean_response = ai_response.strip("`\n")
+    start_index = clean_response.find("http")
+    clean = clean_response[start_index:]
+    # print(clean)
 
-    if is_valid_url(clean_response):
-        return { "answer": fetch_onc_data(clean_response) }
+    if is_valid_url(clean):
+        return { "answer": fetch_onc_data(clean) }
     else:
         return { "answer": clean_response }
