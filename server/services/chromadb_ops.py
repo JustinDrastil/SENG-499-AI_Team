@@ -1,8 +1,9 @@
 import chromadb
 import torch
+import json
 from services.embedding import embed_texts, rerank
 from utils.text_utils import chunk_text, compute_hash, is_valid_url
-from services.llm import generate_response
+from services.llm import generate_response, build_second_llm_prompt
 from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
@@ -70,6 +71,11 @@ def search_documents(data):
     # print(clean)
 
     if is_valid_url(clean):
-        return { "answer": fetch_onc_data(clean) }
+        # Step 1: Get JSON from ONC
+        api_json = fetch_onc_data(clean)
+        # Step 2: Format prompt and use second LLM to generate final response
+        second_prompt = build_second_llm_prompt(data["query"], json.dumps(api_json, indent=2))
+        final_answer = generate_response(second_prompt, query=data["query"], model_key="answer")
+        return { "answer": final_answer }
     else:
         return { "answer": clean_response }

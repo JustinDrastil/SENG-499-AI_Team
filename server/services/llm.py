@@ -40,3 +40,23 @@ def generate_response(context_text, query, model_key):
         return response.text
     except KeyError:
         return f"Error: model '{model_key}' not found"
+
+def build_second_llm_prompt(user_query: str, json_data: str) -> str:
+    return f"""You are a helpful assistant that translates structured API data into clear, conversational answers for end users.
+
+The user asked the following question:
+"{user_query}"
+
+Below is the JSON response from the Ocean Networks Canada API:
+{json_data}
+
+Using only the information in the JSON, write a clear and informative natural language answer for the user. 
+
+Include relevant details such as:
+- Location name and description
+- Latitude and longitude
+- Number of deployments
+- Whether device data is available
+- A link to the dataSearchURL (if provided)
+
+Do not make up any information not found in the JSON. Be concise, factual, and user-friendly."""
