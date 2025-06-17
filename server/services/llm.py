@@ -2,33 +2,42 @@ import os
 import google.generativeai as genai
 
 
+# Chosen Generative AI Model
+DEFAULT_MODEL = "gemini-2.0-flash"
+
+# API Key Configuration with error handling
 GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GEMINI_API_KEY:
+    raise EnvironmentError("Missing Google_API_KEY environment variable - see README for instructions")
 genai.configure(api_key=GEMINI_API_KEY)
 
+# Models array populated by initialize()
 models = {}
 
+# Loads prompts from "../config/"
 def load_prompt(filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     config_path = os.path.join(base_dir, "..", "config", f"{filename}.txt")
+    if not config_path.exists():
+        raise FileNotFoundError(f"Prompt file not found at path: {config_path}")
     with open(config_path, "r") as f:
         return f.read().strip()
-    
+
+# Creates global models dictionary (Function is called in "../app.py")
 def initialize():
     global models
     models = {
         "api": genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
+            model_name=DEFAULT_MODEL,
             system_instruction=load_prompt("system_prompt")
         ),
         "answer": genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
+            model_name=DEFAULT_MODEL,
             system_instruction=load_prompt("answer")
         )
     }
 
 def generate_response(context_text, query, model_key):
-    
-
     prompt = (
         f"QUESTION:\n{query.strip()}\n\n"
         f"CONTEXT:\n{context_text}\n\n"
