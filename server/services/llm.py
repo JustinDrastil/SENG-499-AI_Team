@@ -18,8 +18,6 @@ models = {}
 def load_prompt(filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     config_path = os.path.join(base_dir, "..", "config", f"{filename}.txt")
-    if not config_path.exists():
-        raise FileNotFoundError(f"Prompt file not found at path: {config_path}")
     with open(config_path, "r") as f:
         return f.read().strip()
 
