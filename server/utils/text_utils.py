@@ -21,7 +21,7 @@ def preprocess_text(text):
     text = re.sub(r'[ \t]+', ' ', text)
     return text.strip()
 
-def chunk_text(text, collection_name, doc_tag, min_chunk_chars=100):
+def chunk_text(collection_name, document_name, text, min_chunk_chars=100):
     cleaned_text = preprocess_text(text)
 
     splitter = RecursiveCharacterTextSplitter(
@@ -43,8 +43,8 @@ def chunk_text(text, collection_name, doc_tag, min_chunk_chars=100):
             "text": content,
             "metadata": {
                 "chunk": idx,
-                "collection": collection_name,
-                "doc_tag": doc_tag
+                "collection_name": collection_name,
+                "document_name": document_name
             }
         })
     return chunk_data

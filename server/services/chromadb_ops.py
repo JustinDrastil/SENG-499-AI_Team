@@ -8,16 +8,16 @@ from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
-def add_documents(data):
+
+def add_document(data):
     collection_name = data["collection_name"]
+    document_name = data["document_name"]
     text = data["text"]
-    doc_tag = data["doc_tag"]
 
-    collection = chroma_client.get_or_create_collection(name=collection_name)
-
-    chunks = chunk_text(text, collection_name, doc_tag)
+    chunks = chunk_text(collection_name, document_name, text)
     embeddings = embed_texts([chunk["text"] for chunk in chunks], batch_size=8)
 
+    collection = chroma_client.get_or_create_collection(name=collection_name)
     collection.add(
         documents=[chunk["text"] for chunk in chunks],
         ids=[chunk["id"] for chunk in chunks],
@@ -26,16 +26,16 @@ def add_documents(data):
     )
     return {"status": "added", "count": len(chunks)}
 
-def delete_documents(data):
+def delete_document(data):
     collection_name = data["collection_name"]
-    doc_tag = data["doc_tag"]
+    document_name = data["document_name"]
 
     collection = chroma_client.get_collection(name=collection_name)
-    metadata_filter = {"doc_tag": doc_tag}
+    metadata_filter = {"document_name": document_name}
     
     collection.delete(where=metadata_filter)
 
-    return {"status": "deleted", "doc_tag": doc_tag}
+    return {"status": "deleted", "document_name": document_name}
 
 def search_documents(data):
     collection_name = data["collection_name"] #dont need anymore
