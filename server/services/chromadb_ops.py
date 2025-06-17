@@ -46,18 +46,11 @@ def search_documents(data):
     collection = chroma_client.get_collection(name=collection_name)
 
     query_embedding = embed_texts([query])
-    results = collection.query(query_embeddings=query_embedding, n_results=50)
+    results = collection.query(query_embeddings=query_embedding, n_results=200)
     docs = results["documents"][0]
 
-    scores = rerank(query, docs)
-    if torch.backends.mps.is_available():
-        torch.mps.empty_cache()
-    scores = [float(score) for score in scores]
-    ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
-    top_ranked = ranked[:10]
-
     context_parts = []
-    for i, (doc, _) in enumerate(top_ranked):
+    for i, doc in enumerate(docs):
         context_parts.append(f"Source {i+1}:\n{doc.strip()}")
     context_text = "\n\n".join(context_parts)
 
