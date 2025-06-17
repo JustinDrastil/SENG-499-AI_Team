@@ -1,5 +1,6 @@
 from flask import request, jsonify
-from services.chromadb_ops import add_documents, delete_documents, search_documents
+from services.chromadb_ops import add_document, delete_document, search_documents
+DEFAULT_COLLECTION_NAME = "documents_collection"
 
 def register_routes(app):
     @app.route("/")
@@ -9,13 +10,15 @@ def register_routes(app):
     @app.route("/add", methods=["POST"])
     def add():
         data = request.json
-        result = add_documents(data)
+        if "collection_name" not in data:
+            data["collection_name"] = DEFAULT_COLLECTION_NAME
+        result = add_document(data)
         return jsonify(result)
 
     @app.route("/delete", methods=["POST"])
     def delete():
         data = request.json
-        result = delete_documents(data)
+        result = delete_document(data)
         return jsonify(result)
 
     @app.route("/search", methods=["POST"])
