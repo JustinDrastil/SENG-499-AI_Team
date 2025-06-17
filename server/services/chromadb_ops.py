@@ -1,8 +1,8 @@
 import chromadb
 import torch
 import json
-from services.embedding import embed_texts, rerank
-from utils.text_utils import chunk_text, compute_hash, is_valid_url
+from services.embedding import embed_texts
+from utils.text_utils import chunk_text, is_valid_url
 from services.llm import generate_response, build_second_llm_prompt
 from services.fetch_onc_data import fetch_onc_data
 

@@ -20,7 +20,3 @@ def embed_texts(texts, batch_size=8):
         print(f"[Embed] Progress: {min(i+batch_size, total)}/{total}")
 
     return all_embeddings
-def rerank(query, docs):
-    pairs = [[query, doc] for doc in docs]
-    scores = reranker.predict(pairs)
-    return scores
