@@ -35,11 +35,28 @@ def initialize():
         )
     }
 
-def generate_response(context_text, query, model_key):
-    prompt = (
-        f"QUESTION:\n{query.strip()}\n\n"
-        f"CONTEXT:\n{context_text}\n\n"
-    )
+def generate_response(context_text, query, model_key, token=None):
+    if model_key == "api" and token:
+        # Load and inject the system prompt with the token
+        try:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            config_path = os.path.join(base_dir, "..", "config", f"system_prompt.txt")
+            with open(config_path, "r") as f:
+                system_prompt = f.read().replace("{token}", token)
+        except FileNotFoundError:
+            return "Error: system_prompt.txt not found"
+
+        # Override the context_text with the system prompt and query
+        prompt = (
+            f"{system_prompt}\n\n"
+            f"Example Input:\n{query.strip()}"
+        )
+    else:
+        # Default formatting
+        prompt = (
+            f"QUESTION:\n{query.strip()}\n\n"
+            f"CONTEXT:\n{context_text}\n\n"
+        )
 
     try:
         model = models[model_key]
