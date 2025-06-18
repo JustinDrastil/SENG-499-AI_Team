@@ -33,6 +33,15 @@
 ## server folder
 - app.py: Run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
 
+## sample query
+- you need to run app.py first then execute the curl command
+**Example**
+- What is the geographic coordinates of Cambridge Bay?
+**Curl Command**
+```
+  curl -X POST http://localhost:5001/search      -H "Content-Type: application/json"      -d '{"query": "What are the geographic coordinates of Cambridge Bay?", "collection_name": "new_collection"}'
+```
+
 ## database folder
 - documents folder: Contains text documents that are embedded into ChromaDB on initialization
 - chroma_store: Placeholder database for testing purposes, run initialize.py to replace this with an up to date version if needed (time: 15-40+ minutes)
