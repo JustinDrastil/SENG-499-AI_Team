@@ -27,7 +27,7 @@ def initialize():
     models = {
         "api": genai.GenerativeModel(
             model_name=DEFAULT_MODEL,
-            system_instruction=load_prompt("system_prompt")
+            system_instruction=load_prompt("api")
         ),
         "answer": genai.GenerativeModel(
             model_name=DEFAULT_MODEL,
@@ -40,7 +40,7 @@ def generate_response(context_text, query, model_key, token=None):
         # Load and inject the system prompt with the token
         try:
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            config_path = os.path.join(base_dir, "..", "config", f"system_prompt.txt")
+            config_path = os.path.join(base_dir, "..", "config", f"api.txt")
             with open(config_path, "r") as f:
                 system_prompt = f.read().replace("{token}", token)
         except FileNotFoundError:
