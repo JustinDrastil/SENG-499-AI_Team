@@ -1,11 +1,11 @@
 from flask import request, jsonify
-from services.chromadb_ops import add_document, delete_document, search_documents
-DEFAULT_COLLECTION_NAME = "documents_collection"
+from services.chromadb_ops import add_document, delete_document, search_documents, list_collections
+DEFAULT_COLLECTION_NAME = "new_collection"
 
 def register_routes(app):
     @app.route("/")
     def home():
-        return "Flask server is running! Use /add, /delete, or /search endpoints with a 'collection_name' parameter."
+        return "Flask server is running! Use /add, /delete, or /search endpoints with a 'collection_name' parameter. /collections endpoint returns current chromadb collections"
 
     @app.route("/add", methods=["POST"])
     def add():
@@ -25,4 +25,9 @@ def register_routes(app):
     def search():
         data = request.json
         result = search_documents(data)
+        return jsonify(result)
+
+    @app.route("/collections", methods=["GET"])
+    def collections():
+        result = list_collections()
         return jsonify(result)

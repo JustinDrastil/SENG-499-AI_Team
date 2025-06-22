@@ -8,16 +8,23 @@ from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
+# placeholder token for development, to be passed in by api
+GENERATION_TOKEN_PLACEHOLDER = "5e3aec6d-8ed0-49bc-9e96-7980704c17ef"
 
+# /add endpoint function, adds one document to the specified collection
 def add_document(data):
+    # required fields for adding a document
     collection_name = data["collection_name"]
     document_name = data["document_name"]
     text = data["text"]
 
+    # segments document into chunks, batch-embeds chunks into vectors for chromadb
     chunks = chunk_text(collection_name, document_name, text)
     embeddings = embed_texts([chunk["text"] for chunk in chunks], batch_size=8)
 
+    # will create new collection if it does not exist
     collection = chroma_client.get_or_create_collection(name=collection_name)
+
     collection.add(
         documents=[chunk["text"] for chunk in chunks],
         ids=[chunk["id"] for chunk in chunks],
@@ -26,24 +33,37 @@ def add_document(data):
     )
     return {"status": "added", "count": len(chunks)}
 
+# /delete endpoint function, deletes document from the specified collection
 def delete_document(data):
+
+    # required fields for deleting a document
     collection_name = data["collection_name"]
     document_name = data["document_name"]
 
-    collection = chroma_client.get_collection(name=collection_name)
+    # ensure collection exists
+    try:
+        collection = chroma_client.get_collection(name=collection_name)
+    except Exception as e:
+        return {"error": f"Collection '{collection_name}' not found: {str(e)}"}
+
     metadata_filter = {"document_name": document_name}
     
     collection.delete(where=metadata_filter)
 
     return {"status": "deleted", "document_name": document_name}
 
+# /search endpoint function, performs RAG on user query and returns an answer of type either 0,1,2
 def search_documents(data):
-    collection_name = data["collection_name"] #dont need anymore
-    query = data["query"]
-    # chat hiostory
-    # onc api token
 
-    collection = chroma_client.get_collection(name=collection_name)
+    # required fields for /search
+    collection_name = data["collection_name"]
+    query = data["query"]
+
+    # ensure collection exists
+    try:
+        collection = chroma_client.get_collection(name=collection_name)
+    except Exception as e:
+        return {"error": f"Collection '{collection_name}' not found: {str(e)}"}
 
     query_embedding = embed_texts([query])
     results = collection.query(query_embeddings=query_embedding, n_results=200)
@@ -54,14 +74,14 @@ def search_documents(data):
         context_parts.append(f"Source {i+1}:\n{doc.strip()}")
     context_text = "\n\n".join(context_parts)
 
-    ai_response = generate_response(context_text, query, model_key="api", token="5e3aec6d-8ed0-49bc-9e96-7980704c17ef")
+    ai_response = generate_response(context_text, query, model_key="api", token= GENERATION_TOKEN_PLACEHOLDER)
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
-    # print(ai_response)
+
     clean_response = ai_response.strip("`\n")
     start_index = clean_response.find("http")
     clean = clean_response[start_index:]
-    # print(clean)
+
 
     if is_valid_url(clean):
         # Step 1: Get JSON from ONC
@@ -86,3 +106,11 @@ def search_documents(data):
         else:
             # invalid api call
             return { "answer": clean_response, "type": 0 }
+
+# /collections endpoint function, returns list of collections in chromadb
+def list_collections():
+    collections = chroma_client.list_collections()
+    return {
+        "Collection Names": [col.name for col in collections],
+        "Number of Collections": len(collections)
+    }
