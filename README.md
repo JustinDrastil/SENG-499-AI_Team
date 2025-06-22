@@ -33,7 +33,28 @@
 ## server folder
 - app.py: Run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
 
-## sample query
+### server api endpoints
+- /add:
+  - Adds a document to the specified chromadb collection (defaults to new_collection)
+  - Requires the following fields:
+    - collection_name
+    - document_name
+    - text
+- /delete:
+  - Deletes a document from the specified chromadb collection if both exist
+  - Requires the following fields:
+    - collection_name
+    - document_name
+- /search:
+  - Performs RAG on a user query with data sourced from the ONC api, as well as chromadb documents. Returns one of three possible types of answer: (0: bad answer, 1: clarification question, 2: good answer)
+  - Requires the following fields:
+    - collection_name
+    - query
+- /collections:
+  - Returns a list of all collections present in the chromadb vector database
+  - Required fields: (None)
+
+### sample query
 - you need to run app.py first then execute the curl command
 **Example**
 - What is the geographic coordinates of Cambridge Bay?
