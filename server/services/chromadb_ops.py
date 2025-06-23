@@ -8,9 +8,6 @@ from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
-# placeholder token for development, to be passed in by api
-GENERATION_TOKEN_PLACEHOLDER = "5e3aec6d-8ed0-49bc-9e96-7980704c17ef"
-
 # /add endpoint function, adds one document to the specified collection
 def add_document(data):
     # required fields for adding a document
@@ -58,6 +55,8 @@ def search_documents(data):
     # required fields for /search
     collection_name = data["collection_name"]
     query = data["query"]
+    message_history = data.get("message_history")
+    token = data["token"]
 
     # ensure collection exists
     try:
@@ -74,7 +73,7 @@ def search_documents(data):
         context_parts.append(f"Source {i+1}:\n{doc.strip()}")
     context_text = "\n\n".join(context_parts)
 
-    ai_response = generate_response(context_text, query, model_key="api", token= GENERATION_TOKEN_PLACEHOLDER)
+    ai_response = generate_response(context_text, query, token, message_history, model_key="api")
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
 

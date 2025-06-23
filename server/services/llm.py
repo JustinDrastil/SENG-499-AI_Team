@@ -35,7 +35,10 @@ def initialize():
         )
     }
 
-def generate_response(context_text, query, model_key, token=None):
+def generate_response(context_text, query, token, message_history, model_key):
+
+    history_text = message_history if message_history else ""
+
     if model_key == "api" and token:
         # Load and inject the system prompt with the token
         try:
@@ -49,12 +52,14 @@ def generate_response(context_text, query, model_key, token=None):
         # Override the context_text with the system prompt and query
         prompt = (
             f"{system_prompt}\n\n"
+            f"{history_text}\n\n"
             f"Example Input:\n{query.strip()}"
         )
     else:
         # Default formatting
         prompt = (
             f"QUESTION:\n{query.strip()}\n\n"
+            f"HISTORY:\n{history_text}\n\n"
             f"CONTEXT:\n{context_text}\n\n"
         )
 
