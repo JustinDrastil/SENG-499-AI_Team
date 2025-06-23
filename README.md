@@ -29,6 +29,8 @@
 9. Once complete, you should be able to run all non-legacy scripts in the repository.
 10. To deactivate the venv:
 	- Command: deactivate
+11. To obtain an Oceans 3.0 API token for the search endpoint, visit:
+https://data.oceannetworks.ca/Registration
 
 ## server folder
 - app.py: Run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
@@ -50,6 +52,8 @@
   - Requires the following fields:
     - collection_name
     - query
+    - token
+    - message_history (optional)
 - /collections:
   - Returns a list of all collections present in the chromadb vector database
   - Required fields: (None)
@@ -60,7 +64,7 @@
 - What is the geographic coordinates of Cambridge Bay?
 **Curl Command**
 ```
-  curl -X POST http://localhost:5001/search      -H "Content-Type: application/json"      -d '{"query": "What are the geographic coordinates of Cambridge Bay?", "collection_name": "new_collection"}'
+  curl -X POST http://localhost:5001/search -H "Content-Type: application/json" -d "{\"query\": \"What are the geographic coordinates of Cambridge Bay?\", \"collection_name\": \"new_collection\", \"token\": \"{insert Oceans 3.0 API token}\", \"message_history\": \"[{'actor': 'user', 'message': 'this is a message'}, {'actor': 'system', 'message': 'this is an answer'}]\"}"
 ```
 
 ## database folder
