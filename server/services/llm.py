@@ -35,7 +35,7 @@ def initialize():
         )
     }
 
-def generate_response(context_text, query, token, message_history, model_key):
+def generate_response(context_text, query, model_key, token=None, message_history=None):
 
     history_text = message_history if message_history else ""
 

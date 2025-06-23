@@ -73,7 +73,7 @@ def search_documents(data):
         context_parts.append(f"Source {i+1}:\n{doc.strip()}")
     context_text = "\n\n".join(context_parts)
 
-    ai_response = generate_response(context_text, query, token, message_history, model_key="api")
+    ai_response = generate_response(context_text, query, "api", token, message_history)
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
 
