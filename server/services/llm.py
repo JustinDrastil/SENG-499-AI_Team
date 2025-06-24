@@ -45,7 +45,7 @@ def generate_response(context_text, query, model_key, token=None, message_histor
             base_dir = os.path.dirname(os.path.abspath(__file__))
             config_path = os.path.join(base_dir, "..", "config", f"api.txt")
             with open(config_path, "r") as f:
-                system_prompt = f.read().replace("{token}", token)
+                system_prompt = f.read()
         except FileNotFoundError:
             return "Error: system_prompt.txt not found"
 

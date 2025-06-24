@@ -80,6 +80,7 @@ def search_documents(data):
     clean_response = ai_response.strip("`\n")
     start_index = clean_response.find("http")
     clean = clean_response[start_index:]
+    clean = clean + token
 
 
     if is_valid_url(clean):
