@@ -9,7 +9,7 @@ def fetch_onc_data(api_url: str):
         response.raise_for_status()  # Raise an exception for HTTP errors
         data = response.json()
         print("API response:")
-        print(data)
+        #print(data)
         return data
     except requests.exceptions.RequestException as e:
         print(f"Request failed: {e}")

@@ -15,17 +15,11 @@
 7. Generate an API Key:
    - Visit [Google AI Studio](https://aistudio.google.com/app/apikey) and create a new API key.
 
-8. Configure Environment Variable:
-   - **Windows (PowerShell)**:
-     ```powershell
-     $env:GOOGLE_API_KEY = "your_api_key_here"
-     ```
-   - **Linux/macOS (Terminal)**:
-     ```bash
-     export GOOGLE_API_KEY="your_api_key_here"
-     ```
+8. Add API Key to .env file:
+    - Look for the .env file in the root directory of the repository (SENG-499-AI_TEAM/.env) 
+    - Add the generated API key from the previous step 
+    - GOOGLE_API_KEY = "your_api_key_here"
 
-   Replace `your_api_key_here` with the API key you generated from Google AI Studio.
 9. Once complete, you should be able to run all non-legacy scripts in the repository.
 10. To deactivate the venv:
 	- Command: deactivate

@@ -1,6 +1,9 @@
 import os
 import google.generativeai as genai
+from dotenv import load_dotenv
 
+# Adds .env file entries (GOOGLE_API_KEY) to the environment
+load_dotenv()
 
 # Chosen Generative AI Model
 DEFAULT_MODEL = "gemini-2.0-flash"
@@ -10,7 +13,7 @@ TOKEN_LIMIT = 1048575
 # API Key Configuration with error handling
 GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
 if not GEMINI_API_KEY:
-    raise EnvironmentError("Missing Google_API_KEY environment variable - see README for instructions")
+    raise EnvironmentError("Missing GOOGLE_API_KEY environment variable - see README for instructions")
 genai.configure(api_key=GEMINI_API_KEY)
 
 # Models array populated by initialize()

@@ -3,3 +3,4 @@ venv/
 chroma_store
 chroma_db
 __pycache__/
+.env
