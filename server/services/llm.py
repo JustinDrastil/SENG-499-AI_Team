@@ -4,6 +4,8 @@ import google.generativeai as genai
 
 # Chosen Generative AI Model
 DEFAULT_MODEL = "gemini-2.0-flash"
+# Token limit for Gemini Pro (adjust as needed)
+TOKEN_LIMIT = 1048575
 
 # API Key Configuration with error handling
 GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -69,6 +71,15 @@ def generate_response(context_text, query, model_key, token=None, message_histor
         return response.text
     except KeyError:
         return f"Error: model '{model_key}' not found"
+
+def check_prompt_length(prompt):
+    model = models.get("answer")  # or "answer" depending on your case
+    if model is None:
+        raise ValueError("Model 'answer' not initialized. Did you forget to call initialize()?")
+
+    token_count = model.count_tokens(prompt).total_tokens
+    return token_count > TOKEN_LIMIT
+
 
 def build_second_llm_prompt(user_query: str, json_data: str) -> str:
     return f"""You are a helpful assistant that translates structured API data into clear, conversational answers for end users.

@@ -3,7 +3,7 @@ import torch
 import json
 from services.embedding import embed_texts
 from utils.text_utils import chunk_text, is_valid_url
-from services.llm import generate_response, build_second_llm_prompt
+from services.llm import generate_response, build_second_llm_prompt, check_prompt_length
 from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
@@ -88,6 +88,8 @@ def search_documents(data):
         api_json = fetch_onc_data(clean)
         # Step 2: Format prompt and use second LLM to generate final response
         second_prompt = build_second_llm_prompt(data["query"], json.dumps(api_json, indent=2))
+        if(check_prompt_length(second_prompt)):
+            return { "answer": f"You can find the data using the following link: {clean}", "type": 2}
         final_answer = generate_response(second_prompt, query=data["query"], model_key="answer")
 
         no_data_keywords = ["no information found", "could not find", "not available", "no data"]
