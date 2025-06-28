@@ -2,7 +2,7 @@ import chromadb
 import torch
 import json
 from services.embedding import embed_texts
-from utils.text_utils import chunk_text, is_valid_url
+from utils.text_utils import chunk_text, is_valid_url, has_location_entity
 from utils.json_utils import compress_onc_json_response
 from services.llm import generate_response, build_second_llm_prompt, check_prompt_length
 from services.fetch_onc_data import fetch_onc_data
@@ -59,6 +59,9 @@ def search_documents(data):
     message_history = data.get("message_history")
     token = data["token"]
 
+    if "cambridge bay" not in query.lower() and not has_location_entity(query):
+        query += " in Cambridge Bay"
+
     # ensure collection exists
     try:
         collection = chroma_client.get_collection(name=collection_name)
@@ -90,7 +93,7 @@ def search_documents(data):
 
         # Step 2: Format prompt and use second LLM to generate final response
         second_prompt = build_second_llm_prompt(data["query"], json.dumps(api_json, indent=2))
-        
+
         # Step 3: Check if the prompt is too long
         if(check_prompt_length(second_prompt)):
             try:

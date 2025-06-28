@@ -6,6 +6,10 @@ import re
 def compute_hash(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()
 
+def has_location_entity(text):
+    location_keywords = ["bay", "inlet", "strait", "cambridge", "saanich", "pacific", "atlantic"]
+    return any(re.search(rf"\b{kw}\b", text.lower()) for kw in location_keywords)
+
 def is_valid_url(text):
     # Basic check for a well-formed HTTP/HTTPS URL
     return re.match(r'^https?://[^\s]+$', text.strip()) is not None
