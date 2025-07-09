@@ -4,6 +4,7 @@ import json
 from services.embedding import embed_texts
 from utils.text_utils import chunk_text, is_valid_url, has_location_entity
 from utils.json_utils import compress_onc_json_response
+from utils.time_utils import extract_timeframe_range
 from services.llm import generate_response, build_second_llm_prompt, check_prompt_length
 from services.fetch_onc_data import fetch_onc_data
 
@@ -58,6 +59,10 @@ def search_documents(data):
     query = data["query"]
     message_history = data.get("message_history")
     token = data["token"]
+
+    start_time, end_time = extract_timeframe_range(query)
+    if start_time and end_time:
+        query += f" from {start_time} to {end_time}"
 
     if "cambridge bay" not in query.lower() and not has_location_entity(query):
         query += " in Cambridge Bay"
