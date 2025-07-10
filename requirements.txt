@@ -4,6 +4,7 @@ langchain
 langchain-community
 langchain-core
 numpy
+pandas
 requests
 scikit-learn
 sentence-transformers
