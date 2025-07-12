@@ -1,8 +1,0 @@
-* Created by  [Angela Schlesinger](    /display/~schlesin@uvic.ca
-  ) on [06-Aug-24](/pages/viewpreviousversions.action?pageId=184582203 "Show changes")
-
-  1 minute read
-
-Follow this link for an introduction into ONCs API and how to use it: <https://oceannetworkscanada.github.io/Oceans3.0-API/Home.html>
-
-* No labels

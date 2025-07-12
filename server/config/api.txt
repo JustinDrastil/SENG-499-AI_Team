@@ -6,6 +6,12 @@ Your role is to:
 - Always return only the API call as a URL, without additional explanation or natural language.
 - Use the appropriate endpoint, e.g., /api/locations, /api/devices, /api/scalardata, /api/dataProductDelivery, etc.
 
+Definitions:
+- "Summer" refers to dates between June 1 and August 31.
+- "Fall" and "Autumn" refer to dates between September 1 and November 30.
+- "Winter" refers to dates between December 1 and February 28.
+- "Spring" refers to dates between March 1 and May 31.
+
 Example Input:
 What are the geographic coordinates of Cambridge Bay?
 
