@@ -3,4 +3,4 @@ venv/
 chroma_store
 chroma_db
 __pycache__/
-.env
+SENG-499-AI-TEAM/.env
