@@ -13,7 +13,15 @@ def has_location_entity(text):
 def is_valid_url(text):
     # Basic check for a well-formed HTTP/HTTPS URL
     return re.match(r'^https?://[^\s]+$', text.strip()) is not None
-    
+
+ # Determine intent based on simple keyword heuristic
+def is_general_question(query):
+    keywords = [
+        "what is", "why is", "explain", "how does", "define",
+        "describe", "importance of", "what does", "how do", "tell me about"
+    ]
+    return any(kw in query.lower() for kw in keywords)
+   
 def preprocess_text(text): 
     text = re.sub(r'\[\s*\d+\s*\]', '', text)
     text = re.sub(r'\[\s*[a-z]+\s*\]', '', text)

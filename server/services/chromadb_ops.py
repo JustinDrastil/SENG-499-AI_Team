@@ -2,7 +2,7 @@ import chromadb
 import torch
 import json
 from services.embedding import embed_texts
-from utils.text_utils import chunk_text, is_valid_url, has_location_entity
+from utils.text_utils import chunk_text, is_valid_url, has_location_entity, is_general_question
 from utils.json_utils import compress_onc_json_response
 from utils.time_utils import extract_timeframe_range
 from services.llm import generate_response, build_second_llm_prompt, check_prompt_length
@@ -61,28 +61,33 @@ def search_documents(data):
     token = data["token"]
 
     start_time, end_time = extract_timeframe_range(query)
-    if start_time and end_time:
-        query += f" from {start_time} to {end_time}"
-
-    if "cambridge bay" not in query.lower() and not has_location_entity(query):
-        query += " in Cambridge Bay"
-
+    
     # ensure collection exists
     try:
         collection = chroma_client.get_collection(name=collection_name)
     except Exception as e:
         return {"error": f"Collection '{collection_name}' not found: {str(e)}"}
 
-    query_embedding = embed_texts([query])
-    results = collection.query(query_embeddings=query_embedding, n_results=200)
-    docs = results["documents"][0]
+    if is_general_question(query):
+        context_text = ""  # No document context needed for general Qs
+    else:
+        if start_time and end_time:
+            query += f" from {start_time} to {end_time}"
 
-    context_parts = []
-    for i, doc in enumerate(docs):
-        context_parts.append(f"Source {i+1}:\n{doc.strip()}")
-    context_text = "\n\n".join(context_parts)
+        if "cambridge bay" not in query.lower() and not has_location_entity(query):
+            query += " in Cambridge Bay"
+
+        query_embedding = embed_texts([query])
+        results = collection.query(query_embeddings=query_embedding, n_results=200)
+        docs = results["documents"][0]
+
+        context_parts = []
+        for i, doc in enumerate(docs):
+            context_parts.append(f"Source {i+1}:\n{doc.strip()}")
+        context_text = "\n\n".join(context_parts)
 
     ai_response = generate_response(context_text, query, "api", token, message_history)
+
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
 
