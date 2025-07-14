@@ -62,6 +62,9 @@ def search_documents(data):
 
     start_time, end_time = extract_timeframe_range(query)
     
+    if "cambridge bay" not in query.lower() and not has_location_entity(query):
+        query += " in Cambridge Bay"
+        
     # ensure collection exists
     try:
         collection = chroma_client.get_collection(name=collection_name)
@@ -73,9 +76,6 @@ def search_documents(data):
     else:
         if start_time and end_time:
             query += f" from {start_time} to {end_time}"
-
-        if "cambridge bay" not in query.lower() and not has_location_entity(query):
-            query += " in Cambridge Bay"
 
         query_embedding = embed_texts([query])
         results = collection.query(query_embeddings=query_embedding, n_results=200)
