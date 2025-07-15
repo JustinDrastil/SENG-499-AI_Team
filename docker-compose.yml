@@ -1,0 +1,34 @@
+services:
+  rag-app:
+    build: .
+    ports:
+      - "5001:5001"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - FLASK_ENV=production
+    volumes:
+      - ./database/chroma_store:/app/database/chroma_store
+      - ./database/documents:/app/database/documents
+    restart: unless-stopped
+    networks:
+      - rag-app-network
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: rag_app_cloudflared_service
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${AI_TUNNEL_TOKEN} --url http://rag-app:5001
+    depends_on:
+      - rag-app
+    networks:
+      - rag-app-network
+
+networks:
+  rag-app-network:
+    driver: bridge
+
+volumes:
+  chroma_store:
+    driver: local
+  documents:
+    driver: local
