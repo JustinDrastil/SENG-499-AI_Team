@@ -16,9 +16,6 @@ COPY . .
 
 RUN mkdir -p database/chroma_store
 
-# Make startup script executable
-RUN chmod +x docker/startup.sh
-
 EXPOSE 5001
 
 ENV PYTHONPATH=/app
