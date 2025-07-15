@@ -29,6 +29,8 @@ https://data.oceannetworks.ca/Registration
 ## server folder
 - app.py: Run this to start the flask server which can be used to perform CRUD operations on the vector database (ChromaDB)
 
+- chat.py: Once the flask server is running, run this to interact with it locally for testing purposes. You will need to add an ONC api token to this script. Once added, you can query the ai assistant in natural language with session message history included.
+
 ### server api endpoints
 - /add:
   - Adds a document to the specified chromadb collection (defaults to new_collection)
