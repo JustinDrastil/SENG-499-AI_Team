@@ -1,6 +1,7 @@
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Adds .env file entries (GOOGLE_API_KEY) to the environment
 load_dotenv()
@@ -23,8 +24,10 @@ models = {}
 def load_prompt(filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     config_path = os.path.join(base_dir, "..", "config", f"{filename}.txt")
-    with open(config_path, "r") as f:
-        return f.read().strip()
+    with open(config_path, "r", encoding="utf-8") as f:
+        content = f.read().strip()
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    return content.replace("{current_date}", current_date)
 
 # Creates global models dictionary (Function is called in "../app.py")
 def initialize():
