@@ -1,0 +1,102 @@
+﻿Sea ice arises as seawater freezes. Because ice is less dense than water, it floats on the ocean's surface (as does fresh water ice). Sea ice covers about 7% of the Earth's surface and about 12% of the world's oceans. Much of the world's sea ice is enclosed within the polar ice packs in the Earth's polar regions: the Arctic ice pack of the Arctic Ocean and the Antarctic ice pack of the Southern Ocean. Polar packs undergo a significant yearly cycling in surface extent, a natural process upon which depends the Arctic ecology, including the ocean's ecosystems. Due to the action of winds, currents and temperature fluctuations, sea ice is very dynamic, leading to a wide variety of ice types and features. Sea ice may be contrasted with icebergs, which are chunks of ice shelves or glaciers that calve into the ocean. Depending on location, sea ice expanses may also incorporate icebergs.
+
+
+Sea ice does not simply grow and melt. During its lifespan, it is very dynamic. Due to the combined action of winds, currents, water temperature and air temperature fluctuations, sea ice expanses typically undergo a significant amount of deformation. Sea ice is classified according to whether or not it is able to drift and according to its age.
+
+
+Sea ice can be classified according to whether or not it is attached (or frozen) to the shoreline (or between shoals or to grounded icebergs). If attached, it is called landfast ice, or more often, fast ice (as in fastened). Alternatively and unlike fast ice, drift ice occurs further offshore in very wide areas and encompasses ice that is free to move with currents and winds. The physical boundary between fast ice and drift ice is the fast ice boundary. The drift ice zone may be further divided into a shear zone, a marginal ice zone and a central pack. Drift ice consists of floes, individual pieces of sea ice 20 metres (66 ft) or more across. There are names for various floe sizes: small – 20 to 100 m (66 to 328 ft); medium – 100 to 500 m (330 to 1,640 ft); big – 500 to 2,000 m (1,600 to 6,600 ft); vast – 2 to 10 kilometres (1.2 to 6.2 mi); and giant – more than 10 km (6.2 mi). The term pack ice is used either as a synonym to drift ice, or to designate drift ice zone in which the floes are densely packed. The overall sea ice cover is termed the ice canopy from the perspective of submarine navigation
+
+
+Another classification used by scientists to describe sea ice is based on age, that is, on its development stages. These stages are: new ice, nilas, young ice, first-year and old.
+
+
+New ice is a general term used for recently frozen sea water that does not yet make up solid ice. It may consist of frazil ice (plates or spicules of ice suspended in water), slush (water saturated snow), or shuga (spongy white ice lumps a few centimeters across). Other terms, such as grease ice and pancake ice, are used for ice crystal accumulations under the action of wind and waves. When sea ice begins to form on a beach with a light swell, ice eggs up to the size of a football can be created.
+
+
+Nilas designates a sea ice crust up to 10 centimetres (3.9 in) in thickness. It bends without breaking around waves and swells. Nilas can be further subdivided into dark nilas – up to 5 cm (2.0 in) in thickness and very dark and light nilas – over 5 cm (2.0 in) in thickness and lighter in color.
+
+
+Young ice is a transition stage between nilas and first-year ice and ranges in thickness from 10 cm (3.9 in) to 30 cm (12 in), Young ice can be further subdivided into grey ice – 10 cm (3.9 in) to 15 cm (5.9 in) in thickness and grey-white ice – 15 cm (5.9 in) to 30 cm (12 in) in thickness. Young ice is not as flexible as nilas, but tends to break under wave action. Under compression, it will either raft (at the grey ice stage) or ridge (at the grey-white ice stage).
+
+
+First-year sea ice is ice that is thicker than young ice but has no more than one year growth. In other words, it is ice that grows in the fall and winter (after it has gone through the new ice – nilas – young ice stages and grows further) but does not survive the spring and summer months (it melts away). The thickness of this ice typically ranges from 0.3 m (0.98 ft) to 2 m (6.6 ft). First-year ice may be further divided into thin (30 cm (0.98 ft) to 70 cm (2.3 ft)), medium (70 cm (2.3 ft) to 120 cm (3.9 ft)) and thick (>120 cm (3.9 ft)).
+
+
+Old sea ice is sea ice that has survived at least one melting season (i.e. one summer). For this reason, this ice is generally thicker than first-year sea ice. The thickness of old sea ice typically ranges from 2 to 4 m.  Old ice is commonly divided into two types: second-year ice, which has survived one melting season and multiyear ice, which has survived more than one. (In some sources,old ice is more than two years old.) Multi-year ice is much more common in the Arctic than it is in the Antarctic.The reason for this is that sea ice in the south drifts into warmer waters where it melts. In the Arctic, much of the sea ice is land-locked.
+
+
+While fast ice is relatively stable (because it is attached to the shoreline or the seabed), drift (or pack) ice undergoes relatively complex deformation processes that ultimately give rise to sea ice's typically wide variety of landscapes. Wind is the main driving force, along with ocean currents. The Coriolis force and sea ice surface tilt have also been invoked.These driving forces induce a state of stress within the drift ice zone. An ice floe converging toward another and pushing against it will generate a state of compression at the boundary between both. The ice cover may also undergo a state of tension, resulting in divergence and fissure opening. If two floes drift sideways past each other while remaining in contact, this will create a state of shear.
+
+
+Sea ice deformation results from the interaction between ice floes as they are driven against each other. The result may be of three types of features: 1) Rafted ice, when one piece is overriding another; 2) Pressure ridges, a line of broken ice forced downward (to make up the keel) and upward (to make the sail); and 3) Hummock, a hillock of broken ice that forms an uneven surface. A shear ridge is a pressure ridge that formed under shear – it tends to be more linear than a ridge induced only by compression. A new ridge is a recent feature – it is sharp-crested, with its side sloping at an angle exceeding 40 degrees. In contrast, a weathered ridge is one with a rounded crest and with sides sloping at less than 40 degrees. Stamukhi are yet another type of pile-up but these are grounded and are therefore relatively stationary. They result from the interaction between fast ice and the drifting pack ice.
+
+
+
+
+Level ice is sea ice that has not been affected by deformation and is therefore relatively flat.
+
+
+Leads and polynyas are areas of open water that occur within sea ice expanses even though air temperatures are below freezing. They provide a direct interaction between the ocean and the atmosphere, which is important for the wildlife. Leads are narrow and linear, varying in width from meters to kilometers. During the winter, the water in leads quickly freezes up. They are also used for navigation purposes – even when refrozen, the ice in leads is thinner, allowing icebreakers access to an easier sail path and submarines to surface more easily. Polynyas are more uniform in size than leads and are also larger – two types are recognized: 1) Sensible-heat polynyas, caused by the upwelling of warmer water and 2) Latent-heat polynyas, resulting from persistent winds from the coastline.
+
+
+Only the top layer of water needs to cool to the freezing point. Convection of the surface layer involves the top 100–150 m (330–490 ft), down to the pycnocline of increased density.
+
+
+In calm water, the first sea ice to form on the surface is a skim of separate crystals which initially are in the form of tiny discs, floating flat on the surface and of diameter less than 0.3 cm (0.12 in). Each disc has its c-axis vertical and grows outwards laterally. At a certain point such a disc shape becomes unstable and the growing isolated crystals take on a hexagonal, stellar form, with long fragile arms stretching out over the surface. These crystals also have their c-axis vertical. The dendritic arms are very fragile and soon break off, leaving a mixture of discs and arm fragments. With any kind of turbulence in the water, these fragments break up further into random-shaped small crystals which form a suspension of increasing density in the surface water, an ice type called frazil or grease ice. In quiet conditions the frazil crystals soon freeze together to form a continuous thin sheet of young ice; in its early stages, when it is still transparent – that is the ice called nilas. Once nilas has formed, a quite different growth process occurs, in which water freezes on to the bottom of the existing ice sheet, a process called congelation growth. This growth process yields first-year ice.
+
+
+In rough water, fresh sea ice is formed by the cooling of the ocean as heat is lost into the atmosphere. The uppermost layer of the ocean is supercooled to slightly below the freezing point, at which time tiny ice platelets (frazil ice) form. With time, this process leads to a mushy surface layer, known as grease ice. Frazil ice formation may also be started by snowfall, rather than supercooling. Waves and wind then act to compress these ice particles into larger plates, of several meters in diameter, called pancake ice. These float on the ocean surface and collide with one another, forming upturned edges. In time, the pancake ice plates may themselves be rafted over one another or frozen together into a more solid ice cover, known as consolidated pancake ice. Such ice has a very rough appearance on top and bottom.
+
+
+If sufficient snow falls on sea ice to depress the freeboard below sea level, sea water will flow in and a layer of ice will form of mixed snow/sea water. This is particularly common around Antarctica.
+
+
+Russian scientist Vladimir Vize (1886–1954) devoted his life to study the Arctic ice pack and developed the Scientific Prediction of Ice Conditions Theory, for which he was widely acclaimed in academic circles. He applied this theory in the field in the Kara Sea, which led to the discovery of Vize Island.
+
+
+The annual freeze and melt cycle is set by the annual cycle of solar insolation and of ocean and atmospheric temperature and of variability in this annual cycle.
+
+
+In the Arctic, the area of ocean covered by sea ice increases over winter from a minimum in September to a maximum in March or sometimes February, before melting over the summer. In the Antarctic, where the seasons are reversed, the annual minimum is typically in February and the annual maximum in September or October. The presence of sea ice abutting the calving fronts of ice shelves has been shown to influence glacier flow and potentially the stability of the Antarctic ice sheet.
+
+
+The growth and melt rate are also affected by the state of the ice itself. During growth, the ice thickening due to freezing (as opposed to dynamics) is itself dependent on the thickness, so that the ice growth slows as the ice thickens. Likewise, during melt, thinner sea ice melts faster. This leads to different behaviour between multiyear and first year ice. In addition, melt ponds on the ice surface during the melt season lower the albedo such that more solar radiation is absorbed, leading to a feedback where melt is accelerated. The presence of melt ponds is affected by the permeability of the sea ice (i.e. whether meltwater can drain) and the topography of the sea ice surface (i.e. the presence of natural basins for the melt ponds to form in). First year ice is flatter than multiyear ice due to the lack of dynamic ridging, so ponds tend to have greater area. They also have lower albedo since they are on thinner ice, which blocks less of the solar radiation from reaching the dark ocean below.
+
+
+Sea ice is a composite material made up of pure ice, liquid brine, air, and salt. The volumetric fractions of these components—ice, brine, and air—determine the key physical properties of sea ice, including thermal conductivity, heat capacity, latent heat, density, elastic modulus, and mechanical strength. Brine volume fraction depends on sea-ice salinity and temperature, while sea-ice salinity mainly depends on ice age and thickness. During the ice growth period, its bulk brine volume is typically below 5%. Air volume fraction during ice growth period is typically around 1–2 %, but may substantially increase upon ice warming. Air volume of sea ice in can be as high as 15 % in summer and 4 % in autumn. Both brine and air volumes influence sea-ice density values, which are typically around 840–910 kg/m3 for first-year ice. First-year ice has a strong seasonality of its density, with higher values around 910–920 kg/m3 in winter and lower values around 860–880 kg/m3 in summer. Density of second- and multiyear ice typically has a weaker seasonality and lower density than for first-year ice. Sea-ice density is a significant source of errors in sea-ice thickness retrieval using radar and laser satellite altimetry, resulting in uncertainties of 0.3–0.4 m.
+
+
+Changes in sea ice conditions are best demonstrated by the rate of melting over time. A composite record of Arctic ice demonstrates that the floes' retreat began around 1900, experiencing more rapid melting beginning within the past 50 years. Satellite study of sea ice began in 1979 and became a much more reliable measure of long-term changes in sea ice. In comparison to the extended record, the sea-ice extent in the polar region by September 2007 was only half the recorded mass that had been estimated to exist within the 1950–1970 period.
+
+
+Arctic sea ice extent ice hit an all-time low in September 2012, when the ice was determined to cover only 24% of the Arctic Ocean, offsetting the previous low of 29% in 2007. Predictions of when the first "ice free" Arctic summer might occur vary.
+
+
+Antarctic sea ice extent gradually increased in the period of satellite observations, which began in 1979, until a rapid decline in southern hemisphere spring of 2016.
+
+
+Sea ice provides an ecosystem for various polar species, particularly the polar bear, whose environment is being threatened as global warming causes the ice to melt more as the Earth's temperature gets warmer. Furthermore, the sea ice itself functions to help keep polar climates cool, since the ice exists in expansive enough amounts to maintain a cold environment. At this, sea ice's relationship with global warming is cyclical; the ice helps to maintain cool climates, but as the global temperature increases, the ice melts and is less effective in keeping those climates cold. The bright, shiny surface (albedo) of the ice also serves a role in maintaining cooler polar temperatures by reflecting much of the sunlight that hits it back into space. As the sea ice melts, its surface area shrinks, diminishing the size of the reflective surface and therefore causing the earth to absorb more of the sun's heat. As the ice melts it lowers the albedo thus causing more heat to be absorbed by the Earth and further increase the amount of melting ice. Though the size of the ice floes is affected by the seasons, even a small change in global temperature can greatly affect the amount of sea ice and due to the shrinking reflective surface that keeps the ocean cool, this sparks a cycle of ice shrinking and temperatures warming. As a result, the polar regions are the most susceptible places to climate change on the planet.
+
+
+Furthermore, sea ice affects the movement of ocean waters. In the freezing process, much of the salt in ocean water is squeezed out of the frozen crystal formations, though some remains frozen in the ice. This salt becomes trapped beneath the sea ice, creating a higher concentration of salt in the water beneath ice floes. This concentration of salt contributes to the salinated water's density and this cold, denser water sinks to the bottom of the ocean. This cold water moves along the ocean floor towards the equator, while warmer water on the ocean surface moves in the direction of the poles. This is referred to as "conveyor belt motion" and is a regularly occurring process.
+
+
+In order to gain a better understanding about the variability, numerical sea ice models are used to perform sensitivity studies. The two main ingredients are the ice dynamics and the thermodynamical properties (see Sea ice emissivity modelling, Sea ice growth processes and Sea ice thickness). There are many sea ice model computer codes available for doing this, including the CICE numerical suite.
+
+
+Many global climate models (GCMs) have sea ice implemented in their numerical simulation scheme in order to capture the ice–albedo feedback correctly. Examples include:
+
+
+The Coupled Model Intercomparison Project offers a standard protocol for studying the output of coupled atmosphere-ocean general circulation models. The coupling takes place at the atmosphere-ocean interface where the sea ice may occur.
+
+
+In addition to global modeling, various regional models deal with sea ice. Regional models are employed for seasonal forecasting experiments and for process studies.
+
+
+Sea ice is part of the Earth's biosphere. When sea water freezes, the ice is riddled with brine-filled channels which sustain sympagic organisms such as bacteria, algae, copepods and annelids, which in turn provide food for animals such as krill and specialised fish like the bald notothen, fed upon in turn by larger animals such as emperor penguins and minke whales.
+
+
+A decline of seasonal sea ice puts the survival of Arctic species such as ringed seals and polar bears at risk.
+
+
+Other element and compounds have been speculated to exist as oceans and seas on extraterrestrial planets. Scientists notably suspect the existence of "icebergs" of solid diamond and corresponding seas of liquid carbon on the ice giants, Neptune and Uranus. This is due to extreme pressure and heat at the core, that would turn carbon into a supercritical fluid.
