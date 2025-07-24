@@ -1,6 +1,6 @@
 services:
   rag-app:
-    build: .
+    image: nathanielroberts1/seng499ai:latest
     ports:
       - "5001:5001"
     environment:
@@ -10,6 +10,8 @@ services:
       - ./database/chroma_store:/app/database/chroma_store
       - ./database/documents:/app/database/documents
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     networks:
       - rag-app-network
 
@@ -20,6 +22,19 @@ services:
     command: tunnel --no-autoupdate run --token ${AI_TUNNEL_TOKEN} --url http://rag-app:5001
     depends_on:
       - rag-app
+    networks:
+      - rag-app-network
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: ragtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=60
     networks:
       - rag-app-network
 
