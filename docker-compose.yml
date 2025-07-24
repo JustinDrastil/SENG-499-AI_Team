@@ -1,0 +1,49 @@
+services:
+  rag-app:
+    image: nathanielroberts1/seng499ai:latest
+    ports:
+      - "5001:5001"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - FLASK_ENV=production
+    volumes:
+      - ./database/chroma_store:/app/database/chroma_store
+      - ./database/documents:/app/database/documents
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    networks:
+      - rag-app-network
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: rag_app_cloudflared_service
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${AI_TUNNEL_TOKEN} --url http://rag-app:5001
+    depends_on:
+      - rag-app
+    networks:
+      - rag-app-network
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: ragtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=60
+    networks:
+      - rag-app-network
+
+networks:
+  rag-app-network:
+    driver: bridge
+
+volumes:
+  chroma_store:
+    driver: local
+  documents:
+    driver: local
