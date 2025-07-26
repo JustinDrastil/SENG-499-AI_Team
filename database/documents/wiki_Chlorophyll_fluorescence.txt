@@ -1,0 +1,93 @@
+﻿Chlorophyll fluorescence is light re-emitted by chlorophyll molecules during return from excited to non-excited states. It is used as an indicator of photosynthetic energy conversion in plants, algae and bacteria. Excited chlorophyll dissipates the absorbed light energy by driving photosynthesis (photochemical energy conversion), as heat in non-photochemical quenching or by emission as fluorescence radiation. As these processes are complementary processes, the analysis of chlorophyll fluorescence is an important tool in plant research with a wide spectrum of applications.
+
+
+Upon illumination of a dark-adapted leaf, there is a rapid rise in fluorescence from Photosystem II (PSII), followed by a slow decline. First observed by Kautsky et al., 1932, this is called the Kautsky Effect. This variable rise in chlorophyll fluorescence is due to photosystem II.Fluorescence from photosystem I is not variable, but constant.
+
+
+The increase in fluorescence is due to PSII reaction centers being in a "closed" or chemically reduced state. Reaction centers are "closed" when unable to accept further electrons. This occurs when electron acceptors downstream of PSII have not yet passed their electrons to a subsequent electron carrier, so are unable to accept another electron. Closed reaction centres reduce the overall photochemical efficiency, and so increase the level of fluorescence. Transferring a leaf from dark into light increases the proportion of closed PSII reaction centres, so fluorescence levels increase for 1–2 seconds. Subsequently, fluorescence decreases over a few minutes. This is due to; 1. more "photochemical quenching" in which electrons are transported away from PSII due to enzymes involved in carbon fixation; and 2. more "non-photochemical quenching" in which more energy is converted to heat.
+
+
+To use measurements of chlorophyll fluorescence to analyse photosynthesis, researchers must distinguish between photochemical quenching and non-photochemical quenching (heat dissipation). This is achieved by stopping photochemistry, which allows researchers to measure fluorescence in the presence of non-photochemical quenching alone. To reduce photochemical quenching to negligible levels, a high intensity, short flash of light is applied to the leaf. This transiently closes all PSII reaction centres, which prevents energy of PSII being passed to downstream electron carriers. Non-photochemical quenching will not be affected if the flash is short. During the flash, the fluorescence reaches the level reached in the absence of any photochemical quenching, known as maximum fluorescence.
+
+
+The efficiency of photochemical quenching (which is a proxy of the efficiency of PSII) can be estimated by comparing maximum fluorescence to the steady yield of fluorescence in the light 
+ and the yield of fluorescence in the absence of photosynthetic light.
+
+
+The efficiency of non-photochemical quenching is altered by various internal and external factors. Alterations in heat dissipation mean changes in maximum fluorescence. Heat dissipation cannot be totally stopped, so the yield of chlorophyll fluorescence in the absence of non-photochemical quenching cannot be measured. Therefore, researchers use a dark-adapted point with which to compare estimations of non-photochemical quenching.
+Minimal fluorescence (arbitrary units). Fluorescence level of dark-adapted sample when all reaction centers of the photosystem II are open.
+
+
+Maximal fluorescence (arbitrary units). Fluorescence level of dark-adapted sample when a high intensity pulse has been applied. All reaction centers of the photosystem II are closed.
+
+
+Minimal fluorescence (arbitrary units). Fluorescence level of light-adapted sample when all reaction centers of the photosystem II are open; it is lowered with respect to minimal florence  by non-photochemical quenching.
+
+
+Maximal fluorescence (arbitrary units). Fluorescence level of light-adapted sample when a high intensity pulse has been applied. All reaction centers of the photosystem II are closed.
+
+
+Steady-state terminal fluorescence (arbitrary units). A steady-state fluorescence level decreased (= quenched) by photochemical and non-photochemical processes.
+
+
+
+
+Chlorophyll fluorescence appears to be a measure of photosynthesis, but this is an over-simplification. Fluorescence can measure the efficiency of PSII photochemistry, which can be used to estimate the rate of linear electron transport by multiplying by the light intensity. However, researchers generally mean carbon fixation when they refer to photosynthesis. Electron transport and CO2 fixation can correlate well, but may not correlate in the field due to processes such as photorespiration, nitrogen metabolism and the Mehler reaction.
+
+
+A powerful research technique is to simultaneously measure chlorophyll fluorescence and gas exchange to obtain a full picture of the response of plants to their environment. One technique is to simultaneously measure CO2 fixation and PSII photochemistry at different light intensities, in non-photorespiratory conditions. A plot of CO2 fixation and PSII photochemistry indicates the electron requirement per molecule CO2 fixed. From this estimation, the extent of photorespiration may be estimated. This has been used to explore the significance of photorespiration as a photoprotective mechanism during drought.
+
+
+Fluorescence analysis can also be applied to understanding the effects of low and high temperatures.
+
+
+Chlorophyll fluorescence can measure most types of plant stress. Chlorophyll fluorescence can be used as a proxy of plant stress because environmental stresses, e.g. extremes of temperature, light and water availability, can reduce the ability of a plant to metabolise normally. This can mean an imbalance between the absorption of light energy by chlorophyll and the use of energy in photosynthesis.
+
+
+Because of the link between chlorophyll content and nitrogen content in leaves, chlorophyll fluorometers can be used to detect nitrogen deficiency in plants, by several methods.
+
+
+Based on several years of research and experimentation, polyphenols can be the indicators of nitrogen status of a plant. For instance, when a plant is under optimal conditions, it favours its primary metabolism and synthesises the proteins (nitrogen molecules) containing chlorophyll, and few flavonols (carbon-based secondary compounds). On the other hand, in case of lack of nitrogen, we will observe an increased production of flavonols by the plant.
+
+
+The NBI (Nitrogen Balance Index) by Force-A, allows the assessment of nitrogen conditions of a culture by calculating the ratio between Chlorophyll and Flavonols (related to Nitrogen/Carbon allocation) .
+
+
+Gitelson (1999) states, "The ratio between chlorophyll fluorescence at 735 nm and the wavelength range 700nm to 710 nm, F735/F700 was found to be linearly proportional to the chlorophyll content (with determination coefficient, r2, more than 0.95) and thus this ratio can be used as a precise indicator of chlorophyll content in plant leaves."
+
+
+The development of fluorometers allowed chlorophyll fluorescence analysis to become a common method in plant research. Chlorophyll fluorescence analysis has been revolutionized by the invention of the Pulse-Amplitude-Modulation (PAM) technique and availability of the first commercial modulated chlorophyll fluorometer PAM-101 (Walz, Germany). By modulating the measuring light beam (microsecond-range pulses) and parallel detection of the excited fluorescence the relative fluorescence yield (Ft) can be determined in the presence of ambient light. Crucially, this means chlorophyll fluorescence can be measured in the field even in full sunlight.
+
+
+Today, chlorophyll fluorometers are designed for measuring many different plant mechanisms. The measuring protocols: FV/FM and OJIP measure the efficiency of Photosystem II samples at a common and known dark adapted state. These protocols are useful in measuring many types of plant stress.Bernard Genty's light adapted measuring protocol ΔF/FM’, or Y(II), is an effective and sensitive way to measure plant samples under ambient or artificial lighting conditions. However, since Y(II) values also change with light intensity, one should compare samples at the same light intensity unless light stress is the focus of the measurement. Y(II) can be more sensitive to some types of plant stress than FV/FM, such as heat stress.
+
+
+Other plant mechanism measuring protocols have also been developed. When a chloroplast absorbs light, some of the light energy goes to photochemistry, some goes to regulated heat dissipation, and some goes to unregulated heat dissipation. Various chlorophyll fluorescence measuring parameters exist to measure all of these events. In the lake model, qL measures photochemical quenching, Y(NYO) measures plant regulated heat dissipation, and Y(NO) measures unregulated heat dissipation. An older quenching protocol, called the puddle model, uses qP for photochemical quenching, qN for nonphotochemical quenching of both regulated and unregulated heat dissipation and NPQ for an estimate of nonphotochemical quenching.] NPQ has also been resurrected to the lake model mathematically.
+
+
+In addition, the parameters qE, and pNPQ have been developed to measure the photoprotective xanthophyll cycle. qT is a measure of state transitions. qM is a measure of chloroplast migration, and qI is a measure of plant photoinhibition.
+
+
+At lower actinic light levels NPQ = qE+qT+qI 
+
+
+At high actinic light levels NPQ = qE+qM=qI 
+
+
+Some fluorometers are designed to be portable and operated in one hand.
+
+
+Consistent further development into imaging fluorometers facilitate the visualization of spatial heterogeneities in photosynthetic activity of samples. These heterogeneities naturally occur in plant leaves for example during growths, various environmental stresses or  pathogen infection. Thus knowledge about sample heterogeneities is important for correct interpretation of the photosynthetic performance of the plant sample. High performance imaging fluorometer systems provide options to analyze single cell/single chloroplast as well as sample areas covering whole leaves or plants.
+
+
+Techniques based on the Kautsky effect do not exhaust the variety of detection and evaluation methods based on the chlorophyll fluorescence.
+
+
+In particular, recent advances in the area of laser-induced fluorescence (LIF) also provide an opportunity of developing sufficiently compact and efficient sensors for 
+photophysiological status and biomass assessments. 
+
+
+Instead of measuring the evolution of the total fluorescence flux, such sensors record the spectral density of this flux excited by strong monochromatic laser light pulses of nanosecond  duration.
+
+
+Requiring no 15- 20 min dark adaptation period (as is the case for the Kautsky effect methods) and being capable to excite the sample from considerable distance, the LIF sensors can provide fast and remote evaluation.

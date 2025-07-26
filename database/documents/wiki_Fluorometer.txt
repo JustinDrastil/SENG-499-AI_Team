@@ -1,0 +1,40 @@
+﻿A  fluorometer, fluorimeter or fluormeter is a device used to measure parameters of visible spectrum fluorescence: its intensity and wavelength distribution of emission spectrum after excitation by a certain spectrum of light. These parameters are used to identify the presence and the amount of specific molecules in a medium. Modern fluorometers are capable of detecting fluorescent molecule concentrations as low as 1 part per trillion.
+
+
+Fluorescence analysis can be orders of magnitude more sensitive than other techniques. Applications include chemistry/biochemistry, medicine, environmental monitoring. For instance, they are used to measure chlorophyll fluorescence to investigate plant physiology.
+
+
+Typically fluorometers utilize a double beam. These two beams work in tandem to decrease the noise created from radiant power fluctuations. The upper beam is passed through a filter or monochromator and passes through the sample. The lower beam is passed through an attenuator and adjusted to try and match the fluorescent power given off from the sample. Light from the fluorescence of the sample and the lower, attenuated beam are detected by separate transducers and converted to an electrical signal that is interpreted by a computer system.
+
+
+Within the machine the transducer that detects fluorescence created from the upper beam is located a distance away from the sample and at a 90-degree angle from the incident, upper beam. The machine is constructed like this to decrease the stray light from the upper beam that may strike the detector. The optimal angle is 90 degrees.
+
+
+There are two different approaches to handling the selection of incident light that gives way to different types of fluorometers. If filters are used to select wavelengths of light, the machine is called a fluorometer. While a spectrofluorometer will typically use two monochromators, some spectrofluorometers may use one filter and one monochromator. Where, in this case, the broad band filter acts to reduce stray light, including from unwanted diffraction orders of the diffraction grating in the monochromator.
+
+
+Light sources for fluorometers are often dependent on the type of sample being tested. Among the most common light source for fluorometers is the low-pressure mercury lamp. This provides many excitation wavelengths, making it the most versatile. However, this lamp is not a continuous source of radiation. The xenon arc lamp is used when a continuous source of radiation is needed. Both of these sources provide a suitable spectrum of ultraviolet light that induces chemiluminescence. These are just two of the many possible light sources. 
+
+
+Glass and silica cuvettes are often the vessels in which the sample is placed. Care must be taken to not leave fingerprints or any other sort of mark on the outside of the cuvette, because this can produce unwanted fluorescence. "Spectro grade" solvents such as methanol are sometimes used to clean the vessel surfaces to minimize these problems.
+
+
+Fluorimetry is widely used by the dairy industry to verify whether pasteurization has been successful. This is done using a reagent which is hydrolysed to a fluorophore and phosphoric acid by alkaline phosphatase in milk. If pasteurization has been successful then alkaline phosphatase will be entirely denatured and the sample will not fluoresce. This works because pathogens in milk are killed by any heat treatment which denatures alkaline phosphatase.
+
+
+Fluorescence assays are required by milk producers in the UK to prove successful pasteurization has occurred, so all UK dairies contain fluorimetry equipment.
+
+
+Thioflavins are dyes used for histology staining and biophysical studies of protein aggregation. For example, thioflavin T is used in the RT-QuIC technique to detect transmissible spongiform encephalopathy-causing misfolded prions.
+
+
+Fluorometers are widely used in oceanography to measure chlorophyll concentrations based on chlorophyll fluorescence by phytoplankton cell pigments. Chlorophyll fluorescence is a widely used proxy for the quantity (biomass) of microscopic algae in the water. In the lab after water sampling, researchers extract the pigments out of a filter that has phytoplankton cells on it, then measure the fluorescence of the extract in a benchtop fluorometer in a dark room. To directly measure chlorophyll fluorescence "in situ" (in the water), researchers use instruments designed to measure fluorescence optically (for example, sondes with extra electronic optical sensors attached). The optical sensors emit blue light to excite phytoplankton pigments and make them fluoresce or emit red light. The sensor measures this induced fluorescence by measuring the red light as a voltage, and the instrument saves it to a data file. The voltage signal of the sensor gets converted to a concentration with a calibration curve in the lab, using either red-colored dyes like Rhodamine, standards like Fluorescein, or live phytoplankton cultures.
+
+
+Ocean chlorophyll fluorescence is measured on research vessels, small boats, buoys, docks, and piers all over the world. Fluorometry measurements are used to map chlorophyll concentrations in support of ocean color remote sensing. Special fluorometers for ocean waters can measure properties beyond the total amount of fluorescence, such as the quantum yield of photochemistry, the timing of the fluorescence, and the fluorescence of cells when subjected to increasing amounts of light. Aquaculture operations such as fish farms use fluorometers to measure food availability for filter feeding animals like mussels and to detect the onset of Harmful Algal Blooms (HABs) and/or "red tides" (not necessarily the same thing).
+
+
+Fluorometers can be used to determine the nucleic acid concentration in a sample.
+
+
+There are two basic types of fluorometers: the filter fluorometers and spectrofluorometer. The difference between them is the way they select the wavelengths of incident light; filter fluorometers use filters while spectrofluorometers use grating monochromators. Filter fluorometers are often purchased or built at a lower cost but are less sensitive and have less resolution than spectrofluorometers. Filter fluorometers are also capable of operation only at the wavelengths of the available filters, whereas monochromators are generally freely tunable over a relatively wide range. The potential disadvantage of monochromators arises from that same property, because the monochromator is capable of miscalibration or misadjustment, whereas the wavelength of filters are fixed when manufactured.

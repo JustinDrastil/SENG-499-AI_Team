@@ -1,0 +1,82 @@
+﻿The ocean temperature plays a crucial role in the global climate system, ocean currents and for marine habitats. It varies depending on depth, geographical location and season. Not only does the temperature differ in seawater, so does the salinity. Warm surface water is generally saltier than the cooler deep or polar waters. In polar regions, the upper layers of ocean water are cold and fresh.Deep ocean water is cold, salty water found deep below the surface of Earth's oceans. This water has a uniform temperature of around 0-3 °C. The ocean temperature also depends on the amount of solar radiation falling on its surface. In the tropics, with the Sun nearly overhead, the temperature of the surface layers can rise to over 30 °C (86 °F). Near the poles the temperature in equilibrium with the sea ice is about −2 °C (28 °F). 
+
+
+There is a continuous large-scale circulation of water in the oceans. One part of it is the thermohaline circulation (THC). It is driven by global density gradients created by surface heat and freshwater fluxes. Warm surface currents cool as they move away from the tropics. This happens as the water becomes denser and sinks. Changes in temperature and density move the cold water back towards the equator as a deep sea current. Then it eventually wells up again towards the surface.
+
+
+Ocean temperature as a term applies to the temperature in the ocean at any depth. It can also apply specifically to the ocean temperatures that are not near the surface. In this case it is synonymous with deep ocean temperature).
+
+
+It is clear that the oceans are warming as a result of climate change and this rate of warming is increasing. The upper ocean (above 700 m) is warming fastest, but the warming trend extends throughout the ocean. In 2022, the global ocean was the hottest ever recorded by humans.
+
+
+Experts refer to the temperature further below the surface as ocean temperature or deep ocean temperature. Ocean temperatures more than 20 metres below the surface vary by region and time. They contribute to variations in ocean heat content and ocean stratification. The increase of both ocean surface temperature and deeper ocean temperature is an important effect of climate change on oceans.
+
+
+Deep ocean water is the name for cold, salty water found deep below the surface of Earth's oceans. Deep ocean water makes up about 90% of the volume of the oceans. Deep ocean water has a very uniform temperature of around 0-3 °C. Its salinity is about 3.5% or 35 ppt (parts per thousand).
+
+
+Ocean temperature and dissolved oxygen concentrations have a big influence on many aspects of the ocean. These two key parameters affect the ocean's primary productivity, the oceanic carbon cycle, nutrient cycles, and marine ecosystems. They work in conjunction with salinity and density to control a range of processes. These include mixing versus stratification, ocean currents and the thermohaline circulation.
+
+
+Experts calculate ocean heat content by using ocean temperatures at different depths.
+
+
+Ocean heat content (OHC) or ocean heat uptake (OHU) is the energy absorbed and stored by oceans. It is an important indicator of global warming. Ocean heat content is calculated by measuring ocean temperature at many different locations and depths, and integrating the areal density of a change in enthalpic energy over an ocean basin or entire ocean.
+
+
+There are various ways to measure ocean temperature. Below the sea surface, it is important to refer to the specific depth of measurement as well as measuring the general temperature. The reason is there is a lot of variation with depths. This is especially the case during the day. At this time low wind speed and a lot of sunshine may lead to the formation of a warm layer at the ocean surface and big changes in temperature as you get deeper. Experts call these strong daytime vertical temperature gradients a diurnal thermocline.
+
+
+The basic technique involves lowering a device to measure temperature and other parameters electronically. This device is called CTD which stands for conductivity, temperature, and depth. It continuously sends the data up to the ship via a conducting cable. This device is usually mounted on a frame that includes water sampling bottles. Since the 2010s autonomous vehicles such as gliders or mini-submersibles have been increasingly available. They carry the same CTD sensors, but operate independently of a research ship.
+
+
+Scientists can deploy CTD systems from research ships on moorings gliders and even on seals. With research ships they receive data through the conducting cable. For the other methods they use telemetry.
+
+
+There are other ways of measuring sea surface temperature. At this near-surface layer measurements are possible using thermometers or satellites with spectroscopy. Weather satellites have been available to determine this parameter since 1967. Scientists created the first global composites during 1970.
+
+
+The Advanced Very High Resolution Radiometer (AVHRR) is widely used to measure sea surface temperature from space.
+
+
+There are various devices to measure ocean temperatures at different depths. These include the Nansen bottle, bathythermograph, CTD, or ocean acoustic tomography.  Moored and drifting buoys also measure sea surface temperatures. Examples are those deployed by the Global Drifter Program and the National Data Buoy Center. The World Ocean Database Project is the largest database for temperature profiles from all of the world’s oceans.
+
+
+A small test fleet of deep Argo floats aims to extend the measurement capability down to about 6000 meters. It will accurately sample temperature for a majority of the ocean volume once it is in full use.
+
+
+The most frequent measurement technique on ships and buoys is thermistors and mercury thermometers.  Scientists often use mercury thermometers to measure the temperature of surface waters. They can put them in buckets dropped over the side of a ship. To measure deeper temperatures they put them on Nansen bottles. 
+
+
+It is clear that the ocean is warming as a result of climate change, and this rate of warming is increasing. The global ocean was the warmest it had ever been recorded by humans in 2022. This is determined by the ocean heat content, which exceeded the previous 2021 maximum in 2022. The steady rise in ocean temperatures is an unavoidable result of the Earth's energy imbalance, which is primarily caused by rising levels of greenhouse gases. Between pre-industrial times and the 2011–2020 decade, the ocean's surface has heated between 0.68 and 1.01 °C.
+
+
+The majority of ocean heat gain occurs in the Southern Ocean. For example, between the 1950s and the 1980s, the temperature of the Antarctic Southern Ocean rose by 0.17 °C (0.31 °F), nearly twice the rate of the global ocean.
+
+
+Overall, scientists project that all regions of the oceans will warm by 2050, but models disagree for SST changes expected in the subpolar North Atlantic, the equatorial Pacific, and the Southern Ocean. The future global mean SST increase for the period 1995-2014 to 2081-2100 is 0.86 °C under the most modest greenhouse gas emissions scenarios, and up to 2.89 °C under the most severe emissions scenarios.
+
+
+The cause of recent observed changes is the warming of the Earth due to human-caused emissions of greenhouse gases such as carbon dioxide and methane. Growing concentrations of greenhouse gases increases Earth's energy imbalance, further warming surface temperatures. The ocean takes up most of the added heat in the climate system, raising ocean temperatures.
+
+
+Higher air temperatures warm the ocean surface. And this leads to greater ocean stratification. Reduced mixing of the ocean layers stabilises warm water near the surface. At the same time it reduces cold, deep water circulation. The reduced up and down mixing reduces the ability of the ocean to absorb heat. This directs a larger fraction of future warming toward the atmosphere and land. Energy available for tropical cyclones and other storms is likely to increase. Nutrients for fish in the upper ocean layers are set to decrease. This is also like to reduce the capacity of the oceans to store carbon.
+
+
+Warmer water cannot contain as much oxygen as cold water. Increased thermal stratification may reduce the supply of oxygen from the surface waters to deeper waters. This would further decrease the water's oxygen content. This process is called ocean deoxygenation. The ocean has already lost oxygen throughout the water column. Oxygen minimum zones are expanding worldwide. 
+
+
+Varying temperatures associated with sunlight and air temperatures at different latitudes cause ocean currents. Prevailing winds and the different densities of saline and fresh water are another cause of currents. Air tends to be warmed and thus rise near the equator, then cool and thus sink slightly further poleward. Near the poles, cool air sinks, but is warmed and rises as it then travels along the surface equatorward. The sinking and upwelling that occur in lower latitudes, and the driving force of the winds on surface water, mean the ocean currents circulate water throughout the entire sea. Global warming on top of these processes causes changes to currents, especially in the regions where deep water is formed.
+
+
+Scientists believe the sea temperature was much hotter in the Precambrian period. Such temperature reconstructions derive from oxygen and silicon isotopes from rock samples. These reconstructions suggest the ocean had a temperature of 55–85 °C  2,000 to 3,500 million years ago. It then cooled to milder temperatures of between 10 and 40 °C by 1,000 million years ago. Reconstructed proteins from Precambrian organisms also provide evidence that the ancient world was much warmer than today.
+
+
+The Cambrian Explosion approximately 538.8 million years ago was a key event in the evolution of life on Earth. This event took place at a time when scientists believe sea surface temperatures reached about 60 °C. Such high temperatures are above the upper thermal limit of 38 °C for modern marine invertebrates. They preclude a major biological revolution.
+
+
+During the later Cretaceous period, from 100 to 66 million years ago, average global temperatures reached their highest level in the last 200 million years or so. This was probably the result of the configuration of the continents during this period. It allowed for improved circulation in the oceans. This discouraged the formation of large scale ice sheet.
+
+
+Data from an oxygen isotope database indicate that there have been seven global warming events during the geologic past. These include the Late Cambrian, Early Triassic,  Late Cretaceous, and Paleocene-Eocene transition. The surface of the sea was about 5-30º warmer than today in these warming period.
