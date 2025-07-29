@@ -10,6 +10,25 @@ from services.fetch_onc_data import fetch_onc_data
 
 chroma_client = chromadb.PersistentClient(path="../database/chroma_store")
 
+def add_rating(data):
+    collection_name = data["collection_name"]
+    document_name = data["document_name"]
+    text = data["text"]
+    rating = data["rating"]  # assumed to be a boolean
+
+    # Create or get the collection
+    embeddings = embed_texts([text])
+    print(embeddings)
+    collection = chroma_client.get_or_create_collection(name=collection_name)
+    
+
+    collection.add(
+        documents=[text],
+        ids=[document_name],
+        metadatas=[{"rating": rating}],
+        embeddings=embeddings
+    )
+
 # /add endpoint function, adds one document to the specified collection
 def add_document(data):
     # required fields for adding a document
@@ -113,26 +132,26 @@ def search_documents(data):
                 second_prompt = build_second_llm_prompt(data["query"], json.dumps(api_json, indent=2))
                 # return { "answer": f"You can find the data using the following link: {clean}", "type": 2}
             except Exception as e:
-                return {"error": f"Failed to compress ONC data: {str(e)}"}
+                return {"error": f"Failed to compress ONC data: {str(e)}\nDetails: {clean}"}
             
         final_answer = generate_response(second_prompt, query=data["query"], model_key="answer")
 
         no_data_keywords = ["no information found", "could not find", "not available", "no data"]
         if any(kw in final_answer.lower() for kw in no_data_keywords):
             # valid call, but ONC has no data 
-            return { "answer": final_answer, "type": 0 }
+            return { "answer": final_answer, "api key": clean, "type": 0 }
         else:
             # successful full answer
-            return { "answer": final_answer, "type": 2}
+            return { "answer": final_answer, "api key": clean, "type": 2}
     else:
         # Detect clarification questions
         clarification_keywords = ["please specify", "could refer to", "which one", "ambiguous", "what kind", "do you want to"]
         if any(kw in clean_response.lower() for kw in clarification_keywords):
             # clarification question
-            return { "answer": clean_response, "type": 1 }
+            return { "answer": clean_response, "api key": clean, "type": 1 }
         else:
             # invalid api call
-            return { "answer": clean_response, "type": 0 }
+            return { "answer": clean_response, "api key": clean, "type": 0 }
 
 # /collections endpoint function, returns list of collections in chromadb
 def list_collections():

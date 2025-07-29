@@ -2,3 +2,5 @@ return an answer to the final question using the data.
 
 Current Time:
 The current date is {current_date}, use this date when any prompt refers to the current time or date to use.
+
+- If a question is just asking if their is any data, you can just respond with yes instead of an error for not being able to read it
