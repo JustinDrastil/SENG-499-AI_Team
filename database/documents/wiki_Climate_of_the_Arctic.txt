@@ -1,0 +1,235 @@
+﻿The climate of the Arctic is characterized by long, cold winters and short, cool summers. There is a large amount of variability in climate across the Arctic, but all regions experience extremes of solar radiation in both summer and winter. Some parts of the Arctic are covered by ice (sea ice, glacial ice, or snow) year-round, and nearly all parts of the Arctic experience long periods with some form of ice on the surface.
+
+
+The Arctic consists of ocean that is largely surrounded by land. As such, the climate of much of the Arctic is moderated by the ocean water, which can never have a temperature below −2 °C (28 °F). In winter, this relatively warm water, even though covered by the polar ice pack, keeps the North Pole from being the coldest place in the Northern Hemisphere, and it is also part of the reason that Antarctica is so much colder than the Arctic. In summer, the presence of the nearby water keeps coastal areas from warming as much as they might otherwise.
+
+
+There are different definitions of the Arctic. The most widely used definition, the area north of the Arctic Circle, where the sun does not set on the June solstice, is used in astronomical and some geographical contexts. However the two most widely used definitions in the context of climate are the area north of the northern tree line, and the area in which the average summer temperature is less than 10 °C (50 °F), which are nearly coincident over most land areas.
+
+
+This definition of the Arctic can be further divided into four different regions:
+
+
+Moving inland from the coast over mainland North America and Eurasia, the moderating influence of the Arctic Ocean quickly diminishes, and the climate transitions from the Arctic to subarctic, generally, in less than 500 km (310 mi), and often over a much shorter distance.
+
+
+Due to the lack of major population centres in the Arctic, weather and climate observations from the region tend to be widely spaced and of short duration compared to the midlatitudes and tropics. Though the Vikings explored parts of the Arctic over a millennium ago, and small numbers of people have been living along the Arctic coast for much longer, scientific knowledge about the region was slow to develop; the large islands of Severnaya Zemlya, just north of the Taymyr Peninsula on the Russian mainland, were not discovered until 1913, and not mapped until the early 1930s.
+
+
+Much of the historical exploration in the Arctic was motivated by the search for the Northwest and Northeast Passages. Expeditions in the 16th and 17th centuries were largely driven by traders in search of these shortcuts between the Atlantic and the Pacific. These forays into the Arctic did not venture far from the North American and Eurasian coasts, and were unsuccessful at finding a navigable route through either passage.
+
+
+National and commercial expeditions continued to expand the detail on maps of the Arctic through the 18th century, but largely neglected other scientific observations. Expeditions from the 1760s to the middle of the 19th century were also led astray by attempts to sail north because of the belief by many at the time that the ocean surrounding the North Pole was ice-free. These early explorations did provide a sense of the sea ice conditions in the Arctic and occasionally some other climate-related information.
+
+
+By the early 19th century some expeditions were making a point of collecting more detailed meteorological, oceanographic, and geomagnetic observations, but they remained sporadic. Beginning in the 1850s regular meteorological observations became more common in many countries, and the British navy implemented a system of detailed observation. As a result, expeditions from the second half of the 19th century began to provide a picture of the Arctic climate.
+
+
+The first major effort by Europeans to study the meteorology of the Arctic was the First International Polar Year (IPY) in 1882 to 1883. Eleven nations provided support to establish twelve observing stations around the Arctic. The observations were not as widespread or long-lasting as would be needed to describe the climate in detail, but they provided the first cohesive look at the Arctic weather.
+
+
+In 1884 the wreckage of the Briya, a ship abandoned three years earlier off Russia's eastern Arctic coast, was found on the coast of Greenland. This caused Fridtjof Nansen to realize that the sea ice was moving from the Siberian side of the Arctic to the Atlantic side. He decided to use this motion by freezing a specially designed ship, the Fram, into the sea ice and allowing it to be carried across the ocean. Meteorological observations were collected from the ship during its crossing from September 1893 to August 1896. This expedition also provided valuable insight into the circulation of the ice surface of the Arctic Ocean.
+
+
+In the early 1930s the first significant meteorological studies were carried out on the interior of the Greenland ice sheet. These provided knowledge of perhaps the most extreme climate of the Arctic, and also the first suggestion that the ice sheet lies in a depression of the bedrock below (now known to be caused by the weight of the ice itself).
+
+
+Fifty years after the first IPY, in 1932 to 1933, a second IPY was organized. This one was larger than the first, with 94 meteorological stations, but World War II delayed or prevented the publication of much of the data collected during it. Another significant moment in Arctic observation before World War II occurred in 1937 when the USSR established the first of over 30 drifting ice stations. This station, like the later ones, was established on a thick ice floe and drifted for almost a year, its crew observing the atmosphere and ocean along the way.
+
+
+Following World War II, the Arctic, lying between the USSR and North America, became a front line of the Cold War, inadvertently and significantly furthering our understanding of its climate. Between 1947 and 1957, the United States and Canadian governments established a chain of stations along the Arctic coast known as the Distant Early Warning Line (DEWLINE), replaced by the North Warning System in the 1980s, to provide warning of a Soviet nuclear attack. Many of these stations also collected meteorological data.
+
+
+The Soviet Union was also interested in the Arctic and established a significant presence there by continuing the North-Pole drifting stations. This program operated continuously, with 30 stations in the Arctic from 1950 to 1991. These stations collected data that are valuable to this day for understanding the climate of the Arctic Basin.
+
+
+Another benefit from the Cold War was the acquisition of observations from United States and Soviet naval voyages into the Arctic. In 1958 an American nuclear submarine, the USS Nautilus was the first ship to reach the North Pole. In the decades that followed submarines regularly roamed under the Arctic sea ice, collecting sonar observations of the ice thickness and extent as they went. These data became available after the Cold War, and have provided evidence of thinning of the Arctic sea ice. The Soviet navy also operated in the Arctic, including a sailing of the nuclear-powered icebreaker Arktika to the North Pole in 1977, the first time a surface ship reached the pole.
+
+
+Scientific expeditions to the Arctic also became more common during the Cold War decades, sometimes benefiting logistically or financially from the military interest. In 1966 the first deep ice core in Greenland was drilled at Camp Century, providing a glimpse of climate through the last ice age. This record was lengthened in the early 1990s when two deeper cores were taken from near the center of the Greenland ice sheet. Beginning in 1979 the Arctic Ocean Buoy Program (the International Arctic Buoy Program since 1991) has been collecting meteorological and ice-drift data across the Arctic Ocean with a network of 20 to 30 buoys.
+
+
+The end of the Soviet Union in 1991 led to a dramatic decrease in regular observations from the Arctic. The Russian government ended the system of drifting North Pole stations, and closed many of the surface stations in the Russian Arctic. Likewise the United States and Canadian governments cut back on spending for Arctic observing as the perceived need for the DEWLINE declined. As a result, the most complete collection of surface observations from the Arctic is for the period 1960 to 1990.
+
+
+The extensive array of satellite-based remote sensing instruments now in orbit has helped to replace some of the observations that were lost after the Cold War, and has provided coverage that was impossible without them. Routine satellite observations of the Arctic began in the early 1970s, expanding and improving ever since. A result of these observations is a thorough record of sea-ice extent in the Arctic since 1979; and its possible link to anthropogenic global warming, has helped increase interest in the Arctic in recent years. Today's satellite instruments provide routine views of not only cloud, snow, and sea-ice conditions in the Arctic, but also of other, perhaps less-expected, variables, including surface and atmospheric temperatures, atmospheric moisture content, winds, and ozone concentration.
+
+
+Civilian scientific research on the ground has certainly continued in the Arctic, and it got a boost from 2007 to 2009 as nations around the world increased spending on polar research as part of the third International Polar Year (not to be confused with the International Geophysical Year (1957–58) also referred to as the third International Polar Year). During these two years thousands of scientists from over 60 nations co-operated to carry out over 200 projects to learn about physical, biological, and social aspects of the Arctic and Antarctic.
+
+
+Modern researchers in the Arctic also benefit from computer models. These pieces of software are sometimes relatively simple, but often become highly complex as scientists try to include more and more elements of the environment to make the results more realistic. The models, though imperfect, often provide valuable insight into climate-related questions that cannot be tested in the real world. They are also used to try to predict future climate and the effect that changes to the atmosphere caused by humans may have on the Arctic and beyond. Another interesting use of models has been to use them, along with historical data, to produce a best estimate of the weather conditions over the entire globe during the last 50 years, filling in regions where no observations were made. These reanalysis datasets help compensate for the lack of observations over the Arctic.
+
+
+Almost all of the energy available to the Earth's surface and atmosphere comes from the sun in the form of solar radiation (light from the sun, including invisible ultraviolet and infrared light). Variations in the amount of solar radiation reaching different parts of the Earth are a principal driver of global and regional climate. Latitude is the most important factor determining the yearly average amount of solar radiation reaching the top of the atmosphere; the incident solar radiation decreases smoothly from the Equator to the poles. Therefore, temperature tends to decrease with increasing latitude.
+
+
+In addition the length of each day, which is determined by the season, has a significant impact on the climate. The 24-hour days found near the poles in summer result in a large daily-average solar flux reaching the top of the atmosphere in these regions. On the June solstice 36% more solar radiation reaches the top of the atmosphere over the course of the day at the North Pole than at the Equator. However, in the six months from the September equinox to March equinox the North Pole receives no sunlight.
+
+
+The climate of the Arctic also depends on the amount of sunlight reaching the surface, and being absorbed by the surface. Variations in cloud cover can cause significant variations in the amount of solar radiation reaching the surface at locations with the same latitude. Differences in surface albedo due for example to presence or absence of snow and ice strongly affect the fraction of the solar radiation reaching the surface that is reflected rather than absorbed.
+
+
+During the winter months of November through February, the sun remains very low in the sky in the Arctic or does not rise at all. Where it does rise, the days are short, and the sun's low position in the sky means that, even at noon, not much energy is reaching the surface. Furthermore, most of the small amount of solar radiation that reaches the surface is reflected away by the bright snow cover. Cold snow reflects between 70% and 90% of the solar radiation that reaches it, and snow covers most of the Arctic land and ice surface in winter. These factors result in a negligible input of solar energy to the Arctic in winter; the only things keeping the Arctic from continuously cooling all winter are the transport of warmer air and ocean water into the Arctic from the south and the transfer of heat from the subsurface land and ocean (both of which gain heat in summer and release it in winter) to the surface and atmosphere.
+
+
+Arctic days lengthen rapidly in March and April, and the sun rises higher in the sky, both bringing more solar radiation to the Arctic than in winter. During these early months of Northern Hemisphere spring most of the Arctic is still experiencing winter conditions, but with the addition of sunlight. The continued low temperatures, and the persisting white snow cover, mean that this additional energy reaching the Arctic from the sun is slow to have a significant impact because it is mostly reflected away without warming the surface. By May, temperatures are rising, as 24-hour daylight reaches many areas, but most of the Arctic is still snow-covered, so the Arctic surface reflects more than 70% of the sun's energy that reaches it over all areas but the Norwegian Sea and southern Bering Sea, where the ocean is ice free, and some of the land areas adjacent to these seas, where the moderating influence of the open water helps melt the snow early.
+
+
+In most of the Arctic the significant snow melt begins in late May or sometime in June. This begins a feedback, as melting snow reflects less solar radiation (50% to 60%) than dry snow, allowing more energy to be absorbed and the melting to take place faster. As the snow disappears on land, the underlying surfaces absorb even more energy, and begin to warm rapidly.
+
+
+At the North Pole on the June solstice, around 21 June, the sun circles at 23.5° above the horizon. This marks noon in the Pole's year-long day; from then until the September equinox, the sun will slowly approach nearer and nearer the horizon, offering less and less solar radiation to the Pole. This period of setting sun also roughly corresponds to summer in the Arctic.
+
+
+As the Arctic continues receiving energy from the sun during this time, the land, which is mostly free of snow by now, can warm up on clear days when the wind is not coming from the cold ocean. Over the Arctic Ocean the snow cover on the sea ice disappears and ponds of melt water start to form on the sea ice, further reducing the amount of sunlight the ice reflects and helping more ice melt. Around the edges of the Arctic Ocean the ice will melt and break up, exposing the ocean water, which absorbs almost all of the solar radiation that reaches it, storing the energy in the water column. By July and August, most of the land is bare and absorbs more than 80% of the sun's energy that reaches the surface. Where sea ice remains, in the central Arctic Basin and the straits between the islands in the Canadian Arctic Archipelago, the many melt ponds and lack of snow cause about half of the sun's energy to be absorbed, but this mostly goes toward melting ice since the ice surface cannot warm above freezing.
+
+
+Frequent cloud cover, exceeding 80% frequency over much of the Arctic Ocean in July, reduces the amount of solar radiation that reaches the surface by reflecting much of it before it gets to the surface. Unusual clear periods can lead to increased sea ice melt or higher temperatures.
+
+
+The interior of Greenland differs from the rest of the Arctic. Low spring and summer cloud frequency and the high elevation, which reduces the amount of solar radiation absorbed or scattered by the atmosphere, combine to give this region the most incoming solar radiation at the surface out of anywhere in the Arctic. However, the high elevation, and corresponding lower temperatures, help keep the bright snow from melting, limiting the warming effect of all this solar radiation.
+
+
+In the summer, when the snow melted, Inuit traditionally lived in tupiq, tent-like huts made out of seal or caribou skins stretched over a frame.
+
+
+In September and October the days get rapidly shorter, and in northern areas the sun disappears from the sky entirely. As the amount of solar radiation available to the surface rapidly decreases, the temperatures follow suit. The sea ice begins to refreeze, and eventually gets a fresh snow cover, causing it to reflect even more of the dwindling amount of sunlight reaching it. Likewise, in the beginning of September both the northern and southern land areas receive their winter snow cover, which combined with the reduced solar radiation at the surface, ensures an end to the warm days those areas may experience in summer. By November, winter is in full swing in most of the Arctic, and the small amount of solar radiation still reaching the region does not play a significant role in its climate.
+
+
+The Arctic is often perceived as a region stuck in a permanent deep freeze. While much of the region does experience very low temperatures, there is considerable variability with both location and season. Winter temperatures average below freezing over all of the Arctic except for small regions in the southern Norwegian and Bering Seas, which remain ice free throughout the winter. Average temperatures in summer are above freezing over all regions except the central Arctic Basin, where sea ice survives through the summer, and interior Greenland.
+
+
+The maps show the average temperature over the Arctic in January and July, generally the coldest and warmest months. These maps were made with data from the NCEP/NCAR Reanalysis, which incorporates available data into a computer model to create a consistent global data set. Neither the models nor the data are perfect, so these maps may differ from other estimates of surface temperatures; in particular, most Arctic climatologies show temperatures over the central Arctic Ocean in July averaging just below freezing, a few degrees lower than these maps show. (USSR, 1985)[citation needed] An earlier climatology of temperatures in the Arctic, based entirely on available data, is shown in this map from the CIA Polar Regions Atlas.
+
+
+The World Meteorological Organization has recognized in 2020 a temperature of −69.6 °C (−93.3 °F) measured near the topographic summit of the Greenland ice sheet on 22 December 1991, as the lowest in the Northern Hemisphere. The record was measured at an automatic weather station and was uncovered after nearly 30 years and is recognised as the Pole of Cold for the Northern Hemisphere.
+
+
+Among the coldest location in the Northern Hemisphere is also the interior of Russia's Far East, in the upper-right quadrant of the maps. This is due to the region's continental climate, far from the moderating influence of the ocean, and to the valleys in the region that can trap cold, dense air and create strong temperature inversions, where the temperature increases, rather than decreases, with height.
+
+
+The lowest officially recorded temperatures in the Northern Hemisphere is −67.7 °C (−89.9 °F) which occurred in Oymyakon on February 6, 1933, as well as −67.8 °C (−90.0 °F) in Verkhoyansk on February 5 and 7, 1892, respectively. However, this region is not part of the Arctic because its continental climate also allows it to have warm summers, with an average July temperature of 15 °C (59 °F). In the figure below showing station climatologies, the plot for Yakutsk is representative of this part of the Far East; Yakutsk has a slightly less extreme climate than Verkhoyansk.
+
+
+The Arctic Basin is typically covered by sea ice year round, which strongly influences its summer temperatures. It also experiences the longest period without sunlight of any part of the Arctic, and the longest period of continuous sunlight, though the frequent cloudiness in summer reduces the importance of this solar radiation.
+
+
+Despite its location centered on the North Pole, and the long period of darkness this brings, this is not the coldest part of the Arctic. In winter, the heat transferred from the −2 °C (28 °F) water through cracks in the ice and areas of open water helps to moderate the climate some, keeping average winter temperatures around −30 to −35 °C (−22 to −31 °F). Minimum temperatures in this region in winter are around −50 °C (−58 °F).
+
+
+In summer, the sea ice keeps the surface from warming above freezing. Sea ice is mostly fresh water since the salt is rejected by the ice as it forms, so the melting ice has a temperature of 0 °C (32 °F), and any extra energy from the sun goes to melting more ice, not to warming the surface. Air temperatures, at the standard measuring height of about 2 m (6 ft 7 in) above the surface, can rise a few degrees above freezing between late May and September, though they tend to be within a degree of freezing, with very little variability during the height of the melt season.
+
+
+In the figure above showing station climatologies, the lower-left plot, for NP 7–8, is representative of conditions over the Arctic Basin. This plot shows data from the Soviet North Pole drifting stations, numbers 7 and 8. It shows the average temperature in the coldest months is in the −30 °C (−22 °F) region, and the temperature rises rapidly from April to May; July is the warmest month, and the narrowing of the maximum and minimum temperature lines shows the temperature does not vary far from freezing in the middle of summer; from August through December the temperature drops steadily. The small daily temperature range (the length of the vertical bars) results from the fact that the sun's elevation above the horizon does not change much or at all in this region during one day.
+
+
+Much of the winter variability in this region is due to clouds. Since there is no sunlight, the thermal radiation emitted by the atmosphere is one of this region's main sources of energy in winter. A cloudy sky can emit much more energy toward the surface than a clear sky, so when it is cloudy in winter, this region tends to be warm, and when it is clear, this region cools quickly.
+
+
+In winter, the Canadian Arctic Archipelago experiences temperatures similar to those in the Arctic Basin, but in the summer months of June to August, the presence of so much land in this region allows it to warm more than the ice-covered Arctic Basin. In the station-climatology figure above, the plot for Resolute is typical of this region. The presence of the islands, most of which lose their snow cover in summer, allows the summer temperatures to rise well above freezing. The average high temperature in summer approaches 10 °C (50 °F), and the average low temperature in July is above freezing, though temperatures below freezing are observed every month of the year.
+
+
+The straits between these islands often remain covered by sea ice throughout the summer. This ice acts to keep the surface temperature at freezing, just as it does over the Arctic Basin, so a location on a strait would likely have a summer climate more like the Arctic Basin, but with higher maximum temperatures because of winds off of the nearby warm islands.
+
+
+Climatically, Greenland is divided into two very separate regions: the coastal region, much of which is ice free, and the inland ice sheet. The Greenland ice sheet covers about 80% of Greenland, extending to the coast in places, and has an average elevation of 2,100 m (6,900 ft) and a maximum elevation of 3,200 m (10,500 ft). Much of the ice sheet remains below freezing all year, and it has the coldest climate of any part of the Arctic. Coastal areas can be affected by nearby open water, or by heat transfer through sea ice from the ocean, and many parts lose their snow cover in summer, allowing them to absorb more solar radiation and warm more than the interior.
+
+
+Coastal regions on the northern half of Greenland experience winter temperatures similar to or slightly warmer than the Canadian Arctic Archipelago, with average January temperatures of −30 to −25 °C (−22 to −13 °F). These regions are slightly warmer than the Archipelago because of their closer proximity to areas of thin, first-year sea ice cover or to open ocean in Baffin Bay and the Greenland Sea.
+
+
+The coastal regions in the southern part of the island are influenced more by open ocean water and by frequent passage of cyclones, both of which help to keep the temperature there from being as low as in the north. As a result of these influences, the average temperature in these areas in January is considerably higher, between about −20 to −4 °C (−4 to 25 °F).
+
+
+The interior ice sheet escapes much of the influence of heat transfer from the ocean or from cyclones, and its high elevation also acts to give it a colder climate since temperatures tend to decrease with elevation. The result is winter temperatures that are lower than anywhere else in the Arctic, with average January temperatures of −45 to −30 °C (−49 to −22 °F), depending on location and on which data set is viewed. Minimum temperatures in winter over the higher parts of the ice sheet can drop below −60 °C (−76 °F) (CIA, 1978). In the station climatology figure above, the Centrale plot is representative of the high Greenland ice sheet.
+
+
+In summer, the coastal regions of Greenland experience temperatures similar to the islands in the Arctic Archipelago, averaging just a few degrees above freezing in July, with slightly higher temperatures in the south and west than in the north and east. The interior ice sheet remains snow-covered throughout the summer, though significant portions do experience some snow melt. This snow cover, combined with the ice sheet's elevation, help to keep temperatures here lower, with July averages between −12 and 0 °C (10 and 32 °F). Along the coast, temperatures are kept from varying too much by the moderating influence of the nearby water or melting sea ice. In the interior, temperatures are kept from rising much above freezing because of the snow-covered surface but can drop to −30 °C (−22 °F) even in July. Temperatures above 20 °C (68 °F) are rare but do sometimes occur in the far south and south-west coastal areas.
+
+
+Most Arctic seas are covered by ice for part of the year (see the map in the sea-ice section below); 'ice-free' here refers to those which are not covered year-round.
+
+
+The only regions that remain ice-free throughout the year are the southern part of the Barents Sea and most of the Norwegian Sea. These have very small annual temperature variations; average winter temperatures are kept near or above the freezing point of sea water (about −2 °C (28 °F)) since the unfrozen ocean cannot have a temperature below that, and summer temperatures in the parts of these regions that are considered part of the Arctic average less than 10 °C (50 °F). During the 46-year period when weather records were kept on Shemya Island, in the southern Bering Sea, the average temperature of the coldest month (February) was −0.6 °C (30.9 °F) and that of the warmest month (August) was 9.7 °C (49.5 °F); temperatures never dropped below −17 °C (1 °F) or rose above 18 °C (64 °F).
+
+
+The rest of the seas have ice cover for some part of the winter and spring, but lose that ice during the summer. These regions have summer temperatures between about 0 and 8 °C (32 and 46 °F). The winter ice cover allows temperatures to drop much lower in these regions than in the regions that are ice-free all year. Over most of the seas that are ice-covered seasonally, winter temperatures average between about −30 and −15 °C (−22 and 5 °F). Those areas near the sea-ice edge will remain somewhat warmer due to the moderating influence of the nearby open water. In the station-climatology figure above, the plots for Point Barrow, Tiksi, Murmansk, and Isfjord are typical of land areas adjacent to seas that are ice-covered seasonally. The presence of the land allows temperatures to reach slightly more extreme values than the seas themselves.
+
+
+An essentially ice-free Arctic may be a reality in the month of September, anywhere from 2050 to 2100.
+
+
+Precipitation in most of the Arctic falls only as rain and snow. Over most areas snow is the dominant, or only, form of precipitation in winter, while both rain and snow fall in summer (Serreze and Barry 2005). The main exception to this general description is the high part of the Greenland ice sheet, which receives all of its precipitation as snow, in all seasons.
+
+
+Accurate climatologies of precipitation amount are more difficult to compile for the Arctic than climatologies of other variables such as temperature and pressure. All variables are measured at relatively few stations in the Arctic, but precipitation observations are made more uncertain due to the difficulty in catching in a gauge all of the snow that falls. Typically some falling snow is kept from entering precipitation gauges by winds, causing an underreporting of precipitation amounts in regions that receive a large fraction of their precipitation as snowfall. Corrections are made to data to account for this uncaught precipitation, but they are not perfect and introduce some error into the climatologies (Serreze and Barry 2005).
+
+
+The observations that are available show that precipitation amounts vary by about a factor of 10 across the Arctic, with some parts of the Arctic Basin and Arctic Archipelago receiving less than 150 mm (6 in) of precipitation annually, and parts of southeast Greenland receiving over 1,200 mm (47 in) annually. Most regions receive less than 500 mm (20 in) annually. For comparison, annual precipitation averaged over the whole planet is about 1,000 mm (39 in); see precipitation). Unless otherwise noted, all precipitation amounts given in this article are liquid-equivalent amounts, meaning that frozen precipitation is melted before it is measured.
+
+
+The Arctic Basin is one of the driest parts of the Arctic. Most of the Basin receives less than 250 mm (10 in) of precipitation per year, qualifying it as a desert. Smaller regions of the Arctic Basin just north of Svalbard and the Taymyr Peninsula receive up to about 400 mm (16 in) per year.
+
+
+Monthly precipitation totals over most of the Arctic Basin average about 15 mm (1 in) from November through May, and rise to 20 to 30 mm (0.79 to 1.18 in) in July, August, and September. The dry winters result from the low frequency of cyclones in the region during that time, and the region's distance from warm open water that could provide a source of moisture (Serreze and Barry 2005). Despite the low precipitation totals in winter, precipitation frequency is higher in January, when 25% to 35% of observations reported precipitation, than in July, when 20% to 25% of observations reported precipitation (Serreze and Barry 2005). Much of the precipitation reported in winter is very light, possibly diamond dust (ice crystals). The number of days with measurable precipitation (more than 0.1 mm (0.004 in) in a day) is slightly greater in July than in January (USSR 1985). Of January observations reporting precipitation, 95% to 99% of them indicate it was frozen. In July, 40% to 60% of observations reporting precipitation indicate it was frozen (Serreze and Barry 2005).
+
+
+The parts of the Basin just north of Svalbard and the Taymyr Peninsula are exceptions to the general description just given. These regions receive many weakening cyclones from the North-Atlantic storm track, which is most active in winter. As a result, precipitation amounts over these parts of the basin are larger in winter than those given above. The warm air transported into these regions also mean that liquid precipitation is more common than over the rest of the Arctic Basin in both winter and summer.
+
+
+Annual precipitation totals in the Arctic Archipelago increase dramatically from north to south. The northern islands receive similar amounts, with a similar annual cycle, to the central Arctic Basin. Over Baffin Island and the smaller islands around it, annual totals increase from just over 200 mm (8 in) in the north to about 500 mm (20 in) in the south, where cyclones from the North Atlantic are more frequent.
+
+
+However, in the central part of the Archipelago, such as Cambridge Bay and Ulukhaktok on Victoria Island and Gjoa Haven on King William Island, precipitation is lower and averages under 200 mm (8 in) annually.
+
+
+Annual precipitation amounts given below for Greenland are from Figure 6.5 in Serreze and Barry (2005). Due to the scarcity of long-term weather records in Greenland, especially in the interior, this precipitation climatology was developed by analyzing the annual layers in the snow to determine annual snow accumulation (in liquid equivalent) and was modified on the coast with a model to account for the effects of the terrain on precipitation amounts.
+
+
+The southern third of Greenland protrudes into the North Atlantic storm track, a region frequently influenced by cyclones. These frequent cyclones lead to larger annual precipitation totals than over most of the Arctic. This is especially true near the coast, where the terrain rises from sea level to over 2,500 m (8,200 ft), enhancing precipitation due to orographic lift. The result is annual precipitation totals of 400 mm (16 in) over the southern interior to over 1,200 mm (47 in) near the southern and southeastern coasts. Some locations near these coasts where the terrain is particularly conducive to causing orographic lift receive up 2,200 mm (87 in) of precipitation per year. More precipitation falls in winter, when the storm track is most active, than in summer.
+
+
+The west coast of the central third of Greenland is also influenced by some cyclones and orographic lift, and precipitation totals over the ice sheet slope near this coast are up to 600 mm (24 in) per year. The east coast of the central third of the island receives between 200 and 600 mm (8 and 24 in) of precipitation per year, with increasing amounts from north to south. Precipitation over the north coast is similar to that over the central Arctic Basin.
+
+
+The interior of the central and northern Greenland ice sheet is the driest part of the Arctic. Annual totals here range from less than 100 to about 200 mm (4 to about 8 in). This region is continuously below freezing, so all precipitation falls as snow, with more in summer than in the winter time. (USSR 1985).
+
+
+The Chukchi, Laptev, and Kara Seas and Baffin Bay receive somewhat more precipitation than the Arctic Basin, with annual totals between 200 and 400 mm (8 and 16 in); annual cycles in the Chukchi and Laptev Seas and Baffin Bay are similar to those in the Arctic Basin, with more precipitation falling in summer than in winter, while the Kara Sea has a smaller annual cycle due to enhanced winter precipitation caused by cyclones from the North Atlantic storm track.
+
+
+The Labrador, Norwegian, Greenland, and Barents Seas and Denmark and Davis Straits are strongly influenced by the cyclones in the North Atlantic storm track, which is most active in winter. As a result, these regions receive more precipitation in winter than in summer. Annual precipitation totals increase quickly from about 400 mm (16 in) in the northern to about 1,400 mm (55 in) in the southern part of the region. Precipitation is frequent in winter, with measurable totals falling on an average of 20 days each January in the Norwegian Sea (USSR 1985). The Bering Sea is influenced by the North Pacific storm track, and has annual precipitation totals between 400 and 800 mm (16 and 31 in), also with a winter maximum.
+
+
+Sea ice is frozen sea water that floats on the ocean's surface. It is the dominant surface type throughout the year in the Arctic Basin, and covers much of the ocean surface in the Arctic at some point during the year. The ice may be bare ice, or it may be covered by snow or ponds of melt water, depending on location and time of year. Sea ice is relatively thin, generally less than about 4 m (13 ft), with thicker ridges.The National Oceanic and Atmospheric Administration (NOAA) North Pole Web Cams have been tracking the Arctic summer sea ice transitions through spring thaw, summer melt ponds, and autumn freeze-up since the first webcam was deployed in 2002 until they were taken over by the University of Washington Applied Physics Laboratory in 2012.
+
+
+Sea ice is important to the climate and the ocean in a variety of ways. It reduces the transfer of heat from the ocean to the atmosphere; it causes less solar energy to be absorbed at the surface, and provides a surface on which snow can accumulate, which further decreases the absorption of solar energy; since salt is rejected from the ice as it forms, the ice increases the salinity of the ocean's surface water where it forms and decreases the salinity where it melts, both of which can affect the ocean's circulation.
+
+
+The map shows the areas covered by sea ice when it is at its maximum extent (March) and its minimum extent (September). This map was made in the 1970s, and the extent of sea ice has decreased since then (see below), but this still gives a reasonable overview. At its maximum extent, in March, sea ice covers about 15,000,000 km2 (5,800,000 sq mi) of the Northern Hemisphere, nearly as much area as the largest country, Russia.
+
+
+Winds and ocean currents cause the sea ice to move. The typical pattern of ice motion is shown on the map at right. On average, these motions carry sea ice from the Russian side of the Arctic Ocean into the Atlantic Ocean through the area east of Greenland, while they cause the ice on the North American side to rotate clockwise, sometimes for many years.
+
+
+Wind speeds over the Arctic Basin and the western Arctic Archipelago average between 4 and 6 m/s (14 and 22 km/h; 9 and 13 mph) in all seasons. Stronger winds do occur in storms, often causing whiteout conditions, but they rarely exceed 25 m/s (90 km/h; 56 mph) in these areas.
+
+
+During all seasons, the strongest average winds are found in the North-Atlantic seas, Baffin Bay, and Bering and Chukchi Seas, where cyclone activity is most common. On the Atlantic side, the winds are strongest in winter, averaging 7 to 12 m/s (25 to 43 km/h; 16 to 27 mph), and weakest in summer, averaging 5 to 7 m/s (18 to 25 km/h; 11 to 16 mph). On the Pacific side they average 6 to 9 m/s (22 to 32 km/h; 13 to 20 mph) year round. Maximum wind speeds in the Atlantic region can approach 50 m/s (180 km/h; 112 mph) in winter.
+
+
+As with the rest of the planet, the climate in the Arctic has changed throughout time. About 55 million years ago it is thought that parts of the Arctic supported subtropical ecosystems and that Arctic sea-surface temperatures rose to about 23 °C (73 °F) during the Paleocene–Eocene Thermal Maximum. In the more recent past, the planet has experienced a series of ice ages and interglacial periods over about the last 2 million years, with the last ice age reaching its maximum extent about 18,000 years ago and ending by about 10,000 years ago. During these ice ages, large areas of northern North America (Laurentide ice sheet) and Eurasia (Weichselian glaciation) were covered by ice sheets similar to the one found today on Greenland; Arctic climate conditions would have extended much further south, and conditions in the present-day Arctic region were likely colder. Temperature proxies suggest that over the last 8000 years the climate has been stable, with globally averaged temperature variations of less than about 1 °C (34 °F); (see Paleoclimate).
+
+
+There are several reasons to expect that climate changes, from whatever cause, may be enhanced in the Arctic, relative to the mid-latitudes and tropics. First is the ice-albedo feedback, whereby an initial warming causes snow and ice to melt, exposing darker surfaces that absorb more sunlight, leading to more warming. Second, because colder air holds less water vapour than warmer air, in the Arctic, a greater fraction of any increase in radiation absorbed by the surface goes directly into warming the atmosphere, whereas in the tropics, a greater fraction goes into evaporation. Third, because the Arctic temperature structure inhibits vertical air motions, the depth of the atmospheric layer that has to warm in order to cause warming of near-surface air is much shallower in the Arctic than in the tropics. Fourth, a reduction in sea-ice extent will lead to more energy being transferred from the warm ocean to the atmosphere, enhancing the warming. Finally, changes in atmospheric and oceanic circulation patterns caused by a global temperature change may cause more heat to be transferred to the Arctic, enhancing Arctic warming.
+
+
+According to the Intergovernmental Panel on Climate Change (IPCC), "warming of the climate system is unequivocal", and the global-mean temperature has increased by 0.6 to 0.9 °C (1.1 to 1.6 °F) over the last century. This report also states that "most of the observed increase in global average temperatures since the mid-20th century is very likely [greater than 90% chance] due to the observed increase in anthropogenic greenhouse gas concentrations." The IPCC also indicate that, over the last 100 years, the annually averaged temperature in the Arctic has increased by almost twice as much as the global mean temperature has. In 2009, NASA reported that 45% or more of the observed warming in the Arctic since 1976 was likely a result of changes in tiny airborne particles called aerosols.
+
+
+Climate models predict that the temperature increase in the Arctic over the next century will continue to be about twice the global average temperature increase. By the end of the 21st century, the annual average temperature in the Arctic is predicted to increase by 2.8 to 7.8 °C (5.0 to 14.0 °F), with more warming in winter (4.3 to 11.4 °C (7.7 to 20.5 °F)) than in summer.] Decreases in sea-ice extent and thickness are expected to continue over the next century, with some models predicting the Arctic Ocean will be free of sea ice in late summer by the mid to late part of the century.
+
+
+A study published in the journal Science in September 2009 determined that temperatures in the Arctic are higher presently than they have been at any time in the previous 2,000 years.Samples from ice cores, tree rings and lake sediments from 23 sites were used by the team, led by Darrell Kaufman of Northern Arizona University, to provide snapshots of the changing climate. Geologists were able to track the summer Arctic temperatures as far back as the time of the Romans by studying natural signals in the landscape. The results highlighted that for around 1,900 years temperatures steadily dropped, caused by precession of Earth's orbit that caused the planet to be slightly farther away from the Sun during summer in the Northern Hemisphere.These orbital changes led to a cold period known as the Little Ice Age during the 17th, 18th and 19th centuries. However, during the last 100 years temperatures have been rising, despite the fact that the continued changes in Earth's orbit would have driven further cooling. The largest rises have occurred since 1950, with four of the five warmest decades in the last 2,000 years occurring between 1950 and 2000.The last decade was the warmest in the record.
