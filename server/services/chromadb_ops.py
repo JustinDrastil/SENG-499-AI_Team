@@ -148,10 +148,10 @@ def search_documents(data):
         clarification_keywords = ["please specify", "could refer to", "which one", "ambiguous", "what kind", "do you want to"]
         if any(kw in clean_response.lower() for kw in clarification_keywords):
             # clarification question
-            return { "answer": clean_response, "api call": clean, "type": 1 }
+            return { "answer": clean_response, "type": 1 }
         else:
             # invalid api call
-            return { "answer": clean_response, "api call": clean, "type": 0 }
+            return { "answer": clean_response, "type": 0 }
 
 # /collections endpoint function, returns list of collections in chromadb
 def list_collections():
